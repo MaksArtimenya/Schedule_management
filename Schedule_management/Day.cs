@@ -8,7 +8,7 @@ namespace Schedule_management
 {
     internal class Day
     {
-        private readonly List<Lesson> lessons = new List<Lesson>();
+        public List<Lesson> lessons { get; set; } = new List<Lesson>();
 
         public void AddLesson(Lesson lesson)
         {

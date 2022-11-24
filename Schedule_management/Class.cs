@@ -8,6 +8,8 @@ namespace Schedule_management
 {
     internal class Class
     {
+        private const int numberOfDays = 5;
+
         public string Name { get; }
 
         public List<Day> Days { get; set; } = new List<Day>();
@@ -15,11 +17,10 @@ namespace Schedule_management
         public Class(string name)
         {
             Name = name;
-        }
-
-        public void AddDay(Day day)
-        {
-            Days.Add(day);
+            for (int i = 0; i < numberOfDays; i++)
+            {
+                Days.Add(new Day());
+            }
         }
     }
 }
