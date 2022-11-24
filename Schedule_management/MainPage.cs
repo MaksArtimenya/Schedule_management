@@ -5,6 +5,8 @@ namespace Schedule_management
         public MainPage()
         {
             InitializeComponent();
+            //listBox1_1.Items.Clear();
+            //listBox1_1.Items.AddRange(InternalData.Lessons.ToArray());
         }
     }
 }
