@@ -148,6 +148,8 @@
             this.Controls.Add(this.buttonSaveListOfLessons);
             this.Controls.Add(this.groupBoxNewLesson);
             this.Controls.Add(this.listBoxShowLessons);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "EditingLessonsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Список уроков";

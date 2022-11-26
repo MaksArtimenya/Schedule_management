@@ -102,6 +102,7 @@
             this.labelThursday = new System.Windows.Forms.Label();
             this.labelFriday = new System.Windows.Forms.Label();
             this.buttonShowEditingLessonsForm = new System.Windows.Forms.Button();
+            this.buttonSaveClasses = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -1388,19 +1389,30 @@
             // 
             // buttonShowEditingLessonsForm
             // 
-            this.buttonShowEditingLessonsForm.Location = new System.Drawing.Point(1067, 260);
+            this.buttonShowEditingLessonsForm.Location = new System.Drawing.Point(1059, 260);
             this.buttonShowEditingLessonsForm.Name = "buttonShowEditingLessonsForm";
-            this.buttonShowEditingLessonsForm.Size = new System.Drawing.Size(94, 61);
+            this.buttonShowEditingLessonsForm.Size = new System.Drawing.Size(102, 61);
             this.buttonShowEditingLessonsForm.TabIndex = 6;
             this.buttonShowEditingLessonsForm.Text = "Список уроков";
             this.buttonShowEditingLessonsForm.UseVisualStyleBackColor = true;
             this.buttonShowEditingLessonsForm.Click += new System.EventHandler(this.buttonShowEditingLessonsForm_Click);
+            // 
+            // buttonSaveClasses
+            // 
+            this.buttonSaveClasses.Location = new System.Drawing.Point(1059, 395);
+            this.buttonSaveClasses.Name = "buttonSaveClasses";
+            this.buttonSaveClasses.Size = new System.Drawing.Size(102, 76);
+            this.buttonSaveClasses.TabIndex = 7;
+            this.buttonSaveClasses.Text = "Сохранить расписание";
+            this.buttonSaveClasses.UseVisualStyleBackColor = true;
+            this.buttonSaveClasses.Click += new System.EventHandler(this.buttonSaveClasses_Click);
             // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 853);
+            this.Controls.Add(this.buttonSaveClasses);
             this.Controls.Add(this.buttonShowEditingLessonsForm);
             this.Controls.Add(this.labelFriday);
             this.Controls.Add(this.labelThursday);
@@ -1497,5 +1509,6 @@
         private Label labelThursday;
         private Label labelFriday;
         private Button buttonShowEditingLessonsForm;
+        private Button buttonSaveClasses;
     }
 }

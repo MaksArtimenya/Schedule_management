@@ -23,6 +23,7 @@ namespace Schedule_management
             "class10.txt",
             "class11.txt"
         };
+        private static readonly string separator = ".......";
         private static readonly string[] namesOfClasses =
         {
             "1 класс",
@@ -37,11 +38,16 @@ namespace Schedule_management
             "10 класс",
             "11 класс"
         };
+        public static readonly int countOfClasses = 11;
 
 
         public static List<Class> ClassList { get; set; } = new List<Class>();
 
         public static List<Lesson> Lessons { get; set; } = new List<Lesson>();
+
+        public static int IndexOfSelectedDay { get; set; }
+
+        public static int IndexOfSelectedLesson { get; set; }
 
         public static void Initialization()
         {
@@ -71,15 +77,26 @@ namespace Schedule_management
                     StreamReader classesReader = new StreamReader(fileNamesOfClasses[i]);
                     string? line;
                     int k = 0;
+                    int currentLesson = 0;
                     while ((line = classesReader.ReadLine()) != null)
                     {
-                        if (line != ".......")
+                        if (line != separator)
                         {
-                            ClassList[i].Days[k].AddLesson(new Lesson(line[6..line.IndexOf(';')], line[(line.LastIndexOf("teacher: ") + 9)..]));
+                            try
+                            {
+                                ClassList[i].Days[k].lessons[currentLesson] = new Lesson(line[6..line.IndexOf(';')], line[(line.LastIndexOf("teacher: ") + 9)..]);
+                            }
+                            catch (IndexOutOfRangeException)
+                            {
+                                ClassList[i].Days[k].AddLesson(new Lesson(line[6..line.IndexOf(';')], line[(line.LastIndexOf("teacher: ") + 9)..]));
+                            }
+
+                            currentLesson++;
                         }
                         else
                         {
                             k++;
+                            currentLesson = 0;
                         }
                     }
 
@@ -92,6 +109,7 @@ namespace Schedule_management
             }
         }
 
+        //Save lessons into file
         public static void SaveLessons()
         {
             StreamWriter lessonsWriter = new StreamWriter(lessonsFileName);
@@ -101,6 +119,26 @@ namespace Schedule_management
             }
 
             lessonsWriter.Close();
+        }
+
+        //Save classes into files
+        public static void SaveClasses()
+        {
+            for (int i = 0; i < fileNamesOfClasses.Length; i++)
+            {
+                StreamWriter classesWriter = new StreamWriter(fileNamesOfClasses[i]);
+                for (int k = 0; k < ClassList[i].Days.Count; k++)
+                {
+                    for (int currentLesson = 0; currentLesson < ClassList[i].Days[k].lessons.Count; currentLesson++)
+                    {
+                        classesWriter.WriteLine($"name: {ClassList[i].Days[k].lessons[currentLesson].Name}; " +
+                            $"teacher: {ClassList[i].Days[k].lessons[currentLesson].Teacher}");
+                    }
+                    classesWriter.WriteLine(separator);
+                }
+
+                classesWriter.Close();
+            }
         }
     }
 }
