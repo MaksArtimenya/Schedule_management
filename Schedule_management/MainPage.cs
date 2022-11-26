@@ -10,5 +10,10 @@ namespace Schedule_management
             listBox2_1.Items.Clear();
             listBox2_1.Items.AddRange(InternalData.ClassList[0].Days[1].lessons.ToArray());*/
         }
+
+        private void buttonShowEditingLessonsForm_Click(object sender, EventArgs e)
+        {
+            new EditingLessonsForm().ShowDialog();
+        }
     }
 }

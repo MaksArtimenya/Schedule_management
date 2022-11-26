@@ -101,6 +101,7 @@
             this.labelWednesday = new System.Windows.Forms.Label();
             this.labelThursday = new System.Windows.Forms.Label();
             this.labelFriday = new System.Windows.Forms.Label();
+            this.buttonShowEditingLessonsForm = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -1385,11 +1386,22 @@
             this.labelFriday.TabIndex = 5;
             this.labelFriday.Text = "Пятница";
             // 
+            // buttonShowEditingLessonsForm
+            // 
+            this.buttonShowEditingLessonsForm.Location = new System.Drawing.Point(1067, 260);
+            this.buttonShowEditingLessonsForm.Name = "buttonShowEditingLessonsForm";
+            this.buttonShowEditingLessonsForm.Size = new System.Drawing.Size(94, 61);
+            this.buttonShowEditingLessonsForm.TabIndex = 6;
+            this.buttonShowEditingLessonsForm.Text = "Список уроков";
+            this.buttonShowEditingLessonsForm.UseVisualStyleBackColor = true;
+            this.buttonShowEditingLessonsForm.Click += new System.EventHandler(this.buttonShowEditingLessonsForm_Click);
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 853);
+            this.Controls.Add(this.buttonShowEditingLessonsForm);
             this.Controls.Add(this.labelFriday);
             this.Controls.Add(this.labelThursday);
             this.Controls.Add(this.labelWednesday);
@@ -1484,5 +1496,6 @@
         private Label labelWednesday;
         private Label labelThursday;
         private Label labelFriday;
+        private Button buttonShowEditingLessonsForm;
     }
 }

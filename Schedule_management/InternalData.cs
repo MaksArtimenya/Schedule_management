@@ -91,5 +91,16 @@ namespace Schedule_management
                 }
             }
         }
+
+        public static void SaveLessons()
+        {
+            StreamWriter lessonsWriter = new StreamWriter(lessonsFileName);
+            for (int i = 0; i < Lessons.Count; i++)
+            {
+                lessonsWriter.WriteLine($"name: {Lessons[i].Name}; teacher: {Lessons[i].Teacher}");
+            }
+
+            lessonsWriter.Close();
+        }
     }
 }
