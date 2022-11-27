@@ -12,7 +12,6 @@ namespace Schedule_management
             // see https://aka.ms/applicationconfiguration.
 
             InternalData.Initialization();
-
             ApplicationConfiguration.Initialize();
             Application.Run(new MainPage());
         }

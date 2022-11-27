@@ -37,7 +37,6 @@
             this.labelNameOfLesson = new System.Windows.Forms.Label();
             this.textBoxTeacherOfLesson = new System.Windows.Forms.TextBox();
             this.textBoxNameOfLesson = new System.Windows.Forms.TextBox();
-            this.buttonSaveListOfLessons = new System.Windows.Forms.Button();
             this.groupBoxNewLesson.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -130,22 +129,11 @@
             this.textBoxNameOfLesson.Size = new System.Drawing.Size(341, 27);
             this.textBoxNameOfLesson.TabIndex = 0;
             // 
-            // buttonSaveListOfLessons
-            // 
-            this.buttonSaveListOfLessons.Location = new System.Drawing.Point(153, 385);
-            this.buttonSaveListOfLessons.Name = "buttonSaveListOfLessons";
-            this.buttonSaveListOfLessons.Size = new System.Drawing.Size(477, 53);
-            this.buttonSaveListOfLessons.TabIndex = 2;
-            this.buttonSaveListOfLessons.Text = "Сохранить";
-            this.buttonSaveListOfLessons.UseVisualStyleBackColor = true;
-            this.buttonSaveListOfLessons.Click += new System.EventHandler(this.buttonSaveListOfLessons_Click);
-            // 
             // EditingLessonsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.buttonSaveListOfLessons);
             this.Controls.Add(this.groupBoxNewLesson);
             this.Controls.Add(this.listBoxShowLessons);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -169,7 +157,6 @@
         private Label labelNameOfLesson;
         private TextBox textBoxTeacherOfLesson;
         private TextBox textBoxNameOfLesson;
-        private Button buttonSaveListOfLessons;
         private Button buttonRemoveLesson;
     }
 }

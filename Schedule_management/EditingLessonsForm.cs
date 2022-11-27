@@ -12,10 +12,25 @@ namespace Schedule_management
 {
     public partial class EditingLessonsForm : Form
     {
-        public EditingLessonsForm()
+        private MainPage mainPage;
+
+        public EditingLessonsForm(MainPage mainPage)
         {
             InitializeComponent();
             listBoxShowLessons.Items.AddRange(InternalData.Lessons.ToArray());
+            this.mainPage = mainPage;
+        }
+
+        private void SavingChanges()
+        {
+            List<Lesson> bufListOfLessons = new List<Lesson>();
+            for (int i = 0; i < listBoxShowLessons.Items.Count; i++)
+            {
+                bufListOfLessons.Add(listBoxShowLessons.Items[i] as Lesson);
+            }
+
+            InternalData.Lessons = bufListOfLessons;
+            InternalData.SaveLessons();
         }
 
         private void buttonSaveLesson_Click(object sender, EventArgs e)
@@ -33,11 +48,15 @@ namespace Schedule_management
                 if (groupBoxNewLesson.Text == "Новый урок")
                 {
                     listBoxShowLessons.Items.Add(new Lesson(textBoxNameOfLesson.Text, textBoxTeacherOfLesson.Text));
+                    SavingChanges();
                     buttonDontSaveLesson_Click(sender, e);
                 }
                 else
                 {
+                    InternalData.ChekingClassesForEditingLesson(listBoxShowLessons.Items[listBoxShowLessons.SelectedIndex] as Lesson, new Lesson(textBoxNameOfLesson.Text, textBoxTeacherOfLesson.Text));
                     listBoxShowLessons.Items[listBoxShowLessons.SelectedIndex] = new Lesson(textBoxNameOfLesson.Text, textBoxTeacherOfLesson.Text);
+                    mainPage.UpdateAllListBoxes();
+                    SavingChanges();
                     buttonDontSaveLesson_Click(sender, e);
                 }
             }
@@ -76,22 +95,12 @@ namespace Schedule_management
             }
         }
 
-        private void buttonSaveListOfLessons_Click(object sender, EventArgs e)
-        {
-            List<Lesson> bufListOfLessons = new List<Lesson>();
-            for (int i = 0; i < listBoxShowLessons.Items.Count; i++)
-            {
-                bufListOfLessons.Add(listBoxShowLessons.Items[i] as Lesson);
-            }
-
-            InternalData.Lessons = bufListOfLessons;
-            InternalData.SaveLessons();
-            Close();
-        }
-
         private void buttonRemoveLesson_Click(object sender, EventArgs e)
         {
+            InternalData.CheckingClassesForRemovingLesson(listBoxShowLessons.SelectedItem as Lesson);
             listBoxShowLessons.Items.Remove(listBoxShowLessons.SelectedItem);
+            mainPage.UpdateAllListBoxes();
+            SavingChanges();
             buttonDontSaveLesson_Click(sender, e);
         }
     }

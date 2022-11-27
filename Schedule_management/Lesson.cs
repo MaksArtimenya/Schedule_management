@@ -20,7 +20,36 @@ namespace Schedule_management
 
         public override string ToString()
         {
-            return Name;
+            if (Name != string.Empty)
+            {
+                return Name; //+ $" ({Teacher})";
+            }
+            else
+            {
+                return "-";
+            }
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is not Lesson)
+            {
+                return false;
+            }
+
+            if (obj == null)
+            {
+                return false;
+            }
+
+            if (this.Name == ((Lesson)obj).Name && this.Teacher == ((Lesson)obj).Teacher)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

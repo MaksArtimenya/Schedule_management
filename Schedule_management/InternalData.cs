@@ -41,6 +41,7 @@ namespace Schedule_management
         public static readonly int countOfClasses = 11;
 
 
+
         public static List<Class> ClassList { get; set; } = new List<Class>();
 
         public static List<Lesson> Lessons { get; set; } = new List<Lesson>();
@@ -138,6 +139,40 @@ namespace Schedule_management
                 }
 
                 classesWriter.Close();
+            }
+        }
+
+        public static void ChekingClassesForEditingLesson(Lesson checkedLesson, Lesson editedLesson)
+        {
+            for (int i = 0; i < ClassList.Count; i++)
+            {
+                for (int k = 0; k < ClassList[i].Days.Count; k++)
+                {
+                    for (int currentLesson = 0; currentLesson < ClassList[i].Days[k].lessons.Count; currentLesson++)
+                    {
+                        if (ClassList[i].Days[k].lessons[currentLesson].Equals(checkedLesson))//(Equals(ClassList[i].Days[k].lessons[currentLesson], checkedLesson))
+                        {
+                            ClassList[i].Days[k].lessons[currentLesson] = editedLesson;
+                        }
+                    }
+                }
+            }
+        }
+
+        public static void CheckingClassesForRemovingLesson(Lesson checkedLesson)
+        {
+            for (int i = 0; i < ClassList.Count; i++)
+            {
+                for (int k = 0; k < ClassList[i].Days.Count; k++)
+                {
+                    for (int currentLesson = 0; currentLesson < ClassList[i].Days[k].lessons.Count; currentLesson++)
+                    {
+                        if (ClassList[i].Days[k].lessons[currentLesson].Equals(checkedLesson))//(Equals(ClassList[i].Days[k].lessons[currentLesson], checkedLesson))
+                        {
+                            ClassList[i].Days[k].lessons[currentLesson] = new Lesson(string.Empty, string.Empty);
+                        }
+                    }
+                }
             }
         }
     }

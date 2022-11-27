@@ -18,6 +18,7 @@ namespace Schedule_management
         {
             InitializeComponent();
             listBoxShowAvaibleLessons.Items.AddRange(InternalData.Lessons.ToArray());
+            listBoxShowAvaibleLessons.Items.Insert(0, new Lesson(string.Empty, string.Empty));
             this.mainPage = mainPage;
         }
 
@@ -35,7 +36,6 @@ namespace Schedule_management
         {
             InternalData.ClassList[InternalData.IndexOfSelectedDay % InternalData.countOfClasses].Days[InternalData.IndexOfSelectedDay / InternalData.countOfClasses].lessons[InternalData.IndexOfSelectedLesson] =
                 listBoxShowAvaibleLessons.SelectedItem as Lesson;
-            //mainPage.UpdateAllListBoxes();
             mainPage.UpdateListBoxByIndex();
             Close();
         }

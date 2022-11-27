@@ -24,5 +24,16 @@ namespace Schedule_management
         {
             lessons.Add(lesson);
         }
+
+        public Lesson[] GetArrayOfLessonsForSchedule()
+        {
+            Lesson[] result = lessons.ToArray();
+            for (int i = 0; i < result.Length; i++)
+            {
+                result[i].Name = i + 1 + ") " + result[i].Name;
+            }
+
+            return result;
+        }
     }
 }

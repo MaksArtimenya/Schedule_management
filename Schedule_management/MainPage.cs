@@ -78,13 +78,16 @@ namespace Schedule_management
         {
             for (int i = 0; i < listBoxes.Count; i++)
             {
+                listBoxes[i].SelectedItems.Clear();
                 listBoxes[i].Items.Clear();
+                //TODO testing new showing method
                 listBoxes[i].Items.AddRange(InternalData.ClassList[i % InternalData.countOfClasses].Days[i / InternalData.countOfClasses].lessons.ToArray());
             }
         }
 
         public void UpdateListBoxByIndex()
         {
+            listBoxes[InternalData.IndexOfSelectedDay].SelectedItems.Clear();
             listBoxes[InternalData.IndexOfSelectedDay].Items.Clear();
             listBoxes[InternalData.IndexOfSelectedDay].Items.AddRange(InternalData.ClassList[InternalData.IndexOfSelectedDay % InternalData.countOfClasses].
                 Days[InternalData.IndexOfSelectedDay / InternalData.countOfClasses].lessons.ToArray());
@@ -92,14 +95,17 @@ namespace Schedule_management
 
         private void buttonShowEditingLessonsForm_Click(object sender, EventArgs e)
         {
-            new EditingLessonsForm().ShowDialog();
+            new EditingLessonsForm(this).ShowDialog();
         }
 
         private void listBoxesSelectedIndexChanged(object sender, EventArgs e)
         {
-            InternalData.IndexOfSelectedDay = GetIndexOfSelectedListBox(sender);
-            InternalData.IndexOfSelectedLesson = (sender as ListBox).SelectedIndex;
-            new SelectLessonForm(this).ShowDialog();
+            if ((sender as ListBox).SelectedIndex != -1)
+            {
+                InternalData.IndexOfSelectedDay = GetIndexOfSelectedListBox(sender);
+                InternalData.IndexOfSelectedLesson = (sender as ListBox).SelectedIndex;
+                new SelectLessonForm(this).ShowDialog();
+            }
         }
 
         private int GetIndexOfSelectedListBox(object sender)
