@@ -22,7 +22,7 @@ namespace Schedule_management
         {
             if (Name != string.Empty)
             {
-                return Name;// + $" ({Teacher})";
+                return Name;
             }
             else
             {

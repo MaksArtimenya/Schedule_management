@@ -150,7 +150,7 @@ namespace Schedule_management
                 {
                     for (int currentLesson = 0; currentLesson < ClassList[i].Days[k].lessons.Count; currentLesson++)
                     {
-                        if (ClassList[i].Days[k].lessons[currentLesson].Equals(checkedLesson))//(Equals(ClassList[i].Days[k].lessons[currentLesson], checkedLesson))
+                        if (ClassList[i].Days[k].lessons[currentLesson].Equals(checkedLesson))
                         {
                             ClassList[i].Days[k].lessons[currentLesson] = editedLesson;
                         }
@@ -167,7 +167,7 @@ namespace Schedule_management
                 {
                     for (int currentLesson = 0; currentLesson < ClassList[i].Days[k].lessons.Count; currentLesson++)
                     {
-                        if (ClassList[i].Days[k].lessons[currentLesson].Equals(checkedLesson))//(Equals(ClassList[i].Days[k].lessons[currentLesson], checkedLesson))
+                        if (ClassList[i].Days[k].lessons[currentLesson].Equals(checkedLesson))
                         {
                             ClassList[i].Days[k].lessons[currentLesson] = new Lesson(string.Empty, string.Empty);
                         }
@@ -192,6 +192,31 @@ namespace Schedule_management
         {
             File.Delete(lessonsFileName);
             Lessons = new List<Lesson>();
+        }
+
+        public static bool CheckingTeacher(string teacher, out string nameOfClass, out int numberOfDay, out int numberOfLesson)
+        {
+            nameOfClass = string.Empty;
+            numberOfDay = -1;
+            numberOfLesson = -1;
+
+            if (teacher == string.Empty)
+            {
+                return false;
+            }
+
+            for (int i = 0; i < ClassList.Count; i++)
+            {
+                if (ClassList[i].Days[IndexOfSelectedDay / countOfClasses].lessons[IndexOfSelectedLesson].Teacher == teacher)
+                {
+                    nameOfClass = ClassList[i].Name;
+                    numberOfDay = (IndexOfSelectedDay / countOfClasses) + 1;
+                    numberOfLesson = IndexOfSelectedLesson + 1;
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

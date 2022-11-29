@@ -40,10 +40,22 @@ namespace Schedule_management
 
         private void buttonSaveSelectedLesson_Click(object sender, EventArgs e)
         {
-            InternalData.ClassList[InternalData.IndexOfSelectedDay % InternalData.countOfClasses].Days[InternalData.IndexOfSelectedDay / InternalData.countOfClasses].lessons[InternalData.IndexOfSelectedLesson] =
+            string nameOfClass;
+            int numberOfDay;
+            int numberOfLesson;
+
+            if (InternalData.CheckingTeacher(((Lesson)listBoxShowAvaibleLessons.SelectedItem).Teacher, out nameOfClass, out numberOfDay, out numberOfLesson))
+            {
+                MessageBox.Show($"Этот преподаватель уже занят" + $"\nКласс: {nameOfClass}" + $"\nДень: {numberOfDay}"
+                    + $"\nУрок: {numberOfLesson}");
+            }
+            else
+            {
+                InternalData.ClassList[InternalData.IndexOfSelectedDay % InternalData.countOfClasses].Days[InternalData.IndexOfSelectedDay / InternalData.countOfClasses].lessons[InternalData.IndexOfSelectedLesson] =
                 listBoxShowAvaibleLessons.SelectedItem as Lesson;
-            mainPage.UpdateListBoxByIndex();
-            Close();
+                mainPage.UpdateListBoxByIndex();
+                Close();
+            }
         }
     }
 }
