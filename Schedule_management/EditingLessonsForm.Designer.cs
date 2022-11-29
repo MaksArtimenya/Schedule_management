@@ -37,6 +37,7 @@
             this.labelNameOfLesson = new System.Windows.Forms.Label();
             this.textBoxTeacherOfLesson = new System.Windows.Forms.TextBox();
             this.textBoxNameOfLesson = new System.Windows.Forms.TextBox();
+            this.buttonClearLessons = new System.Windows.Forms.Button();
             this.groupBoxNewLesson.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,7 +84,7 @@
             this.buttonDontSaveLesson.Name = "buttonDontSaveLesson";
             this.buttonDontSaveLesson.Size = new System.Drawing.Size(165, 51);
             this.buttonDontSaveLesson.TabIndex = 5;
-            this.buttonDontSaveLesson.Text = "Сбросить";
+            this.buttonDontSaveLesson.Text = "Не сохранять";
             this.buttonDontSaveLesson.UseVisualStyleBackColor = true;
             this.buttonDontSaveLesson.Click += new System.EventHandler(this.buttonDontSaveLesson_Click);
             // 
@@ -129,11 +130,22 @@
             this.textBoxNameOfLesson.Size = new System.Drawing.Size(341, 27);
             this.textBoxNameOfLesson.TabIndex = 0;
             // 
+            // buttonClearLessons
+            // 
+            this.buttonClearLessons.Location = new System.Drawing.Point(50, 379);
+            this.buttonClearLessons.Name = "buttonClearLessons";
+            this.buttonClearLessons.Size = new System.Drawing.Size(290, 47);
+            this.buttonClearLessons.TabIndex = 2;
+            this.buttonClearLessons.Text = "Очистить список";
+            this.buttonClearLessons.UseVisualStyleBackColor = true;
+            this.buttonClearLessons.Click += new System.EventHandler(this.buttonClearLessons_Click);
+            // 
             // EditingLessonsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonClearLessons);
             this.Controls.Add(this.groupBoxNewLesson);
             this.Controls.Add(this.listBoxShowLessons);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -158,5 +170,6 @@
         private TextBox textBoxTeacherOfLesson;
         private TextBox textBoxNameOfLesson;
         private Button buttonRemoveLesson;
+        private Button buttonClearLessons;
     }
 }

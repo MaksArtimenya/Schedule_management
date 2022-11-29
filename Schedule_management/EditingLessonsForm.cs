@@ -103,5 +103,12 @@ namespace Schedule_management
             SavingChanges();
             buttonDontSaveLesson_Click(sender, e);
         }
+
+        private void buttonClearLessons_Click(object sender, EventArgs e)
+        {
+            InternalData.ClearLessons();
+            buttonDontSaveLesson_Click(sender, e);
+            listBoxShowLessons.Items.Clear();
+        }
     }
 }

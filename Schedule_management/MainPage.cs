@@ -80,7 +80,6 @@ namespace Schedule_management
             {
                 listBoxes[i].SelectedItems.Clear();
                 listBoxes[i].Items.Clear();
-                //TODO testing new showing method
                 listBoxes[i].Items.AddRange(InternalData.ClassList[i % InternalData.countOfClasses].Days[i / InternalData.countOfClasses].lessons.ToArray());
             }
         }
@@ -104,7 +103,10 @@ namespace Schedule_management
             {
                 InternalData.IndexOfSelectedDay = GetIndexOfSelectedListBox(sender);
                 InternalData.IndexOfSelectedLesson = (sender as ListBox).SelectedIndex;
-                new SelectLessonForm(this).ShowDialog();
+                SelectLessonForm selectLessonForm = new SelectLessonForm(this);
+                selectLessonForm.SetShowedLessonOnInitialize(((sender as ListBox).SelectedItem as Lesson).Name, ((sender as ListBox).SelectedItem as Lesson).Teacher);
+                selectLessonForm.ShowDialog();
+                (sender as ListBox).SelectedItems.Clear();
             }
         }
 
@@ -124,6 +126,13 @@ namespace Schedule_management
         private void buttonSaveClasses_Click(object sender, EventArgs e)
         {
             InternalData.SaveClasses();
+            MessageBox.Show("Распиcание сохранено!");
+        }
+
+        private void buttonClearSchedule_Click(object sender, EventArgs e)
+        {
+            InternalData.ClearSchedule();
+            UpdateAllListBoxes();
         }
     }
 }

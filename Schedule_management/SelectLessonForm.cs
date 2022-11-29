@@ -22,6 +22,12 @@ namespace Schedule_management
             this.mainPage = mainPage;
         }
 
+        public void SetShowedLessonOnInitialize(string name, string teacher)
+        {
+            textBoxNameOfLesson.Text = name;
+            textBoxTeacherOfLesson.Text = teacher;
+        }
+
         private void listBoxShowAvaibleLessons_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxShowAvaibleLessons.SelectedIndex != -1)

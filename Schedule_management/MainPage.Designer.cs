@@ -103,6 +103,7 @@
             this.labelFriday = new System.Windows.Forms.Label();
             this.buttonShowEditingLessonsForm = new System.Windows.Forms.Button();
             this.buttonSaveClasses = new System.Windows.Forms.Button();
+            this.buttonClearSchedule = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -1407,11 +1408,22 @@
             this.buttonSaveClasses.UseVisualStyleBackColor = true;
             this.buttonSaveClasses.Click += new System.EventHandler(this.buttonSaveClasses_Click);
             // 
+            // buttonClearSchedule
+            // 
+            this.buttonClearSchedule.Location = new System.Drawing.Point(1059, 540);
+            this.buttonClearSchedule.Name = "buttonClearSchedule";
+            this.buttonClearSchedule.Size = new System.Drawing.Size(102, 70);
+            this.buttonClearSchedule.TabIndex = 8;
+            this.buttonClearSchedule.Text = "Стереть расписание";
+            this.buttonClearSchedule.UseVisualStyleBackColor = true;
+            this.buttonClearSchedule.Click += new System.EventHandler(this.buttonClearSchedule_Click);
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 853);
+            this.Controls.Add(this.buttonClearSchedule);
             this.Controls.Add(this.buttonSaveClasses);
             this.Controls.Add(this.buttonShowEditingLessonsForm);
             this.Controls.Add(this.labelFriday);
@@ -1510,5 +1522,6 @@
         private Label labelFriday;
         private Button buttonShowEditingLessonsForm;
         private Button buttonSaveClasses;
+        private Button buttonClearSchedule;
     }
 }

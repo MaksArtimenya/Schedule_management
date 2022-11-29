@@ -22,7 +22,7 @@ namespace Schedule_management
         {
             if (Name != string.Empty)
             {
-                return Name; //+ $" ({Teacher})";
+                return Name;// + $" ({Teacher})";
             }
             else
             {
@@ -50,6 +50,11 @@ namespace Schedule_management
             {
                 return false;
             }
+        }
+
+        public override int GetHashCode()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -175,5 +175,23 @@ namespace Schedule_management
                 }
             }
         }
+
+        public static void ClearSchedule()
+        {
+            for (int i = 0; i < fileNamesOfClasses.Length; i++)
+            {
+                File.Delete(fileNamesOfClasses[i]);
+            }
+
+            ClassList = new List<Class>();
+            Lessons = new List<Lesson>();
+            Initialization();
+        }
+
+        public static void ClearLessons()
+        {
+            File.Delete(lessonsFileName);
+            Lessons = new List<Lesson>();
+        }
     }
 }
