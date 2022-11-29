@@ -33,8 +33,8 @@ namespace Schedule_management
         //Обработчик нажатия на кнопку "Стереть расписание"
         private void buttonClearSchedule_Click(object sender, EventArgs e)
         {
-            InternalData.ClearSchedule();
-            UpdateAllListBoxes();
+            ConfirmationForm confirmationForm = new ConfirmationForm(this);
+            confirmationForm.ShowDialog();
         }
 
         //Обработчик изменения индекса выбранного элемента в объекта типа ListBox
@@ -141,7 +141,7 @@ namespace Schedule_management
             {
                 listBoxes[i].SelectedItems.Clear();
                 listBoxes[i].Items.Clear();
-                listBoxes[i].Items.AddRange(InternalData.ClassList[i % InternalData.countOfClasses].Days[i / InternalData.countOfClasses].lessons.ToArray());
+                listBoxes[i].Items.AddRange(InternalData.ClassList[i % InternalData.countOfClasses].Days[i / InternalData.countOfClasses].Lessons.ToArray());
             }
         }
 
@@ -151,7 +151,14 @@ namespace Schedule_management
             listBoxes[InternalData.IndexOfSelectedDay].SelectedItems.Clear();
             listBoxes[InternalData.IndexOfSelectedDay].Items.Clear();
             listBoxes[InternalData.IndexOfSelectedDay].Items.AddRange(InternalData.ClassList[InternalData.IndexOfSelectedDay % InternalData.countOfClasses].
-                Days[InternalData.IndexOfSelectedDay / InternalData.countOfClasses].lessons.ToArray());
+                Days[InternalData.IndexOfSelectedDay / InternalData.countOfClasses].Lessons.ToArray());
+        }
+
+        //Метод очистки расписания после подтверждения
+        public void ClearScheduleAfterConfirmation()
+        {
+            InternalData.ClearSchedule();
+            UpdateAllListBoxes();
         }
     }
 }

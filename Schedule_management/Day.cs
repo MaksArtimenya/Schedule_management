@@ -13,21 +13,21 @@ namespace Schedule_management
         private const int countOfLessons = 8;
 
         //Свойтсво "Уроки"
-        public List<Lesson> lessons { get; set; } = new List<Lesson>();
+        public List<Lesson> Lessons { get; set; } = new List<Lesson>();
 
         //Конструктор
         public Day()
         {
             for (int i = 0; i < countOfLessons; i++)
             {
-                lessons.Add(new Lesson(string.Empty, string.Empty));
+                Lessons.Add(new Lesson(string.Empty, string.Empty));
             }
         }
 
         //Метод добавления урока в список
         public void AddLesson(Lesson lesson)
         {
-            lessons.Add(lesson);
+            Lessons.Add(lesson);
         }
     }
 }

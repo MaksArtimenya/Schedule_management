@@ -90,7 +90,7 @@ namespace Schedule_management
                         {
                             try
                             {
-                                ClassList[i].Days[k].lessons[currentLesson] = new Lesson(line[6..line.IndexOf(';')], line[(line.LastIndexOf("teacher: ") + 9)..]);
+                                ClassList[i].Days[k].Lessons[currentLesson] = new Lesson(line[6..line.IndexOf(';')], line[(line.LastIndexOf("teacher: ") + 9)..]);
                             }
                             catch (IndexOutOfRangeException)
                             {
@@ -135,10 +135,10 @@ namespace Schedule_management
                 StreamWriter classesWriter = new StreamWriter(fileNamesOfClasses[i]);
                 for (int k = 0; k < ClassList[i].Days.Count; k++)
                 {
-                    for (int currentLesson = 0; currentLesson < ClassList[i].Days[k].lessons.Count; currentLesson++)
+                    for (int currentLesson = 0; currentLesson < ClassList[i].Days[k].Lessons.Count; currentLesson++)
                     {
-                        classesWriter.WriteLine($"name: {ClassList[i].Days[k].lessons[currentLesson].Name}; " +
-                            $"teacher: {ClassList[i].Days[k].lessons[currentLesson].Teacher}");
+                        classesWriter.WriteLine($"name: {ClassList[i].Days[k].Lessons[currentLesson].Name}; " +
+                            $"teacher: {ClassList[i].Days[k].Lessons[currentLesson].Teacher}");
                     }
                     classesWriter.WriteLine(separator);
                 }
@@ -178,11 +178,11 @@ namespace Schedule_management
             {
                 for (int k = 0; k < ClassList[i].Days.Count; k++)
                 {
-                    for (int currentLesson = 0; currentLesson < ClassList[i].Days[k].lessons.Count; currentLesson++)
+                    for (int currentLesson = 0; currentLesson < ClassList[i].Days[k].Lessons.Count; currentLesson++)
                     {
-                        if (ClassList[i].Days[k].lessons[currentLesson].Equals(checkedLesson))
+                        if (ClassList[i].Days[k].Lessons[currentLesson].Equals(checkedLesson))
                         {
-                            ClassList[i].Days[k].lessons[currentLesson] = editedLesson;
+                            ClassList[i].Days[k].Lessons[currentLesson] = editedLesson;
                         }
                     }
                 }
@@ -196,11 +196,11 @@ namespace Schedule_management
             {
                 for (int k = 0; k < ClassList[i].Days.Count; k++)
                 {
-                    for (int currentLesson = 0; currentLesson < ClassList[i].Days[k].lessons.Count; currentLesson++)
+                    for (int currentLesson = 0; currentLesson < ClassList[i].Days[k].Lessons.Count; currentLesson++)
                     {
-                        if (ClassList[i].Days[k].lessons[currentLesson].Equals(checkedLesson))
+                        if (ClassList[i].Days[k].Lessons[currentLesson].Equals(checkedLesson))
                         {
-                            ClassList[i].Days[k].lessons[currentLesson] = new Lesson(string.Empty, string.Empty);
+                            ClassList[i].Days[k].Lessons[currentLesson] = new Lesson(string.Empty, string.Empty);
                         }
                     }
                 }
@@ -221,7 +221,7 @@ namespace Schedule_management
 
             for (int i = 0; i < ClassList.Count; i++)
             {
-                if (ClassList[i].Days[IndexOfSelectedDay / countOfClasses].lessons[IndexOfSelectedLesson].Teacher == teacher)
+                if (ClassList[i].Days[IndexOfSelectedDay / countOfClasses].Lessons[IndexOfSelectedLesson].Teacher == teacher)
                 {
                     nameOfClass = ClassList[i].Name;
                     numberOfDay = (IndexOfSelectedDay / countOfClasses) + 1;

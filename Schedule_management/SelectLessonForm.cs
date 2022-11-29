@@ -47,7 +47,7 @@ namespace Schedule_management
             }
             else
             {
-                InternalData.ClassList[InternalData.IndexOfSelectedDay % InternalData.countOfClasses].Days[InternalData.IndexOfSelectedDay / InternalData.countOfClasses].lessons[InternalData.IndexOfSelectedLesson] =
+                InternalData.ClassList[InternalData.IndexOfSelectedDay % InternalData.countOfClasses].Days[InternalData.IndexOfSelectedDay / InternalData.countOfClasses].Lessons[InternalData.IndexOfSelectedLesson] =
                 (Lesson)listBoxShowAvaibleLessons.SelectedItem;
                 mainPage.UpdateListBoxByIndex();
                 Close();
