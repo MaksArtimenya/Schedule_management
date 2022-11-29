@@ -6,18 +6,23 @@ using System.Threading.Tasks;
 
 namespace Schedule_management
 {
+    //Класс "Урок"
     internal class Lesson
     {
+        //Свойство "Имя"
         public string Name { get; set; }
 
+        //Свойство "Преподаватель"
         public string Teacher { get; set; }
 
+        //Конструктор
         public Lesson(string name, string teacher)
         {
             Name = name;
             Teacher = teacher;
         }
 
+        //Переопределение метода ToString
         public override string ToString()
         {
             if (Name != string.Empty)
@@ -30,6 +35,7 @@ namespace Schedule_management
             }
         }
 
+        //Переопределение метода Equals
         public override bool Equals(object? obj)
         {
             if (obj is not Lesson)
@@ -42,7 +48,7 @@ namespace Schedule_management
                 return false;
             }
 
-            if (this.Name == ((Lesson)obj).Name && this.Teacher == ((Lesson)obj).Teacher)
+            if (Name == ((Lesson)obj).Name && Teacher == ((Lesson)obj).Teacher)
             {
                 return true;
             }
@@ -52,9 +58,10 @@ namespace Schedule_management
             }
         }
 
+        //Переопределение метода GetHashCode
         public override int GetHashCode()
         {
-            throw new NotImplementedException();
+            return (Name + Teacher).GetHashCode();
         }
     }
 }

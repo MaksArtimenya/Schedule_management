@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Schedule_management
 {
+    //Класс "внутренние данные"
     internal static class InternalData
     {
-        private static readonly string lessonsFileName = "lessons.txt";
+        private static readonly string lessonsFileName = "lessons.txt";   //Переменная имени файла, содержащего список уроков
         private static readonly string[] fileNamesOfClasses =
         {
             "class1.txt",
@@ -22,8 +23,8 @@ namespace Schedule_management
             "class9.txt",
             "class10.txt",
             "class11.txt"
-        };
-        private static readonly string separator = ".......";
+        };   //Массив имён файлов, содержащих классы
+        private static readonly string separator = ".......";   //Переменная "разделитель" (используется в файлах для разделения информации)
         private static readonly string[] namesOfClasses =
         {
             "1 класс",
@@ -37,22 +38,26 @@ namespace Schedule_management
             "9 класс",
             "10 класс",
             "11 класс"
-        };
-        public static readonly int countOfClasses = 11;
+        };   //Массив имён классов
+        public static readonly int countOfClasses = 11;   //Переменная "Кол-во классов"
 
 
-
+        //Свойство "Список классов"
         public static List<Class> ClassList { get; set; } = new List<Class>();
 
+        //Свойство "Уроки"
         public static List<Lesson> Lessons { get; set; } = new List<Lesson>();
 
+        //Свойтсво "Индекс выбранного дня"
         public static int IndexOfSelectedDay { get; set; }
 
+        //Свойство "Индекс выбранного урока"
         public static int IndexOfSelectedLesson { get; set; }
 
+        //Метод "Инициализация"
         public static void Initialization()
         {
-            //Reading and creating Leason classes from files
+            //Чтение файла и заполнение списка уроков
             try
             {
                 StreamReader lessonsReader = new StreamReader(lessonsFileName);
@@ -69,7 +74,7 @@ namespace Schedule_management
                 File.Create(lessonsFileName).Close();
             }
 
-            //Reading and creating Class classes from files
+            //Чтение файлов и заполнение списка классов
             for (int i = 0; i < fileNamesOfClasses.Length; i++)
             {
                 ClassList.Add(new Class(namesOfClasses[i]));
@@ -110,7 +115,7 @@ namespace Schedule_management
             }
         }
 
-        //Save lessons into file
+        //Метод сохранения списка уроков в файл
         public static void SaveLessons()
         {
             StreamWriter lessonsWriter = new StreamWriter(lessonsFileName);
@@ -122,7 +127,7 @@ namespace Schedule_management
             lessonsWriter.Close();
         }
 
-        //Save classes into files
+        //Метод сохранения списка классов в файлы
         public static void SaveClasses()
         {
             for (int i = 0; i < fileNamesOfClasses.Length; i++)
@@ -142,6 +147,31 @@ namespace Schedule_management
             }
         }
 
+        //Метод очистки расписания
+        public static void ClearSchedule()
+        {
+            for (int i = 0; i < fileNamesOfClasses.Length; i++)
+            {
+                File.Delete(fileNamesOfClasses[i]);
+            }
+
+            ClassList = new List<Class>();
+            Lessons = new List<Lesson>();
+            Initialization();
+        }
+
+        //Метод очистки списка уроков
+        public static void ClearLessons()
+        {
+            File.Delete(lessonsFileName);
+            Lessons = new List<Lesson>();
+        }
+
+
+
+        //Вспомогательные методы:
+
+        //Метод поиска и замены уроков на новый
         public static void ChekingClassesForEditingLesson(Lesson checkedLesson, Lesson editedLesson)
         {
             for (int i = 0; i < ClassList.Count; i++)
@@ -159,6 +189,7 @@ namespace Schedule_management
             }
         }
 
+        //Метод поиска и удаления уроков
         public static void CheckingClassesForRemovingLesson(Lesson checkedLesson)
         {
             for (int i = 0; i < ClassList.Count; i++)
@@ -176,24 +207,7 @@ namespace Schedule_management
             }
         }
 
-        public static void ClearSchedule()
-        {
-            for (int i = 0; i < fileNamesOfClasses.Length; i++)
-            {
-                File.Delete(fileNamesOfClasses[i]);
-            }
-
-            ClassList = new List<Class>();
-            Lessons = new List<Lesson>();
-            Initialization();
-        }
-
-        public static void ClearLessons()
-        {
-            File.Delete(lessonsFileName);
-            Lessons = new List<Lesson>();
-        }
-
+        //Метод проверки занятости преподавателя в определённое время
         public static bool CheckingTeacher(string teacher, out string nameOfClass, out int numberOfDay, out int numberOfLesson)
         {
             nameOfClass = string.Empty;

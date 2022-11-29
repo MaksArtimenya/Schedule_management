@@ -12,7 +12,7 @@ namespace Schedule_management
 {
     public partial class EditingLessonsForm : Form
     {
-        private MainPage mainPage;
+        private MainPage mainPage;   //Объект типа MainPage
 
         public EditingLessonsForm(MainPage mainPage)
         {
@@ -21,18 +21,7 @@ namespace Schedule_management
             this.mainPage = mainPage;
         }
 
-        private void SavingChanges()
-        {
-            List<Lesson> bufListOfLessons = new List<Lesson>();
-            for (int i = 0; i < listBoxShowLessons.Items.Count; i++)
-            {
-                bufListOfLessons.Add(listBoxShowLessons.Items[i] as Lesson);
-            }
-
-            InternalData.Lessons = bufListOfLessons;
-            InternalData.SaveLessons();
-        }
-
+        //Обработчик нажатия на кнопку "Сохранить"
         private void buttonSaveLesson_Click(object sender, EventArgs e)
         {
             if (textBoxNameOfLesson.Text == string.Empty || textBoxTeacherOfLesson.Text == string.Empty)
@@ -53,7 +42,7 @@ namespace Schedule_management
                 }
                 else
                 {
-                    InternalData.ChekingClassesForEditingLesson(listBoxShowLessons.Items[listBoxShowLessons.SelectedIndex] as Lesson, new Lesson(textBoxNameOfLesson.Text, textBoxTeacherOfLesson.Text));
+                    InternalData.ChekingClassesForEditingLesson((Lesson)listBoxShowLessons.Items[listBoxShowLessons.SelectedIndex], new Lesson(textBoxNameOfLesson.Text, textBoxTeacherOfLesson.Text));
                     listBoxShowLessons.Items[listBoxShowLessons.SelectedIndex] = new Lesson(textBoxNameOfLesson.Text, textBoxTeacherOfLesson.Text);
                     mainPage.UpdateAllListBoxes();
                     SavingChanges();
@@ -62,6 +51,64 @@ namespace Schedule_management
             }
         }
 
+        //Обработчик нажатия на кнопку "Не сохранять"
+        private void buttonDontSaveLesson_Click(object sender, EventArgs e)
+        {
+            textBoxNameOfLesson.Clear();
+            textBoxTeacherOfLesson.Clear();
+            listBoxShowLessons.SelectedItems.Clear();
+            groupBoxNewLesson.Text = "Новый урок";
+            buttonRemoveLesson.Visible = false;
+        }
+
+        //Обработчик изменения индекса выбранного элемента в ListBox
+        private void listBoxShowLessons_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxShowLessons.SelectedIndex != -1)
+            {
+                groupBoxNewLesson.Text = "Редактировать урок";
+                textBoxNameOfLesson.Text = ((Lesson)listBoxShowLessons.SelectedItem).Name;
+                textBoxTeacherOfLesson.Text = ((Lesson)listBoxShowLessons.SelectedItem).Teacher;
+                buttonRemoveLesson.Visible = true;
+            }
+        }
+
+        //Обработчик нажатия на кнопку "Удалить"
+        private void buttonRemoveLesson_Click(object sender, EventArgs e)
+        {
+            InternalData.CheckingClassesForRemovingLesson((Lesson)listBoxShowLessons.SelectedItem);
+            listBoxShowLessons.Items.Remove(listBoxShowLessons.SelectedItem);
+            mainPage.UpdateAllListBoxes();
+            SavingChanges();
+            buttonDontSaveLesson_Click(sender, e);
+        }
+
+        //Обработчик нажатия на кнопку "Очистить список"
+        private void buttonClearLessons_Click(object sender, EventArgs e)
+        {
+            InternalData.ClearLessons();
+            buttonDontSaveLesson_Click(sender, e);
+            listBoxShowLessons.Items.Clear();
+        }
+
+
+
+        //Вспомогательные методы:
+
+        //Метод сохранения изменений
+        private void SavingChanges()
+        {
+            List<Lesson> bufListOfLessons = new List<Lesson>();
+            for (int i = 0; i < listBoxShowLessons.Items.Count; i++)
+            {
+                bufListOfLessons.Add((Lesson)listBoxShowLessons.Items[i]);
+            }
+
+            InternalData.Lessons = bufListOfLessons;
+            InternalData.SaveLessons();
+        }
+
+        //Метод проверки наличия урока в списке
         private bool CheckingLessons(Lesson newLesson)
         {
             for (int i = 0; i < InternalData.Lessons.Count; i++)
@@ -73,42 +120,6 @@ namespace Schedule_management
             }
 
             return false;
-        }
-
-        private void buttonDontSaveLesson_Click(object sender, EventArgs e)
-        {
-            textBoxNameOfLesson.Clear();
-            textBoxTeacherOfLesson.Clear();
-            listBoxShowLessons.SelectedItems.Clear();
-            groupBoxNewLesson.Text = "Новый урок";
-            buttonRemoveLesson.Visible = false;
-        }
-
-        private void listBoxShowLessons_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBoxShowLessons.SelectedIndex != -1)
-            {
-                groupBoxNewLesson.Text = "Редактировать урок";
-                textBoxNameOfLesson.Text = (listBoxShowLessons.SelectedItem as Lesson).Name;
-                textBoxTeacherOfLesson.Text = (listBoxShowLessons.SelectedItem as Lesson).Teacher;
-                buttonRemoveLesson.Visible = true;
-            }
-        }
-
-        private void buttonRemoveLesson_Click(object sender, EventArgs e)
-        {
-            InternalData.CheckingClassesForRemovingLesson(listBoxShowLessons.SelectedItem as Lesson);
-            listBoxShowLessons.Items.Remove(listBoxShowLessons.SelectedItem);
-            mainPage.UpdateAllListBoxes();
-            SavingChanges();
-            buttonDontSaveLesson_Click(sender, e);
-        }
-
-        private void buttonClearLessons_Click(object sender, EventArgs e)
-        {
-            InternalData.ClearLessons();
-            buttonDontSaveLesson_Click(sender, e);
-            listBoxShowLessons.Items.Clear();
         }
     }
 }

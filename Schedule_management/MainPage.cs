@@ -2,19 +2,79 @@ namespace Schedule_management
 {
     public partial class MainPage : Form
     {
-        private List<ListBox> listBoxes = new List<ListBox>();
+        private List<ListBox> listBoxes = new List<ListBox>();   //Список объектов типа ListBox
 
         public MainPage()
         {
             InitializeComponent();
             AddingListBoxesToList();
             UpdateAllListBoxes();
+
+            //Задание обработчика события SelectedIndexChanged для всех объектов типа ListBox
             for (int i = 0; i < listBoxes.Count; i++)
             {
                 listBoxes[i].SelectedIndexChanged += new EventHandler(listBoxesSelectedIndexChanged);
             }
         }
 
+        //Обработчик нажатия на кнопку "Список уроков"
+        private void buttonShowEditingLessonsForm_Click(object sender, EventArgs e)
+        {
+            new EditingLessonsForm(this).ShowDialog();
+        }
+
+        //Обработчик нажатия на кнопку "Сохранить расписание"
+        private void buttonSaveClasses_Click(object sender, EventArgs e)
+        {
+            InternalData.SaveClasses();
+            MessageBox.Show("Распиcание сохранено!");
+        }
+
+        //Обработчик нажатия на кнопку "Стереть расписание"
+        private void buttonClearSchedule_Click(object sender, EventArgs e)
+        {
+            InternalData.ClearSchedule();
+            UpdateAllListBoxes();
+        }
+
+        //Обработчик изменения индекса выбранного элемента в объекта типа ListBox
+        private void listBoxesSelectedIndexChanged(object? sender, EventArgs e)
+        {
+            if (sender is null)
+            {
+                return;
+            }
+
+            if (((ListBox)sender).SelectedIndex != -1)
+            {
+                InternalData.IndexOfSelectedDay = GetIndexOfSelectedListBox(sender);
+                InternalData.IndexOfSelectedLesson = ((ListBox)sender).SelectedIndex;
+                SelectLessonForm selectLessonForm = new SelectLessonForm(this);
+                selectLessonForm.SetShowedLessonOnInitialize(((Lesson)((ListBox)sender).SelectedItem).Name, ((Lesson)((ListBox)sender).SelectedItem).Teacher);
+                selectLessonForm.ShowDialog();
+                ((ListBox)sender).SelectedItems.Clear();
+            }
+        }
+
+
+
+        //Вспомогательные методы:
+
+        //Метод получения индекса определенного объекта ListBox из списка
+        private int GetIndexOfSelectedListBox(object sender)
+        {
+            for (int i = 0; i < listBoxes.Count; i++)
+            {
+                if (Equals(listBoxes[i], sender))
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        //Метод добавления объектов ListBox в список
         private void AddingListBoxesToList()
         {
             listBoxes.Add(listBox1_1);
@@ -74,6 +134,7 @@ namespace Schedule_management
             listBoxes.Add(listBox5_11);
         }
 
+        //Метод обновления информации на всех объектах ListBox
         public void UpdateAllListBoxes()
         {
             for (int i = 0; i < listBoxes.Count; i++)
@@ -84,55 +145,13 @@ namespace Schedule_management
             }
         }
 
+        //Метод обновления информации на определённом ListBox
         public void UpdateListBoxByIndex()
         {
             listBoxes[InternalData.IndexOfSelectedDay].SelectedItems.Clear();
             listBoxes[InternalData.IndexOfSelectedDay].Items.Clear();
             listBoxes[InternalData.IndexOfSelectedDay].Items.AddRange(InternalData.ClassList[InternalData.IndexOfSelectedDay % InternalData.countOfClasses].
                 Days[InternalData.IndexOfSelectedDay / InternalData.countOfClasses].lessons.ToArray());
-        }
-
-        private void buttonShowEditingLessonsForm_Click(object sender, EventArgs e)
-        {
-            new EditingLessonsForm(this).ShowDialog();
-        }
-
-        private void listBoxesSelectedIndexChanged(object sender, EventArgs e)
-        {
-            if ((sender as ListBox).SelectedIndex != -1)
-            {
-                InternalData.IndexOfSelectedDay = GetIndexOfSelectedListBox(sender);
-                InternalData.IndexOfSelectedLesson = (sender as ListBox).SelectedIndex;
-                SelectLessonForm selectLessonForm = new SelectLessonForm(this);
-                selectLessonForm.SetShowedLessonOnInitialize(((sender as ListBox).SelectedItem as Lesson).Name, ((sender as ListBox).SelectedItem as Lesson).Teacher);
-                selectLessonForm.ShowDialog();
-                (sender as ListBox).SelectedItems.Clear();
-            }
-        }
-
-        private int GetIndexOfSelectedListBox(object sender)
-        {
-            for (int i = 0; i < listBoxes.Count; i++)
-            {
-                if (Equals(listBoxes[i], sender))
-                {
-                    return i;
-                }
-            }
-
-            return -1;
-        }
-
-        private void buttonSaveClasses_Click(object sender, EventArgs e)
-        {
-            InternalData.SaveClasses();
-            MessageBox.Show("Распиcание сохранено!");
-        }
-
-        private void buttonClearSchedule_Click(object sender, EventArgs e)
-        {
-            InternalData.ClearSchedule();
-            UpdateAllListBoxes();
         }
     }
 }

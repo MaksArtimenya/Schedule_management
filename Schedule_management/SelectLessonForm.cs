@@ -12,7 +12,7 @@ namespace Schedule_management
 {
     public partial class SelectLessonForm : Form
     {
-        private MainPage mainPage;
+        private MainPage mainPage;   //Объект типа MainPage
 
         public SelectLessonForm(MainPage mainPage)
         {
@@ -22,22 +22,18 @@ namespace Schedule_management
             this.mainPage = mainPage;
         }
 
-        public void SetShowedLessonOnInitialize(string name, string teacher)
-        {
-            textBoxNameOfLesson.Text = name;
-            textBoxTeacherOfLesson.Text = teacher;
-        }
-
+        //Обработчик изменения индекса выбранного элемента в ListBox
         private void listBoxShowAvaibleLessons_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxShowAvaibleLessons.SelectedIndex != -1)
             {
-                textBoxNameOfLesson.Text = (listBoxShowAvaibleLessons.SelectedItem as Lesson).Name;
-                textBoxTeacherOfLesson.Text = (listBoxShowAvaibleLessons.SelectedItem as Lesson).Teacher;
+                textBoxNameOfLesson.Text = ((Lesson)listBoxShowAvaibleLessons.SelectedItem).Name;
+                textBoxTeacherOfLesson.Text = ((Lesson)listBoxShowAvaibleLessons.SelectedItem).Teacher;
                 buttonSaveSelectedLesson.Visible = true;
             }
         }
 
+        //Обработчик нажатия на кнопку "Сохранить"
         private void buttonSaveSelectedLesson_Click(object sender, EventArgs e)
         {
             string nameOfClass;
@@ -52,10 +48,21 @@ namespace Schedule_management
             else
             {
                 InternalData.ClassList[InternalData.IndexOfSelectedDay % InternalData.countOfClasses].Days[InternalData.IndexOfSelectedDay / InternalData.countOfClasses].lessons[InternalData.IndexOfSelectedLesson] =
-                listBoxShowAvaibleLessons.SelectedItem as Lesson;
+                (Lesson)listBoxShowAvaibleLessons.SelectedItem;
                 mainPage.UpdateListBoxByIndex();
                 Close();
             }
+        }
+
+
+
+        //Вспомогательный метод:
+
+        //Метод отображения выбранного урока на этапе инициализации
+        public void SetShowedLessonOnInitialize(string name, string teacher)
+        {
+            textBoxNameOfLesson.Text = name;
+            textBoxTeacherOfLesson.Text = teacher;
         }
     }
 }
