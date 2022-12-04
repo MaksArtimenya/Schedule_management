@@ -28,7 +28,7 @@ namespace Schedule_management
             {
                 MessageBox.Show("Заполните все поля для добавления урока в список");
             }
-            else if (CheckingLessons(new Lesson(textBoxNameOfLesson.Text, textBoxTeacherOfLesson.Text)))
+            else if (CheckingLessons(new Lesson(textBoxNameOfLesson.Text, new Teacher(textBoxTeacherOfLesson.Text))))
             {
                 MessageBox.Show("Данный урок уже существует");
             }
@@ -36,14 +36,14 @@ namespace Schedule_management
             {
                 if (groupBoxNewLesson.Text == "Новый урок")
                 {
-                    listBoxShowLessons.Items.Add(new Lesson(textBoxNameOfLesson.Text, textBoxTeacherOfLesson.Text));
+                    listBoxShowLessons.Items.Add(new Lesson(textBoxNameOfLesson.Text, new Teacher(textBoxTeacherOfLesson.Text)));
                     SavingChanges();
                     buttonDontSaveLesson_Click(sender, e);
                 }
                 else
                 {
-                    InternalData.ChekingClassesForEditingLesson((Lesson)listBoxShowLessons.Items[listBoxShowLessons.SelectedIndex], new Lesson(textBoxNameOfLesson.Text, textBoxTeacherOfLesson.Text));
-                    listBoxShowLessons.Items[listBoxShowLessons.SelectedIndex] = new Lesson(textBoxNameOfLesson.Text, textBoxTeacherOfLesson.Text);
+                    InternalData.ChekingClassesForEditingLesson((Lesson)listBoxShowLessons.Items[listBoxShowLessons.SelectedIndex], new Lesson(textBoxNameOfLesson.Text, new Teacher(textBoxTeacherOfLesson.Text)));
+                    listBoxShowLessons.Items[listBoxShowLessons.SelectedIndex] = new Lesson(textBoxNameOfLesson.Text, new Teacher(textBoxTeacherOfLesson.Text));
                     mainPage.UpdateAllListBoxes();
                     SavingChanges();
                     buttonDontSaveLesson_Click(sender, e);
@@ -68,7 +68,7 @@ namespace Schedule_management
             {
                 groupBoxNewLesson.Text = "Редактировать урок";
                 textBoxNameOfLesson.Text = ((Lesson)listBoxShowLessons.SelectedItem).Name;
-                textBoxTeacherOfLesson.Text = ((Lesson)listBoxShowLessons.SelectedItem).Teacher;
+                textBoxTeacherOfLesson.Text = ((Lesson)listBoxShowLessons.SelectedItem).Teacher.Name;
                 buttonRemoveLesson.Visible = true;
             }
         }
@@ -113,7 +113,7 @@ namespace Schedule_management
         {
             for (int i = 0; i < InternalData.Lessons.Count; i++)
             {
-                if (newLesson == InternalData.Lessons[i] && i != listBoxShowLessons.SelectedIndex)
+                if (newLesson.Equals(InternalData.Lessons[i]) && i != listBoxShowLessons.SelectedIndex)
                 {
                     return true;
                 }

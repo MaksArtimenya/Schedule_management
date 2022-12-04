@@ -50,7 +50,7 @@ namespace Schedule_management
                 InternalData.IndexOfSelectedDay = GetIndexOfSelectedListBox(sender);
                 InternalData.IndexOfSelectedLesson = ((ListBox)sender).SelectedIndex;
                 SelectLessonForm selectLessonForm = new SelectLessonForm(this);
-                selectLessonForm.SetShowedLessonOnInitialize(((Lesson)((ListBox)sender).SelectedItem).Name, ((Lesson)((ListBox)sender).SelectedItem).Teacher);
+                selectLessonForm.SetShowedLessonOnInitialize(((Lesson)((ListBox)sender).SelectedItem).Name, ((Lesson)((ListBox)sender).SelectedItem).Teacher.Name);
                 selectLessonForm.ShowDialog();
                 ((ListBox)sender).SelectedItems.Clear();
             }

@@ -13,10 +13,10 @@ namespace Schedule_management
         public string Name { get; set; }
 
         //Свойство "Преподаватель"
-        public string Teacher { get; set; }
+        public Teacher Teacher { get; set; }
 
         //Конструктор
-        public Lesson(string name, string teacher)
+        public Lesson(string name, Teacher teacher)
         {
             Name = name;
             Teacher = teacher;
@@ -48,7 +48,7 @@ namespace Schedule_management
                 return false;
             }
 
-            if (Name == ((Lesson)obj).Name && Teacher == ((Lesson)obj).Teacher)
+            if (Name == ((Lesson)obj).Name && Teacher.Name == ((Lesson)obj).Teacher.Name)
             {
                 return true;
             }
@@ -61,7 +61,7 @@ namespace Schedule_management
         //Переопределение метода GetHashCode
         public override int GetHashCode()
         {
-            return (Name + Teacher).GetHashCode();
+            return (Name + Teacher.ToString()).GetHashCode();
         }
     }
 }

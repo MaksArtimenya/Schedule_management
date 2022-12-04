@@ -64,7 +64,7 @@ namespace Schedule_management
                 string? line;
                 while ((line = lessonsReader.ReadLine()) != null)
                 {
-                    Lessons.Add(new Lesson(line[6..line.IndexOf(';')], line[(line.LastIndexOf("teacher: ") + 9) ..]));
+                    Lessons.Add(new Lesson(line[6..line.IndexOf(';')], new Teacher(line[(line.LastIndexOf("teacher: ") + 9) ..])));
                 }
 
                 lessonsReader.Close();
@@ -90,11 +90,11 @@ namespace Schedule_management
                         {
                             try
                             {
-                                ClassList[i].Days[k].Lessons[currentLesson] = new Lesson(line[6..line.IndexOf(';')], line[(line.LastIndexOf("teacher: ") + 9)..]);
+                                ClassList[i].Days[k].Lessons[currentLesson] = new Lesson(line[6..line.IndexOf(';')], new Teacher(line[(line.LastIndexOf("teacher: ") + 9)..]));
                             }
                             catch (IndexOutOfRangeException)
                             {
-                                ClassList[i].Days[k].AddLesson(new Lesson(line[6..line.IndexOf(';')], line[(line.LastIndexOf("teacher: ") + 9)..]));
+                                ClassList[i].Days[k].AddLesson(new Lesson(line[6..line.IndexOf(';')], new Teacher(line[(line.LastIndexOf("teacher: ") + 9)..])));
                             }
 
                             currentLesson++;
@@ -121,7 +121,7 @@ namespace Schedule_management
             StreamWriter lessonsWriter = new StreamWriter(lessonsFileName);
             for (int i = 0; i < Lessons.Count; i++)
             {
-                lessonsWriter.WriteLine($"name: {Lessons[i].Name}; teacher: {Lessons[i].Teacher}");
+                lessonsWriter.WriteLine($"name: {Lessons[i].Name}; teacher: {Lessons[i].Teacher.Name}");
             }
 
             lessonsWriter.Close();
@@ -138,7 +138,7 @@ namespace Schedule_management
                     for (int currentLesson = 0; currentLesson < ClassList[i].Days[k].Lessons.Count; currentLesson++)
                     {
                         classesWriter.WriteLine($"name: {ClassList[i].Days[k].Lessons[currentLesson].Name}; " +
-                            $"teacher: {ClassList[i].Days[k].Lessons[currentLesson].Teacher}");
+                            $"teacher: {ClassList[i].Days[k].Lessons[currentLesson].Teacher.Name}");
                     }
                     classesWriter.WriteLine(separator);
                 }
@@ -200,7 +200,7 @@ namespace Schedule_management
                     {
                         if (ClassList[i].Days[k].Lessons[currentLesson].Equals(checkedLesson))
                         {
-                            ClassList[i].Days[k].Lessons[currentLesson] = new Lesson(string.Empty, string.Empty);
+                            ClassList[i].Days[k].Lessons[currentLesson] = new Lesson(string.Empty, new Teacher(string.Empty));
                         }
                     }
                 }
@@ -208,20 +208,20 @@ namespace Schedule_management
         }
 
         //Метод проверки занятости преподавателя в определённое время
-        public static bool CheckingTeacher(string teacher, out string nameOfClass, out int numberOfDay, out int numberOfLesson)
+        public static bool CheckingTeacher(Teacher teacher, out string nameOfClass, out int numberOfDay, out int numberOfLesson)
         {
             nameOfClass = string.Empty;
             numberOfDay = -1;
             numberOfLesson = -1;
 
-            if (teacher == string.Empty)
+            if (teacher.Name == string.Empty)
             {
                 return false;
             }
 
             for (int i = 0; i < ClassList.Count; i++)
             {
-                if (ClassList[i].Days[IndexOfSelectedDay / countOfClasses].Lessons[IndexOfSelectedLesson].Teacher == teacher)
+                if (ClassList[i].Days[IndexOfSelectedDay / countOfClasses].Lessons[IndexOfSelectedLesson].Teacher.Equals(teacher))
                 {
                     nameOfClass = ClassList[i].Name;
                     numberOfDay = (IndexOfSelectedDay / countOfClasses) + 1;

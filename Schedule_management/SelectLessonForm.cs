@@ -18,7 +18,7 @@ namespace Schedule_management
         {
             InitializeComponent();
             listBoxShowAvaibleLessons.Items.AddRange(InternalData.Lessons.ToArray());
-            listBoxShowAvaibleLessons.Items.Insert(0, new Lesson(string.Empty, string.Empty));
+            listBoxShowAvaibleLessons.Items.Insert(0, new Lesson(string.Empty, new Teacher(string.Empty)));
             this.mainPage = mainPage;
         }
 
@@ -28,7 +28,7 @@ namespace Schedule_management
             if (listBoxShowAvaibleLessons.SelectedIndex != -1)
             {
                 textBoxNameOfLesson.Text = ((Lesson)listBoxShowAvaibleLessons.SelectedItem).Name;
-                textBoxTeacherOfLesson.Text = ((Lesson)listBoxShowAvaibleLessons.SelectedItem).Teacher;
+                textBoxTeacherOfLesson.Text = ((Lesson)listBoxShowAvaibleLessons.SelectedItem).Teacher.Name;
                 buttonSaveSelectedLesson.Visible = true;
             }
         }
@@ -59,10 +59,10 @@ namespace Schedule_management
         //Вспомогательный метод:
 
         //Метод отображения выбранного урока на этапе инициализации
-        public void SetShowedLessonOnInitialize(string name, string teacher)
+        public void SetShowedLessonOnInitialize(string name, string teacherName)
         {
             textBoxNameOfLesson.Text = name;
-            textBoxTeacherOfLesson.Text = teacher;
+            textBoxTeacherOfLesson.Text = teacherName;
         }
     }
 }
