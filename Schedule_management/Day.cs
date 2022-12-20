@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Schedule_management
 {
     //Класс "День"
-    internal class Day
+    internal class Day : ILessonManagement
     {
         //Константа "Кол-во уроков"
         private const int countOfLessons = 8;
@@ -24,7 +24,7 @@ namespace Schedule_management
             }
         }
 
-        //Метод добавления урока в список
+        //Определение метода добавления урока в список
         public void AddLesson(Lesson lesson)
         {
             Lessons.Add(lesson);
