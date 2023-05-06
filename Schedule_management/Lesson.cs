@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Schedule_management
 {
     //Класс "Урок"
-    internal class Lesson
+    public class Lesson
     {
         public int Id { get; private set; } = -1;
 

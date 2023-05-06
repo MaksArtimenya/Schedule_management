@@ -3,6 +3,8 @@ namespace Schedule_management
     public partial class MainPage : Form
     {
         private List<ListBox> listBoxes = new List<ListBox>();   //Список объектов типа ListBox
+        public Lesson changeableLesson = new Lesson(string.Empty, -1);
+        public int indexOfSelectedLesson = -1;
 
         public MainPage()
         {
@@ -49,6 +51,8 @@ namespace Schedule_management
             {
                 InternalData.IndexOfSelectedDay = GetIndexOfSelectedListBox(sender);
                 InternalData.IndexOfSelectedLesson = ((ListBox)sender).SelectedIndex;
+                changeableLesson = (Lesson)((ListBox)sender).SelectedItem;
+                indexOfSelectedLesson = ((ListBox)sender).SelectedIndex;
                 SelectLessonForm selectLessonForm = new SelectLessonForm(this);
                 selectLessonForm.SetShowedLessonOnInitialize(((Lesson)((ListBox)sender).SelectedItem).Name, InternalData.GetTeacherByID(((Lesson)((ListBox)sender).SelectedItem).Id_Teacher).Name);
                 selectLessonForm.ShowDialog();
@@ -145,7 +149,7 @@ namespace Schedule_management
                 List<Lesson> lessons = new List<Lesson>();
                 for (int j = 0; j < InternalData.countOfLessons; j++)
                 {
-                    int id_Lesson = InternalData.CheckingSchedule((i % InternalData.countOfClasses) + 1, (i / InternalData.countOfClasses) + 1, j);
+                    int id_Lesson = InternalData.CheckingSchedule((i % InternalData.countOfClasses) + 1, (i / InternalData.countOfClasses) + 1, j + 1);
                     lessons.Add(InternalData.GetLessonByID(id_Lesson));
                 }
 
@@ -163,7 +167,7 @@ namespace Schedule_management
             List<Lesson> lessons = new List<Lesson>();
             for (int j = 0; j < InternalData.countOfLessons; j++)
             {
-                int id_Lesson = InternalData.CheckingSchedule((InternalData.IndexOfSelectedDay % InternalData.countOfClasses) + 1, (InternalData.IndexOfSelectedDay / InternalData.countOfClasses) + 1, j);
+                int id_Lesson = InternalData.CheckingSchedule((InternalData.IndexOfSelectedDay % InternalData.countOfClasses) + 1, (InternalData.IndexOfSelectedDay / InternalData.countOfClasses) + 1, j + 1);
                 lessons.Add(InternalData.GetLessonByID(id_Lesson));
             }
 

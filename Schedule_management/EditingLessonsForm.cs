@@ -18,17 +18,18 @@ namespace Schedule_management
         {
             InitializeComponent();
             listBoxShowLessons.Items.AddRange(InternalData.Lessons.ToArray());
+            comboBoxTeacherOfLesson.Items.AddRange(InternalData.Teachers.ToArray());
             this.mainPage = mainPage;
         }
 
         //Обработчик нажатия на кнопку "Сохранить"
         private void buttonSaveLesson_Click(object sender, EventArgs e)
         {
-            /*if (textBoxNameOfLesson.Text == string.Empty || textBoxTeacherOfLesson.Text == string.Empty)
+            if (textBoxNameOfLesson.Text == string.Empty || comboBoxTeacherOfLesson.Text == string.Empty)
             {
                 MessageBox.Show("Заполните все поля для добавления урока в список");
             }
-            else if (CheckingLessons(new Lesson(textBoxNameOfLesson.Text, new Teacher(textBoxTeacherOfLesson.Text))))
+            else if (CheckingLessons(new Lesson(textBoxNameOfLesson.Text, ((Teacher)comboBoxTeacherOfLesson.SelectedItem).Id)))
             {
                 MessageBox.Show("Данный урок уже существует");
             }
@@ -36,26 +37,29 @@ namespace Schedule_management
             {
                 if (groupBoxNewLesson.Text == "Новый урок")
                 {
-                    listBoxShowLessons.Items.Add(new Lesson(textBoxNameOfLesson.Text, new Teacher(textBoxTeacherOfLesson.Text)));
-                    SavingChanges();
+                    listBoxShowLessons.Items.Add(new Lesson(textBoxNameOfLesson.Text, ((Teacher)comboBoxTeacherOfLesson.SelectedItem).Id));
+                    //SavingChanges();
+                    InternalData.AddLesson(new Lesson(textBoxNameOfLesson.Text, ((Teacher)comboBoxTeacherOfLesson.SelectedItem).Id));
                     buttonDontSaveLesson_Click(sender, e);
                 }
                 else
                 {
-                    InternalData.ChekingClassesForEditingLesson((Lesson)listBoxShowLessons.Items[listBoxShowLessons.SelectedIndex], new Lesson(textBoxNameOfLesson.Text, new Teacher(textBoxTeacherOfLesson.Text)));
-                    listBoxShowLessons.Items[listBoxShowLessons.SelectedIndex] = new Lesson(textBoxNameOfLesson.Text, new Teacher(textBoxTeacherOfLesson.Text));
+                    //InternalData.ChekingClassesForEditingLesson((Lesson)listBoxShowLessons.Items[listBoxShowLessons.SelectedIndex], new Lesson(textBoxNameOfLesson.Text, new Teacher(textBoxTeacherOfLesson.Text)));
+                    InternalData.EditLesson((Lesson)listBoxShowLessons.SelectedItem, new Lesson(textBoxNameOfLesson.Text, ((Teacher)comboBoxTeacherOfLesson.SelectedItem).Id));
+                    listBoxShowLessons.Items[listBoxShowLessons.SelectedIndex] = new Lesson(textBoxNameOfLesson.Text, ((Teacher)comboBoxTeacherOfLesson.SelectedItem).Id);
+                    
                     mainPage.UpdateAllListBoxes();
-                    SavingChanges();
+                    //SavingChanges();
                     buttonDontSaveLesson_Click(sender, e);
                 }
-            }*/
+            }
         }
 
         //Обработчик нажатия на кнопку "Не сохранять"
         private void buttonDontSaveLesson_Click(object sender, EventArgs e)
         {
             textBoxNameOfLesson.Clear();
-            textBoxTeacherOfLesson.Clear();
+            comboBoxTeacherOfLesson.SelectedIndex = -1;
             listBoxShowLessons.SelectedItems.Clear();
             groupBoxNewLesson.Text = "Новый урок";
             buttonRemoveLesson.Visible = false;
@@ -67,8 +71,8 @@ namespace Schedule_management
             if (listBoxShowLessons.SelectedIndex != -1)
             {
                 groupBoxNewLesson.Text = "Редактировать урок";
-                textBoxNameOfLesson.Text = ((Lesson)listBoxShowLessons.SelectedItem).Name;
-                textBoxTeacherOfLesson.Text = InternalData.GetTeacherByID(((Lesson)listBoxShowLessons.SelectedItem).Id_Teacher).Name;
+                textBoxNameOfLesson.Text = ((Lesson)listBoxShowLessons.SelectedItem).Name;//comboBoxTeacherOfLesson.Text = InternalData.GetTeacherByID(((Lesson)listBoxShowLessons.SelectedItem).Id_Teacher).Name;
+                comboBoxTeacherOfLesson.SelectedItem = InternalData.GetTeacherByID(((Lesson)listBoxShowLessons.SelectedItem).Id_Teacher);
                 buttonRemoveLesson.Visible = true;
             }
         }
@@ -81,6 +85,10 @@ namespace Schedule_management
             mainPage.UpdateAllListBoxes();
             SavingChanges();
             buttonDontSaveLesson_Click(sender, e);*/
+            InternalData.RemoveLesson((Lesson)listBoxShowLessons.SelectedItem);
+            listBoxShowLessons.Items.Remove(listBoxShowLessons.SelectedItem);
+            mainPage.UpdateAllListBoxes();
+            buttonDontSaveLesson_Click(sender, e);
         }
 
         //Обработчик нажатия на кнопку "Очистить список"

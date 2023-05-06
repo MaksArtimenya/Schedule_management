@@ -28,135 +28,138 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBoxShowLessons = new System.Windows.Forms.ListBox();
-            this.groupBoxNewLesson = new System.Windows.Forms.GroupBox();
-            this.buttonRemoveLesson = new System.Windows.Forms.Button();
-            this.buttonDontSaveLesson = new System.Windows.Forms.Button();
-            this.buttonSaveLesson = new System.Windows.Forms.Button();
-            this.labelTeacherOfLesson = new System.Windows.Forms.Label();
-            this.labelNameOfLesson = new System.Windows.Forms.Label();
-            this.textBoxTeacherOfLesson = new System.Windows.Forms.TextBox();
-            this.textBoxNameOfLesson = new System.Windows.Forms.TextBox();
-            this.buttonClearLessons = new System.Windows.Forms.Button();
-            this.groupBoxNewLesson.SuspendLayout();
-            this.SuspendLayout();
+            listBoxShowLessons = new ListBox();
+            groupBoxNewLesson = new GroupBox();
+            comboBoxTeacherOfLesson = new ComboBox();
+            buttonRemoveLesson = new Button();
+            buttonDontSaveLesson = new Button();
+            buttonSaveLesson = new Button();
+            labelTeacherOfLesson = new Label();
+            labelNameOfLesson = new Label();
+            textBoxNameOfLesson = new TextBox();
+            buttonClearLessons = new Button();
+            groupBoxNewLesson.SuspendLayout();
+            SuspendLayout();
             // 
             // listBoxShowLessons
             // 
-            this.listBoxShowLessons.FormattingEnabled = true;
-            this.listBoxShowLessons.ItemHeight = 20;
-            this.listBoxShowLessons.Location = new System.Drawing.Point(50, 50);
-            this.listBoxShowLessons.Name = "listBoxShowLessons";
-            this.listBoxShowLessons.Size = new System.Drawing.Size(290, 304);
-            this.listBoxShowLessons.TabIndex = 0;
-            this.listBoxShowLessons.SelectedIndexChanged += new System.EventHandler(this.listBoxShowLessons_SelectedIndexChanged);
+            listBoxShowLessons.FormattingEnabled = true;
+            listBoxShowLessons.ItemHeight = 20;
+            listBoxShowLessons.Location = new Point(50, 50);
+            listBoxShowLessons.Name = "listBoxShowLessons";
+            listBoxShowLessons.Size = new Size(290, 304);
+            listBoxShowLessons.TabIndex = 0;
+            listBoxShowLessons.SelectedIndexChanged += listBoxShowLessons_SelectedIndexChanged;
             // 
             // groupBoxNewLesson
             // 
-            this.groupBoxNewLesson.Controls.Add(this.buttonRemoveLesson);
-            this.groupBoxNewLesson.Controls.Add(this.buttonDontSaveLesson);
-            this.groupBoxNewLesson.Controls.Add(this.buttonSaveLesson);
-            this.groupBoxNewLesson.Controls.Add(this.labelTeacherOfLesson);
-            this.groupBoxNewLesson.Controls.Add(this.labelNameOfLesson);
-            this.groupBoxNewLesson.Controls.Add(this.textBoxTeacherOfLesson);
-            this.groupBoxNewLesson.Controls.Add(this.textBoxNameOfLesson);
-            this.groupBoxNewLesson.Location = new System.Drawing.Point(371, 50);
-            this.groupBoxNewLesson.Name = "groupBoxNewLesson";
-            this.groupBoxNewLesson.Size = new System.Drawing.Size(388, 304);
-            this.groupBoxNewLesson.TabIndex = 1;
-            this.groupBoxNewLesson.TabStop = false;
-            this.groupBoxNewLesson.Text = "Новый урок";
+            groupBoxNewLesson.Controls.Add(comboBoxTeacherOfLesson);
+            groupBoxNewLesson.Controls.Add(buttonRemoveLesson);
+            groupBoxNewLesson.Controls.Add(buttonDontSaveLesson);
+            groupBoxNewLesson.Controls.Add(buttonSaveLesson);
+            groupBoxNewLesson.Controls.Add(labelTeacherOfLesson);
+            groupBoxNewLesson.Controls.Add(labelNameOfLesson);
+            groupBoxNewLesson.Controls.Add(textBoxNameOfLesson);
+            groupBoxNewLesson.Location = new Point(371, 50);
+            groupBoxNewLesson.Name = "groupBoxNewLesson";
+            groupBoxNewLesson.Size = new Size(388, 304);
+            groupBoxNewLesson.TabIndex = 1;
+            groupBoxNewLesson.TabStop = false;
+            groupBoxNewLesson.Text = "Новый урок";
+            // 
+            // comboBoxTeacherOfLesson
+            // 
+            comboBoxTeacherOfLesson.AutoCompleteSource = AutoCompleteSource.ListItems;
+            comboBoxTeacherOfLesson.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxTeacherOfLesson.FormattingEnabled = true;
+            comboBoxTeacherOfLesson.Location = new Point(24, 152);
+            comboBoxTeacherOfLesson.Name = "comboBoxTeacherOfLesson";
+            comboBoxTeacherOfLesson.Size = new Size(341, 28);
+            comboBoxTeacherOfLesson.Sorted = true;
+            comboBoxTeacherOfLesson.TabIndex = 7;
             // 
             // buttonRemoveLesson
             // 
-            this.buttonRemoveLesson.Location = new System.Drawing.Point(24, 191);
-            this.buttonRemoveLesson.Name = "buttonRemoveLesson";
-            this.buttonRemoveLesson.Size = new System.Drawing.Size(341, 29);
-            this.buttonRemoveLesson.TabIndex = 6;
-            this.buttonRemoveLesson.Text = "Удалить";
-            this.buttonRemoveLesson.UseVisualStyleBackColor = true;
-            this.buttonRemoveLesson.Visible = false;
-            this.buttonRemoveLesson.Click += new System.EventHandler(this.buttonRemoveLesson_Click);
+            buttonRemoveLesson.Location = new Point(24, 191);
+            buttonRemoveLesson.Name = "buttonRemoveLesson";
+            buttonRemoveLesson.Size = new Size(341, 29);
+            buttonRemoveLesson.TabIndex = 6;
+            buttonRemoveLesson.Text = "Удалить";
+            buttonRemoveLesson.UseVisualStyleBackColor = true;
+            buttonRemoveLesson.Visible = false;
+            buttonRemoveLesson.Click += buttonRemoveLesson_Click;
             // 
             // buttonDontSaveLesson
             // 
-            this.buttonDontSaveLesson.Location = new System.Drawing.Point(24, 226);
-            this.buttonDontSaveLesson.Name = "buttonDontSaveLesson";
-            this.buttonDontSaveLesson.Size = new System.Drawing.Size(165, 51);
-            this.buttonDontSaveLesson.TabIndex = 5;
-            this.buttonDontSaveLesson.Text = "Не сохранять";
-            this.buttonDontSaveLesson.UseVisualStyleBackColor = true;
-            this.buttonDontSaveLesson.Click += new System.EventHandler(this.buttonDontSaveLesson_Click);
+            buttonDontSaveLesson.Location = new Point(24, 226);
+            buttonDontSaveLesson.Name = "buttonDontSaveLesson";
+            buttonDontSaveLesson.Size = new Size(165, 51);
+            buttonDontSaveLesson.TabIndex = 5;
+            buttonDontSaveLesson.Text = "Не сохранять";
+            buttonDontSaveLesson.UseVisualStyleBackColor = true;
+            buttonDontSaveLesson.Click += buttonDontSaveLesson_Click;
             // 
             // buttonSaveLesson
             // 
-            this.buttonSaveLesson.Location = new System.Drawing.Point(195, 226);
-            this.buttonSaveLesson.Name = "buttonSaveLesson";
-            this.buttonSaveLesson.Size = new System.Drawing.Size(170, 51);
-            this.buttonSaveLesson.TabIndex = 4;
-            this.buttonSaveLesson.Text = "Сохранить";
-            this.buttonSaveLesson.UseVisualStyleBackColor = true;
-            this.buttonSaveLesson.Click += new System.EventHandler(this.buttonSaveLesson_Click);
+            buttonSaveLesson.Location = new Point(195, 226);
+            buttonSaveLesson.Name = "buttonSaveLesson";
+            buttonSaveLesson.Size = new Size(170, 51);
+            buttonSaveLesson.TabIndex = 4;
+            buttonSaveLesson.Text = "Сохранить";
+            buttonSaveLesson.UseVisualStyleBackColor = true;
+            buttonSaveLesson.Click += buttonSaveLesson_Click;
             // 
             // labelTeacherOfLesson
             // 
-            this.labelTeacherOfLesson.AutoSize = true;
-            this.labelTeacherOfLesson.Location = new System.Drawing.Point(24, 129);
-            this.labelTeacherOfLesson.Name = "labelTeacherOfLesson";
-            this.labelTeacherOfLesson.Size = new System.Drawing.Size(117, 20);
-            this.labelTeacherOfLesson.TabIndex = 3;
-            this.labelTeacherOfLesson.Text = "Преподаватель";
+            labelTeacherOfLesson.AutoSize = true;
+            labelTeacherOfLesson.Location = new Point(24, 129);
+            labelTeacherOfLesson.Name = "labelTeacherOfLesson";
+            labelTeacherOfLesson.Size = new Size(117, 20);
+            labelTeacherOfLesson.TabIndex = 3;
+            labelTeacherOfLesson.Text = "Преподаватель";
             // 
             // labelNameOfLesson
             // 
-            this.labelNameOfLesson.AutoSize = true;
-            this.labelNameOfLesson.Location = new System.Drawing.Point(24, 40);
-            this.labelNameOfLesson.Name = "labelNameOfLesson";
-            this.labelNameOfLesson.Size = new System.Drawing.Size(121, 20);
-            this.labelNameOfLesson.TabIndex = 2;
-            this.labelNameOfLesson.Text = "Название урока";
-            // 
-            // textBoxTeacherOfLesson
-            // 
-            this.textBoxTeacherOfLesson.Location = new System.Drawing.Point(24, 152);
-            this.textBoxTeacherOfLesson.Name = "textBoxTeacherOfLesson";
-            this.textBoxTeacherOfLesson.Size = new System.Drawing.Size(341, 27);
-            this.textBoxTeacherOfLesson.TabIndex = 1;
+            labelNameOfLesson.AutoSize = true;
+            labelNameOfLesson.Location = new Point(24, 40);
+            labelNameOfLesson.Name = "labelNameOfLesson";
+            labelNameOfLesson.Size = new Size(121, 20);
+            labelNameOfLesson.TabIndex = 2;
+            labelNameOfLesson.Text = "Название урока";
             // 
             // textBoxNameOfLesson
             // 
-            this.textBoxNameOfLesson.Location = new System.Drawing.Point(24, 63);
-            this.textBoxNameOfLesson.Name = "textBoxNameOfLesson";
-            this.textBoxNameOfLesson.Size = new System.Drawing.Size(341, 27);
-            this.textBoxNameOfLesson.TabIndex = 0;
+            textBoxNameOfLesson.Location = new Point(24, 63);
+            textBoxNameOfLesson.Name = "textBoxNameOfLesson";
+            textBoxNameOfLesson.Size = new Size(341, 27);
+            textBoxNameOfLesson.TabIndex = 0;
             // 
             // buttonClearLessons
             // 
-            this.buttonClearLessons.Location = new System.Drawing.Point(50, 379);
-            this.buttonClearLessons.Name = "buttonClearLessons";
-            this.buttonClearLessons.Size = new System.Drawing.Size(290, 47);
-            this.buttonClearLessons.TabIndex = 2;
-            this.buttonClearLessons.Text = "Очистить список";
-            this.buttonClearLessons.UseVisualStyleBackColor = true;
-            this.buttonClearLessons.Click += new System.EventHandler(this.buttonClearLessons_Click);
+            buttonClearLessons.Location = new Point(50, 379);
+            buttonClearLessons.Name = "buttonClearLessons";
+            buttonClearLessons.Size = new Size(290, 47);
+            buttonClearLessons.TabIndex = 2;
+            buttonClearLessons.Text = "Очистить список";
+            buttonClearLessons.UseVisualStyleBackColor = true;
+            buttonClearLessons.Click += buttonClearLessons_Click;
             // 
             // EditingLessonsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.buttonClearLessons);
-            this.Controls.Add(this.groupBoxNewLesson);
-            this.Controls.Add(this.listBoxShowLessons);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.Name = "EditingLessonsForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Список уроков";
-            this.groupBoxNewLesson.ResumeLayout(false);
-            this.groupBoxNewLesson.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(buttonClearLessons);
+            Controls.Add(groupBoxNewLesson);
+            Controls.Add(listBoxShowLessons);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            Name = "EditingLessonsForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Список уроков";
+            groupBoxNewLesson.ResumeLayout(false);
+            groupBoxNewLesson.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -167,9 +170,9 @@
         private Button buttonSaveLesson;
         private Label labelTeacherOfLesson;
         private Label labelNameOfLesson;
-        private TextBox textBoxTeacherOfLesson;
         private TextBox textBoxNameOfLesson;
         private Button buttonRemoveLesson;
         private Button buttonClearLessons;
+        private ComboBox comboBoxTeacherOfLesson;
     }
 }

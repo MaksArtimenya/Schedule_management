@@ -155,7 +155,6 @@ namespace Schedule_management
 
         public static void RemoveLesson(Lesson lesson)
         {
-            Lessons.Remove(lesson);
             try
             {
                 string sqlExpression = $"DELETE FROM Lessons WHERE ID_Lesson = {lesson.Id}";
@@ -168,6 +167,8 @@ namespace Schedule_management
                     MessageBox.Show($"Removed: {number}");
                     connection.Close();
                 }
+
+                GetLessonsFromDB();
             }
             catch (SqlException ex)
             {
@@ -366,7 +367,6 @@ namespace Schedule_management
 
         public static void RemoveSchedule(Schedule schedule)
         {
-            ScheduleList.Remove(schedule);
             try
             {
                 string sqlExpression = $"DELETE FROM Schedule " +
@@ -381,6 +381,8 @@ namespace Schedule_management
                     MessageBox.Show($"Removed: {number}");
                     connection.Close();
                 }
+
+                GetScheduleListFromDB();
             }
             catch (SqlException ex)
             {
@@ -409,7 +411,7 @@ namespace Schedule_management
         {
             try
             {
-                string sqlExpression = $"UPDATE Schedules SET Number_Of_Class = {newSchedule.Number_Of_Class}, Number_Of_Day = {newSchedule.Number_Of_Day}, " +
+                string sqlExpression = $"UPDATE Schedule SET Number_Of_Class = {newSchedule.Number_Of_Class}, Number_Of_Day = {newSchedule.Number_Of_Day}, " +
                     $"Number_Of_Lesson = {newSchedule.Number_Of_Lesson}, ID_Lesson = {newSchedule.Id_Lesson} " +
                     $"WHERE Number_Of_Class = {oldSchedule.Number_Of_Class} AND Number_Of_Day = {oldSchedule.Number_Of_Day} AND " +
                     $"Number_Of_Lesson = {oldSchedule.Number_Of_Lesson} AND ID_Lesson = {oldSchedule.Id_Lesson}";
@@ -458,7 +460,7 @@ namespace Schedule_management
                 }
             }
 
-            return new Teacher("Unknown");
+            return new Teacher(string.Empty);
         }
 
         public static Lesson GetLessonByID(int id)
@@ -645,9 +647,9 @@ namespace Schedule_management
         }*/
 
         //Метод проверки занятости преподавателя в определённое время
-        /*public static bool CheckingTeacher(Teacher teacher, out string nameOfClass, out int numberOfDay, out int numberOfLesson)
+        public static bool CheckingTeacher(Teacher teacher, out int nameOfClass, out int numberOfDay, out int numberOfLesson)
         {
-            nameOfClass = string.Empty;
+            nameOfClass = -1;
             numberOfDay = -1;
             numberOfLesson = -1;
 
@@ -656,7 +658,7 @@ namespace Schedule_management
                 return false;
             }
 
-            for (int i = 0; i < ClassList.Count; i++)
+            /*for (int i = 0; i < ClassList.Count; i++)
             {
                 if (ClassList[i].Days[IndexOfSelectedDay / countOfClasses].Lessons[IndexOfSelectedLesson].Teacher.Equals(teacher))
                 {
@@ -665,9 +667,44 @@ namespace Schedule_management
                     numberOfLesson = IndexOfSelectedLesson + 1;
                     return true;
                 }
+            }*/
+
+            List<Lesson> lessons = new List<Lesson>();
+            for (int i = 0; i < Lessons.Count; i++)
+            {
+                if (Lessons[i].Id_Teacher == teacher.Id)
+                {
+                    lessons.Add(Lessons[i]);
+                }
+            }
+
+            bool CheckingIdLesson(int id)
+            {
+                for (int i = 0; i < lessons.Count;i++)
+                {
+                    if (lessons[i].Id == id)
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+
+            for (int i = 0; i < ScheduleList.Count; i++)
+            {
+                if (ScheduleList[i].Number_Of_Day == (IndexOfSelectedDay / countOfClasses) + 1 &&
+                    ScheduleList[i].Number_Of_Lesson == IndexOfSelectedLesson + 1 &&
+                    CheckingIdLesson(ScheduleList[i].Id_Lesson))
+                {
+                    nameOfClass = ScheduleList[i].Number_Of_Class;
+                    numberOfDay = ScheduleList[i].Number_Of_Day;
+                    numberOfLesson = ScheduleList[i].Number_Of_Lesson;
+                    return true;
+                }
             }
 
             return false;
-        }*/
+        }
     }
 }
