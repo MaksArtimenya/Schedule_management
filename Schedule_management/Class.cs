@@ -9,23 +9,13 @@ namespace Schedule_management
     //Класс "Класс"
     internal class Class
     {
-        //Константа "Кол-во дней"
-        private const int numberOfDays = 5;
-
         //Свойство "Имя"
-        public string Name { get; }
+        public int Number { get; }
 
-        //Свойтво "Дни"
-        public List<Day> Days { get; set; } = new List<Day>();
 
         //Конструктор
-        public Class(string name)
+        public Class(int number)
         {
-            Name = name;
-            for (int i = 0; i < numberOfDays; i++)
-            {
-                Days.Add(new Day());
-            }
         }
     }
 }

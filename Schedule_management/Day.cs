@@ -20,7 +20,7 @@ namespace Schedule_management
         {
             for (int i = 0; i < countOfLessons; i++)
             {
-                Lessons.Add(new Lesson(string.Empty, new Teacher(string.Empty)));
+                //Lessons.Add(new Lesson(string.Empty, new Teacher(string.Empty)));
             }
         }
 

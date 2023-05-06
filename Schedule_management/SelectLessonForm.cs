@@ -18,7 +18,7 @@ namespace Schedule_management
         {
             InitializeComponent();
             listBoxShowAvaibleLessons.Items.AddRange(InternalData.Lessons.ToArray());
-            listBoxShowAvaibleLessons.Items.Insert(0, new Lesson(string.Empty, new Teacher(string.Empty)));
+            listBoxShowAvaibleLessons.Items.Insert(0, new Lesson(string.Empty, -1));
             this.mainPage = mainPage;
         }
 
@@ -28,7 +28,7 @@ namespace Schedule_management
             if (listBoxShowAvaibleLessons.SelectedIndex != -1)
             {
                 textBoxNameOfLesson.Text = ((Lesson)listBoxShowAvaibleLessons.SelectedItem).Name;
-                textBoxTeacherOfLesson.Text = ((Lesson)listBoxShowAvaibleLessons.SelectedItem).Teacher.Name;
+                textBoxTeacherOfLesson.Text = InternalData.GetTeacherByID(((Lesson)listBoxShowAvaibleLessons.SelectedItem).Id_Teacher).Name;
                 buttonSaveSelectedLesson.Visible = true;
             }
         }
@@ -36,7 +36,7 @@ namespace Schedule_management
         //Обработчик нажатия на кнопку "Сохранить"
         private void buttonSaveSelectedLesson_Click(object sender, EventArgs e)
         {
-            string nameOfClass;
+            /*string nameOfClass;
             int numberOfDay;
             int numberOfLesson;
 
@@ -49,9 +49,10 @@ namespace Schedule_management
             {
                 InternalData.ClassList[InternalData.IndexOfSelectedDay % InternalData.countOfClasses].Days[InternalData.IndexOfSelectedDay / InternalData.countOfClasses].Lessons[InternalData.IndexOfSelectedLesson] =
                 (Lesson)listBoxShowAvaibleLessons.SelectedItem;
+
                 mainPage.UpdateListBoxByIndex();
                 Close();
-            }
+            }*/
         }
 
 

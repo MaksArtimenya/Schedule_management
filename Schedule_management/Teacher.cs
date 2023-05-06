@@ -7,15 +7,27 @@ using System.Threading.Tasks;
 namespace Schedule_management
 {
     //Класс "Преподаватель"
-    internal class Teacher : Person
+    internal class Teacher
     {
+        public int Id { get; private set; } = -1;
+
+        //Свойство "Имя"
+        public string Name { get; set; }
+
+
         //Конструктор
-        public Teacher(string name) : base(name)
+        public Teacher(string name)
         {
+            Name = name;
+        }
+        public Teacher(int id, string name)
+        {
+            Id = id;
+            Name = name;
         }
 
         //Переопределение метода "Изменить имя"
-        public override void ChangeName(string newName)
+        public void ChangeName(string newName)
         {
             Name = newName;
         }
@@ -39,7 +51,7 @@ namespace Schedule_management
                 return false;
             }
 
-            if (Name == ((Teacher)obj).Name)
+            if (Id == ((Teacher)obj).Id)
             {
                 return true;
             }

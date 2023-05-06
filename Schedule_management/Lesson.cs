@@ -9,17 +9,26 @@ namespace Schedule_management
     //Класс "Урок"
     internal class Lesson
     {
+        public int Id { get; private set; } = -1;
+
         //Свойство "Имя"
         public string Name { get; set; }
 
         //Свойство "Преподаватель"
-        public Teacher Teacher { get; set; }
+        public int Id_Teacher { get; set; }
 
         //Конструктор
-        public Lesson(string name, Teacher teacher)
+        public Lesson(string name, int id_teacher)
         {
             Name = name;
-            Teacher = teacher;
+            Id_Teacher = id_teacher;
+        }
+
+        public Lesson(int id, string name, int id_teacher)
+        {
+            Id = id;
+            Name = name;
+            Id_Teacher = id_teacher;
         }
 
         //Переопределение метода ToString
@@ -48,7 +57,7 @@ namespace Schedule_management
                 return false;
             }
 
-            if (Name == ((Lesson)obj).Name && Teacher.Name == ((Lesson)obj).Teacher.Name)
+            if (Id == ((Lesson)obj).Id)
             {
                 return true;
             }
@@ -61,7 +70,7 @@ namespace Schedule_management
         //Переопределение метода GetHashCode
         public override int GetHashCode()
         {
-            return (Name + Teacher.ToString()).GetHashCode();
+            return base.GetHashCode();
         }
     }
 }

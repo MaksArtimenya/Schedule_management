@@ -24,7 +24,7 @@ namespace Schedule_management
         //Обработчик нажатия на кнопку "Сохранить"
         private void buttonSaveLesson_Click(object sender, EventArgs e)
         {
-            if (textBoxNameOfLesson.Text == string.Empty || textBoxTeacherOfLesson.Text == string.Empty)
+            /*if (textBoxNameOfLesson.Text == string.Empty || textBoxTeacherOfLesson.Text == string.Empty)
             {
                 MessageBox.Show("Заполните все поля для добавления урока в список");
             }
@@ -48,7 +48,7 @@ namespace Schedule_management
                     SavingChanges();
                     buttonDontSaveLesson_Click(sender, e);
                 }
-            }
+            }*/
         }
 
         //Обработчик нажатия на кнопку "Не сохранять"
@@ -68,7 +68,7 @@ namespace Schedule_management
             {
                 groupBoxNewLesson.Text = "Редактировать урок";
                 textBoxNameOfLesson.Text = ((Lesson)listBoxShowLessons.SelectedItem).Name;
-                textBoxTeacherOfLesson.Text = ((Lesson)listBoxShowLessons.SelectedItem).Teacher.Name;
+                textBoxTeacherOfLesson.Text = InternalData.GetTeacherByID(((Lesson)listBoxShowLessons.SelectedItem).Id_Teacher).Name;
                 buttonRemoveLesson.Visible = true;
             }
         }
@@ -76,11 +76,11 @@ namespace Schedule_management
         //Обработчик нажатия на кнопку "Удалить"
         private void buttonRemoveLesson_Click(object sender, EventArgs e)
         {
-            InternalData.CheckingClassesForRemovingLesson((Lesson)listBoxShowLessons.SelectedItem);
+            /*InternalData.CheckingClassesForRemovingLesson((Lesson)listBoxShowLessons.SelectedItem);
             listBoxShowLessons.Items.Remove(listBoxShowLessons.SelectedItem);
             mainPage.UpdateAllListBoxes();
             SavingChanges();
-            buttonDontSaveLesson_Click(sender, e);
+            buttonDontSaveLesson_Click(sender, e);*/
         }
 
         //Обработчик нажатия на кнопку "Очистить список"
@@ -105,7 +105,7 @@ namespace Schedule_management
             }
 
             InternalData.Lessons = bufListOfLessons;
-            InternalData.SaveLessons();
+            //InternalData.SaveLessons();
         }
 
         //Метод проверки наличия урока в списке

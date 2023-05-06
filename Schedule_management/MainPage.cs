@@ -26,7 +26,7 @@ namespace Schedule_management
         //Обработчик нажатия на кнопку "Сохранить расписание"
         private void buttonSaveClasses_Click(object sender, EventArgs e)
         {
-            InternalData.SaveClasses();
+            //InternalData.SaveClasses();
             MessageBox.Show("Распиcание сохранено!");
         }
 
@@ -50,7 +50,7 @@ namespace Schedule_management
                 InternalData.IndexOfSelectedDay = GetIndexOfSelectedListBox(sender);
                 InternalData.IndexOfSelectedLesson = ((ListBox)sender).SelectedIndex;
                 SelectLessonForm selectLessonForm = new SelectLessonForm(this);
-                selectLessonForm.SetShowedLessonOnInitialize(((Lesson)((ListBox)sender).SelectedItem).Name, ((Lesson)((ListBox)sender).SelectedItem).Teacher.Name);
+                selectLessonForm.SetShowedLessonOnInitialize(((Lesson)((ListBox)sender).SelectedItem).Name, InternalData.GetTeacherByID(((Lesson)((ListBox)sender).SelectedItem).Id_Teacher).Name);
                 selectLessonForm.ShowDialog();
                 ((ListBox)sender).SelectedItems.Clear();
             }
@@ -141,7 +141,16 @@ namespace Schedule_management
             {
                 listBoxes[i].SelectedItems.Clear();
                 listBoxes[i].Items.Clear();
-                listBoxes[i].Items.AddRange(InternalData.ClassList[i % InternalData.countOfClasses].Days[i / InternalData.countOfClasses].Lessons.ToArray());
+                
+                List<Lesson> lessons = new List<Lesson>();
+                for (int j = 0; j < InternalData.countOfLessons; j++)
+                {
+                    int id_Lesson = InternalData.CheckingSchedule((i % InternalData.countOfClasses) + 1, (i / InternalData.countOfClasses) + 1, j);
+                    lessons.Add(InternalData.GetLessonByID(id_Lesson));
+                }
+
+                listBoxes[i].Items.AddRange(lessons.ToArray());
+                //listBoxes[i].Items.AddRange(InternalData.ClassList[i % InternalData.countOfClasses].Days[i / InternalData.countOfClasses].Lessons.ToArray());
             }
         }
 
@@ -150,14 +159,23 @@ namespace Schedule_management
         {
             listBoxes[InternalData.IndexOfSelectedDay].SelectedItems.Clear();
             listBoxes[InternalData.IndexOfSelectedDay].Items.Clear();
-            listBoxes[InternalData.IndexOfSelectedDay].Items.AddRange(InternalData.ClassList[InternalData.IndexOfSelectedDay % InternalData.countOfClasses].
-                Days[InternalData.IndexOfSelectedDay / InternalData.countOfClasses].Lessons.ToArray());
+
+            List<Lesson> lessons = new List<Lesson>();
+            for (int j = 0; j < InternalData.countOfLessons; j++)
+            {
+                int id_Lesson = InternalData.CheckingSchedule((InternalData.IndexOfSelectedDay % InternalData.countOfClasses) + 1, (InternalData.IndexOfSelectedDay / InternalData.countOfClasses) + 1, j);
+                lessons.Add(InternalData.GetLessonByID(id_Lesson));
+            }
+
+            listBoxes[InternalData.IndexOfSelectedDay].Items.AddRange(lessons.ToArray());
+            /*listBoxes[InternalData.IndexOfSelectedDay].Items.AddRange(InternalData.ClassList[InternalData.IndexOfSelectedDay % InternalData.countOfClasses].
+                Days[InternalData.IndexOfSelectedDay / InternalData.countOfClasses].Lessons.ToArray());*/
         }
 
         //Метод очистки расписания после подтверждения
         public void ClearScheduleAfterConfirmation()
         {
-            InternalData.ClearSchedule();
+            //InternalData.ClearSchedule();
             UpdateAllListBoxes();
         }
     }
