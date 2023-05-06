@@ -2,7 +2,7 @@ namespace Schedule_management
 {
     public partial class MainPage : Form
     {
-        private List<ListBox> listBoxes = new List<ListBox>();   //Список объектов типа ListBox
+        private List<ListBox> listBoxes = new List<ListBox>();
         public Lesson changeableLesson = new Lesson(string.Empty, -1);
         public int indexOfSelectedLesson = -1;
 
@@ -12,34 +12,29 @@ namespace Schedule_management
             AddingListBoxesToList();
             UpdateAllListBoxes();
 
-            //Задание обработчика события SelectedIndexChanged для всех объектов типа ListBox
             for (int i = 0; i < listBoxes.Count; i++)
             {
                 listBoxes[i].SelectedIndexChanged += new EventHandler(listBoxesSelectedIndexChanged);
             }
         }
 
-        //Обработчик нажатия на кнопку "Список уроков"
         private void buttonShowEditingLessonsForm_Click(object sender, EventArgs e)
         {
             new EditingLessonsForm(this).ShowDialog();
         }
 
-        //Обработчик нажатия на кнопку "Сохранить расписание"
         private void buttonSaveClasses_Click(object sender, EventArgs e)
         {
             //InternalData.SaveClasses();
             MessageBox.Show("Распиcание сохранено!");
         }
 
-        //Обработчик нажатия на кнопку "Стереть расписание"
         private void buttonClearSchedule_Click(object sender, EventArgs e)
         {
             ConfirmationForm confirmationForm = new ConfirmationForm(this);
             confirmationForm.ShowDialog();
         }
 
-        //Обработчик изменения индекса выбранного элемента в объекта типа ListBox
         private void listBoxesSelectedIndexChanged(object? sender, EventArgs e)
         {
             if (sender is null)
@@ -154,7 +149,6 @@ namespace Schedule_management
                 }
 
                 listBoxes[i].Items.AddRange(lessons.ToArray());
-                //listBoxes[i].Items.AddRange(InternalData.ClassList[i % InternalData.countOfClasses].Days[i / InternalData.countOfClasses].Lessons.ToArray());
             }
         }
 
@@ -172,14 +166,12 @@ namespace Schedule_management
             }
 
             listBoxes[InternalData.IndexOfSelectedDay].Items.AddRange(lessons.ToArray());
-            /*listBoxes[InternalData.IndexOfSelectedDay].Items.AddRange(InternalData.ClassList[InternalData.IndexOfSelectedDay % InternalData.countOfClasses].
-                Days[InternalData.IndexOfSelectedDay / InternalData.countOfClasses].Lessons.ToArray());*/
         }
 
         //Метод очистки расписания после подтверждения
         public void ClearScheduleAfterConfirmation()
         {
-            //InternalData.ClearSchedule();
+            InternalData.ClearSchedule();
             UpdateAllListBoxes();
         }
     }

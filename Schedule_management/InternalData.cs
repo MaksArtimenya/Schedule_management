@@ -10,42 +10,9 @@ namespace Schedule_management
     internal static class InternalData
     {
         private static string connectionString = "Data Source=(local);Initial Catalog=ScheduleDB;Integrated Security=true";
-
-        /*private static readonly string lessonsFileName = "lessons.txt";   //Переменная имени файла, содержащего список уроков
-        private static readonly string[] fileNamesOfClasses =
-        {
-            "class1.txt",
-            "class2.txt",
-            "class3.txt",
-            "class4.txt",
-            "class5.txt",
-            "class6.txt",
-            "class7.txt",
-            "class8.txt",
-            "class9.txt",
-            "class10.txt",
-            "class11.txt"
-        };   //Массив имён файлов, содержащих классы
-        private static readonly string separator = ".......";   //Переменная "разделитель" (используется в файлах для разделения информации)
-        private static readonly string[] namesOfClasses =
-        {
-            "1 класс",
-            "2 класс",
-            "3 класс",
-            "4 класс",
-            "5 класс",
-            "6 класс",
-            "7 класс",
-            "8 класс",
-            "9 класс",
-            "10 класс",
-            "11 класс"
-        };   //Массив имён классов*/
-        public static readonly int countOfClasses = 11;   //Переменная "Кол-во классов"
+        public static readonly int countOfClasses = 11;
         public static readonly int countOfLessons = 8;
 
-
-        //public static List<Class> ClassList { get; set; } = new List<Class>();
 
         public static List<Lesson> Lessons { get; set; } = new List<Lesson>();
 
@@ -53,13 +20,10 @@ namespace Schedule_management
 
         public static List<Schedule> ScheduleList { get; set; } = new List<Schedule>();
 
-        //Свойтсво "Индекс выбранного дня"
         public static int IndexOfSelectedDay { get; set; }
 
-        //Свойство "Индекс выбранного урока"
         public static int IndexOfSelectedLesson { get; set; }
 
-        //Метод "Инициализация"
         public static void Initialization()
         {
             GetLessonsFromDB();
@@ -197,7 +161,7 @@ namespace Schedule_management
         {
             try
             {
-                string sqlExpression = $"UPDATE Lessons SET Name = {newLesson.Name}, ID_Teacher = {newLesson.Id_Teacher} " +
+                string sqlExpression = $"UPDATE Lessons SET Name = '{newLesson.Name}', ID_Teacher = {newLesson.Id_Teacher} " +
                     $"WHERE ID_Lesson = {oldLesson.Id}";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -490,43 +454,6 @@ namespace Schedule_management
             return -1;
         }
 
-
-
-
-
-        /*//Метод сохранения списка уроков в файл
-        public static void SaveLessons()
-        {
-            StreamWriter lessonsWriter = new StreamWriter(lessonsFileName);
-            for (int i = 0; i < Lessons.Count; i++)
-            {
-                lessonsWriter.WriteLine($"name: {Lessons[i].Name}; teacher: {Lessons[i].Teacher.Name}");
-            }
-
-            lessonsWriter.Close();
-        }
-
-        //Метод сохранения списка классов в файлы
-        public static void SaveClasses()
-        {
-            for (int i = 0; i < fileNamesOfClasses.Length; i++)
-            {
-                StreamWriter classesWriter = new StreamWriter(fileNamesOfClasses[i]);
-                for (int k = 0; k < ClassList[i].Days.Count; k++)
-                {
-                    for (int currentLesson = 0; currentLesson < ClassList[i].Days[k].Lessons.Count; currentLesson++)
-                    {
-                        classesWriter.WriteLine($"name: {ClassList[i].Days[k].Lessons[currentLesson].Name}; " +
-                            $"teacher: {ClassList[i].Days[k].Lessons[currentLesson].Teacher.Name}");
-                    }
-                    classesWriter.WriteLine(separator);
-                }
-
-                classesWriter.Close();
-            }
-        }*/
-
-        //Метод очистки расписания
         public static void ClearSchedule()
         {
             try
@@ -566,7 +493,6 @@ namespace Schedule_management
             }
         }
 
-        //Метод очистки списка уроков
         public static void ClearLessons()
         {
             try
@@ -610,42 +536,6 @@ namespace Schedule_management
 
         //Вспомогательные методы:
 
-        /*//Метод поиска и замены уроков на новый
-        public static void ChekingClassesForEditingLesson(Lesson checkedLesson, Lesson editedLesson)
-        {
-            for (int i = 0; i < ClassList.Count; i++)
-            {
-                for (int k = 0; k < ClassList[i].Days.Count; k++)
-                {
-                    for (int currentLesson = 0; currentLesson < ClassList[i].Days[k].Lessons.Count; currentLesson++)
-                    {
-                        if (ClassList[i].Days[k].Lessons[currentLesson].Equals(checkedLesson))
-                        {
-                            ClassList[i].Days[k].Lessons[currentLesson] = editedLesson;
-                        }
-                    }
-                }
-            }
-        }
-
-        //Метод поиска и удаления уроков
-        public static void CheckingClassesForRemovingLesson(Lesson checkedLesson)
-        {
-            for (int i = 0; i < ClassList.Count; i++)
-            {
-                for (int k = 0; k < ClassList[i].Days.Count; k++)
-                {
-                    for (int currentLesson = 0; currentLesson < ClassList[i].Days[k].Lessons.Count; currentLesson++)
-                    {
-                        if (ClassList[i].Days[k].Lessons[currentLesson].Equals(checkedLesson))
-                        {
-                            ClassList[i].Days[k].Lessons[currentLesson] = new Lesson(string.Empty, new Teacher(string.Empty));
-                        }
-                    }
-                }
-            }
-        }*/
-
         //Метод проверки занятости преподавателя в определённое время
         public static bool CheckingTeacher(Teacher teacher, out int nameOfClass, out int numberOfDay, out int numberOfLesson)
         {
@@ -657,17 +547,6 @@ namespace Schedule_management
             {
                 return false;
             }
-
-            /*for (int i = 0; i < ClassList.Count; i++)
-            {
-                if (ClassList[i].Days[IndexOfSelectedDay / countOfClasses].Lessons[IndexOfSelectedLesson].Teacher.Equals(teacher))
-                {
-                    nameOfClass = ClassList[i].Name;
-                    numberOfDay = (IndexOfSelectedDay / countOfClasses) + 1;
-                    numberOfLesson = IndexOfSelectedLesson + 1;
-                    return true;
-                }
-            }*/
 
             List<Lesson> lessons = new List<Lesson>();
             for (int i = 0; i < Lessons.Count; i++)

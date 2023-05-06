@@ -12,7 +12,7 @@ namespace Schedule_management
 {
     public partial class ConfirmationForm : Form
     {
-        private MainPage mainPage;   //Объект типа MainPage
+        private MainPage mainPage;
 
         public ConfirmationForm(MainPage mainPage)
         {
@@ -20,13 +20,11 @@ namespace Schedule_management
             this.mainPage = mainPage;
         }
 
-        //Обработчик нажатия на кнопку "Нет"
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        //Обработчик нажатия на кнопку "Да"
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
             mainPage.ClearScheduleAfterConfirmation();

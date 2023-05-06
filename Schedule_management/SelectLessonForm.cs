@@ -12,7 +12,7 @@ namespace Schedule_management
 {
     public partial class SelectLessonForm : Form
     {
-        private MainPage mainPage;   //Объект типа MainPage
+        private MainPage mainPage;
 
         public SelectLessonForm(MainPage mainPage)
         {
@@ -22,7 +22,6 @@ namespace Schedule_management
             this.mainPage = mainPage;
         }
 
-        //Обработчик изменения индекса выбранного элемента в ListBox
         private void listBoxShowAvaibleLessons_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxShowAvaibleLessons.SelectedIndex != -1)
@@ -33,7 +32,6 @@ namespace Schedule_management
             }
         }
 
-        //Обработчик нажатия на кнопку "Сохранить"
         private void buttonSaveSelectedLesson_Click(object sender, EventArgs e)
         {
             int nameOfClass;
@@ -47,8 +45,6 @@ namespace Schedule_management
             }
             else
             {
-                /*InternalData.ClassList[InternalData.IndexOfSelectedDay % InternalData.countOfClasses].Days[InternalData.IndexOfSelectedDay / InternalData.countOfClasses].Lessons[InternalData.IndexOfSelectedLesson] =
-                (Lesson)listBoxShowAvaibleLessons.SelectedItem;*/
                 if (mainPage.changeableLesson.Id != -1 && ((Lesson)listBoxShowAvaibleLessons.SelectedItem).Id == -1)
                 {
                     InternalData.RemoveSchedule(new Schedule((InternalData.IndexOfSelectedDay % InternalData.countOfClasses) + 1,
