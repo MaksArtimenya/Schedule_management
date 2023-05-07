@@ -104,8 +104,12 @@
             buttonShowEditingLessonsForm = new Button();
             buttonClearSchedule = new Button();
             labelWelcome = new Label();
+            groupBox1 = new GroupBox();
+            label1 = new Label();
+            comboBoxTeachers = new ComboBox();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -927,9 +931,9 @@
             // 
             // buttonShowEditingLessonsForm
             // 
-            buttonShowEditingLessonsForm.Location = new Point(1059, 260);
+            buttonShowEditingLessonsForm.Location = new Point(6, 26);
             buttonShowEditingLessonsForm.Name = "buttonShowEditingLessonsForm";
-            buttonShowEditingLessonsForm.Size = new Size(102, 61);
+            buttonShowEditingLessonsForm.Size = new Size(267, 61);
             buttonShowEditingLessonsForm.TabIndex = 6;
             buttonShowEditingLessonsForm.Text = "Список уроков";
             buttonShowEditingLessonsForm.UseVisualStyleBackColor = true;
@@ -937,9 +941,9 @@
             // 
             // buttonClearSchedule
             // 
-            buttonClearSchedule.Location = new Point(1059, 540);
+            buttonClearSchedule.Location = new Point(6, 93);
             buttonClearSchedule.Name = "buttonClearSchedule";
-            buttonClearSchedule.Size = new Size(102, 70);
+            buttonClearSchedule.Size = new Size(267, 70);
             buttonClearSchedule.TabIndex = 8;
             buttonClearSchedule.Text = "Стереть расписание";
             buttonClearSchedule.UseVisualStyleBackColor = true;
@@ -955,14 +959,45 @@
             labelWelcome.TabIndex = 9;
             labelWelcome.Text = "Вы вошли как: ";
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(comboBoxTeachers);
+            groupBox1.Controls.Add(buttonShowEditingLessonsForm);
+            groupBox1.Controls.Add(buttonClearSchedule);
+            groupBox1.Location = new Point(1041, 346);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(279, 240);
+            groupBox1.TabIndex = 10;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Управление";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(6, 183);
+            label1.Name = "label1";
+            label1.Size = new Size(117, 20);
+            label1.TabIndex = 12;
+            label1.Text = "Преподаватель";
+            // 
+            // comboBoxTeachers
+            // 
+            comboBoxTeachers.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxTeachers.FormattingEnabled = true;
+            comboBoxTeachers.Location = new Point(6, 206);
+            comboBoxTeachers.Name = "comboBoxTeachers";
+            comboBoxTeachers.Size = new Size(267, 28);
+            comboBoxTeachers.TabIndex = 11;
+            comboBoxTeachers.SelectedIndexChanged += comboBoxTeachers_SelectedIndexChanged;
+            // 
             // MainPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1182, 853);
+            ClientSize = new Size(1332, 853);
+            Controls.Add(groupBox1);
             Controls.Add(labelWelcome);
-            Controls.Add(buttonClearSchedule);
-            Controls.Add(buttonShowEditingLessonsForm);
             Controls.Add(labelFriday);
             Controls.Add(labelThursday);
             Controls.Add(labelWednesday);
@@ -977,6 +1012,8 @@
             panel1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1059,5 +1096,8 @@
         private Button buttonShowEditingLessonsForm;
         private Button buttonClearSchedule;
         private Label labelWelcome;
+        private GroupBox groupBox1;
+        private ComboBox comboBoxTeachers;
+        private Label label1;
     }
 }

@@ -10,7 +10,7 @@ namespace Schedule_management
     internal static class InternalData
     {
         private static string connectionString = "Data Source=(local);Initial Catalog=ScheduleDB;Integrated Security=true";
-        public static User User { get; set; } = new User(string.Empty, -1);
+        public static User User { get; private set; } = new User(string.Empty, -1);
 
         public static readonly int countOfClasses = 11;
         public static readonly int countOfLessons = 8;
@@ -35,6 +35,7 @@ namespace Schedule_management
 
         public static void GetUserFromDB(string login, string password)
         {
+            User = new User(string.Empty, -1);
             try
             {
                 string sqlExpression = $"SELECT Name, Type_Of_User FROM Users WHERE Login = '{login}' AND Password = '{password}'";
@@ -139,7 +140,6 @@ namespace Schedule_management
                     connection.Open();
                     SqlCommand command = new SqlCommand(sqlExpression, connection);
                     int number = command.ExecuteNonQuery();
-                    MessageBox.Show($"Added: {number}");
                     connection.Close();
                 }
 
@@ -179,7 +179,6 @@ namespace Schedule_management
                     connection.Open();
                     SqlCommand command = new SqlCommand(sqlExpression, connection);
                     int number = command.ExecuteNonQuery();
-                    MessageBox.Show($"Removed: {number}");
                     connection.Close();
                 }
 
@@ -220,7 +219,6 @@ namespace Schedule_management
                     connection.Open();
                     SqlCommand command = new SqlCommand(sqlExpression, connection);
                     int number = command.ExecuteNonQuery();
-                    MessageBox.Show($"Updated: {number}");
                     connection.Close();
                 }
 
@@ -351,7 +349,6 @@ namespace Schedule_management
                     connection.Open();
                     SqlCommand command = new SqlCommand(sqlExpression, connection);
                     int number = command.ExecuteNonQuery();
-                    MessageBox.Show($"Added: {number}");
                     connection.Close();
                 }
 
@@ -393,7 +390,6 @@ namespace Schedule_management
                     connection.Open();
                     SqlCommand command = new SqlCommand(sqlExpression, connection);
                     int number = command.ExecuteNonQuery();
-                    MessageBox.Show($"Removed: {number}");
                     connection.Close();
                 }
 
@@ -436,7 +432,6 @@ namespace Schedule_management
                     connection.Open();
                     SqlCommand command = new SqlCommand(sqlExpression, connection);
                     int number = command.ExecuteNonQuery();
-                    MessageBox.Show($"Updated: {number}");
                     connection.Close();
                 }
 
@@ -489,6 +484,20 @@ namespace Schedule_management
             }
 
             return new Lesson(string.Empty, -1);
+        }
+
+        public static List<Lesson> GetLessonsByTeacher(Teacher teacher)
+        {
+            List<Lesson> result = new List<Lesson>();
+            for (int i = 0; i < Lessons.Count; i++)
+            {
+                if (Lessons[i].Id_Teacher == teacher.Id)
+                {
+                    result.Add(Lessons[i]);
+                }
+            }
+
+            return result;
         }
 
         public static int CheckingSchedule(int number_Of_Class, int number_Of_Day, int number_Of_Lesson)

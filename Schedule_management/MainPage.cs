@@ -5,6 +5,7 @@ namespace Schedule_management
         private List<ListBox> listBoxes = new List<ListBox>();
         public Lesson changeableLesson = new Lesson(string.Empty, -1);
         public int indexOfSelectedLesson = -1;
+        private bool isAutomaticallyChangeSelectedIndexes = false;
 
         public MainPage()
         {
@@ -12,10 +13,42 @@ namespace Schedule_management
             AddingListBoxesToList();
             UpdateAllListBoxes();
             ChangeLabelWelcomeText();
+            CheckingTypeOfUser();
 
-            for (int i = 0; i < listBoxes.Count; i++)
+
+            comboBoxTeachers.Items.AddRange(InternalData.Teachers.ToArray());
+            comboBoxTeachers.Items.Insert(0, new Teacher(string.Empty));
+        }
+
+        private void CheckingTypeOfUser()
+        {
+            switch (InternalData.User.TypeOfUser)
             {
-                listBoxes[i].SelectedIndexChanged += new EventHandler(listBoxesSelectedIndexChanged);
+                case 0:
+                    for (int i = 0; i < listBoxes.Count; i++)
+                    {
+                        listBoxes[i].SelectedIndexChanged += new EventHandler(listBoxesSelectedIndexChanged);
+                    }
+                    break;
+                case 1:
+                    for (int i = 0; i < listBoxes.Count; i++)
+                    {
+                        listBoxes[i].SelectedIndexChanged += new EventHandler(listBoxesSelectedIndexChangedForTeacher);
+                    }
+
+                    buttonShowEditingLessonsForm.Enabled = false;
+                    buttonClearSchedule.Enabled = false;
+                    break;
+                case 2:
+                    for (int i = 0; i < listBoxes.Count; i++)
+                    {
+                        listBoxes[i].SelectedIndexChanged += new EventHandler(listBoxesSelectedIndexChangedForGuest);
+                    }
+
+                    buttonShowEditingLessonsForm.Enabled = false;
+                    buttonClearSchedule.Enabled = false;
+                    comboBoxTeachers.Enabled = false;
+                    break;
             }
         }
 
@@ -30,7 +63,7 @@ namespace Schedule_management
                     labelWelcome.Text = $"Вы вошли как: {InternalData.User.Name.Trim()} (Учитель)";
                     break;
                 case 2:
-                    labelWelcome.Text = $"Вы вошли как: {InternalData.User.Name.Trim()} (Ученик)";
+                    labelWelcome.Text = $"Вы вошли как: {InternalData.User.Name.Trim()} (Гость)";
                     break;
             }
         }
@@ -48,21 +81,72 @@ namespace Schedule_management
 
         private void listBoxesSelectedIndexChanged(object? sender, EventArgs e)
         {
+            if (!isAutomaticallyChangeSelectedIndexes)
+            {
+                if (sender is null)
+                {
+                    return;
+                }
+
+                if (((ListBox)sender).SelectedIndex != -1)
+                {
+                    InternalData.IndexOfSelectedDay = GetIndexOfSelectedListBox(sender);
+                    InternalData.IndexOfSelectedLesson = ((ListBox)sender).SelectedIndex;
+                    changeableLesson = (Lesson)((ListBox)sender).SelectedItem;
+                    indexOfSelectedLesson = ((ListBox)sender).SelectedIndex;
+                    SelectLessonForm selectLessonForm = new SelectLessonForm(this);
+                    selectLessonForm.SetShowedLessonOnInitialize(((Lesson)((ListBox)sender).SelectedItem).Name, InternalData.GetTeacherByID(((Lesson)((ListBox)sender).SelectedItem).Id_Teacher).Name);
+                    selectLessonForm.ShowDialog();
+                    ((ListBox)sender).SelectedItems.Clear();
+                }
+            }
+        }
+
+        private void listBoxesSelectedIndexChangedForTeacher(object? sender, EventArgs e)
+        {
             if (sender is null)
             {
                 return;
             }
 
-            if (((ListBox)sender).SelectedIndex != -1)
+            if (!isAutomaticallyChangeSelectedIndexes)
             {
-                InternalData.IndexOfSelectedDay = GetIndexOfSelectedListBox(sender);
-                InternalData.IndexOfSelectedLesson = ((ListBox)sender).SelectedIndex;
-                changeableLesson = (Lesson)((ListBox)sender).SelectedItem;
-                indexOfSelectedLesson = ((ListBox)sender).SelectedIndex;
-                SelectLessonForm selectLessonForm = new SelectLessonForm(this);
-                selectLessonForm.SetShowedLessonOnInitialize(((Lesson)((ListBox)sender).SelectedItem).Name, InternalData.GetTeacherByID(((Lesson)((ListBox)sender).SelectedItem).Id_Teacher).Name);
-                selectLessonForm.ShowDialog();
-                ((ListBox)sender).SelectedItems.Clear();
+                UpdateAllListBoxes();
+                comboBoxTeachers.SelectedIndex = 0;
+            }
+        }
+
+        private void listBoxesSelectedIndexChangedForGuest(object? sender, EventArgs e)
+        {
+            if (sender is null)
+            {
+                return;
+            }
+
+            ((ListBox)sender).SelectedIndex = -1;
+        }
+
+        private void comboBoxTeachers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateAllListBoxes();
+            if (comboBoxTeachers.SelectedIndex != 0 && comboBoxTeachers.SelectedIndex != -1)
+            {
+                isAutomaticallyChangeSelectedIndexes = true;
+                List<Lesson> lessons = InternalData.GetLessonsByTeacher((Teacher)comboBoxTeachers.SelectedItem);
+                for (int i = 0; i < listBoxes.Count; i++)
+                {
+                    for (int j = 0; j < listBoxes[i].Items.Count; j++)
+                    {
+                        for (int k = 0; k < lessons.Count; k++)
+                        {
+                            if (((Lesson)listBoxes[i].Items[j]).Equals(lessons[k]))
+                            {
+                                listBoxes[i].SelectedItems.Add(listBoxes[i].Items[j]);
+                            }
+                        }
+                    }
+                }
+                isAutomaticallyChangeSelectedIndexes = false;
             }
         }
 
@@ -185,5 +269,7 @@ namespace Schedule_management
             InternalData.ClearSchedule();
             UpdateAllListBoxes();
         }
+
+        
     }
 }
