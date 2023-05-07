@@ -11,6 +11,7 @@ namespace Schedule_management
             InitializeComponent();
             AddingListBoxesToList();
             UpdateAllListBoxes();
+            ChangeLabelWelcomeText();
 
             for (int i = 0; i < listBoxes.Count; i++)
             {
@@ -18,15 +19,25 @@ namespace Schedule_management
             }
         }
 
+        private void ChangeLabelWelcomeText()
+        {
+            switch (InternalData.User.TypeOfUser)
+            {
+                case 0:
+                    labelWelcome.Text = $"Вы вошли как: {InternalData.User.Name.Trim()} (Администратор)";
+                    break;
+                case 1:
+                    labelWelcome.Text = $"Вы вошли как: {InternalData.User.Name.Trim()} (Учитель)";
+                    break;
+                case 2:
+                    labelWelcome.Text = $"Вы вошли как: {InternalData.User.Name.Trim()} (Ученик)";
+                    break;
+            }
+        }
+
         private void buttonShowEditingLessonsForm_Click(object sender, EventArgs e)
         {
             new EditingLessonsForm(this).ShowDialog();
-        }
-
-        private void buttonSaveClasses_Click(object sender, EventArgs e)
-        {
-            //InternalData.SaveClasses();
-            MessageBox.Show("Распиcание сохранено!");
         }
 
         private void buttonClearSchedule_Click(object sender, EventArgs e)
@@ -140,7 +151,7 @@ namespace Schedule_management
             {
                 listBoxes[i].SelectedItems.Clear();
                 listBoxes[i].Items.Clear();
-                
+
                 List<Lesson> lessons = new List<Lesson>();
                 for (int j = 0; j < InternalData.countOfLessons; j++)
                 {

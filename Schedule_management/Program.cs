@@ -13,7 +13,7 @@ namespace Schedule_management
 
             InternalData.Initialization();
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainPage());
+            Application.Run(new SignInForm());
         }
     }
 }

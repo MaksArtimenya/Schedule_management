@@ -28,1421 +28,957 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.listBox5_10 = new System.Windows.Forms.ListBox();
-            this.listBox5_9 = new System.Windows.Forms.ListBox();
-            this.listBox5_8 = new System.Windows.Forms.ListBox();
-            this.listBox5_7 = new System.Windows.Forms.ListBox();
-            this.listBox5_6 = new System.Windows.Forms.ListBox();
-            this.listBox5_5 = new System.Windows.Forms.ListBox();
-            this.listBox5_4 = new System.Windows.Forms.ListBox();
-            this.listBox5_3 = new System.Windows.Forms.ListBox();
-            this.listBox5_2 = new System.Windows.Forms.ListBox();
-            this.listBox5_1 = new System.Windows.Forms.ListBox();
-            this.listBox4_10 = new System.Windows.Forms.ListBox();
-            this.listBox4_9 = new System.Windows.Forms.ListBox();
-            this.listBox4_8 = new System.Windows.Forms.ListBox();
-            this.listBox4_7 = new System.Windows.Forms.ListBox();
-            this.listBox4_6 = new System.Windows.Forms.ListBox();
-            this.listBox3_10 = new System.Windows.Forms.ListBox();
-            this.listBox3_9 = new System.Windows.Forms.ListBox();
-            this.listBox3_8 = new System.Windows.Forms.ListBox();
-            this.listBox3_7 = new System.Windows.Forms.ListBox();
-            this.listBox3_6 = new System.Windows.Forms.ListBox();
-            this.listBox2_9 = new System.Windows.Forms.ListBox();
-            this.listBox2_8 = new System.Windows.Forms.ListBox();
-            this.listBox2_7 = new System.Windows.Forms.ListBox();
-            this.listBox2_6 = new System.Windows.Forms.ListBox();
-            this.listBox1_9 = new System.Windows.Forms.ListBox();
-            this.listBox1_8 = new System.Windows.Forms.ListBox();
-            this.listBox1_7 = new System.Windows.Forms.ListBox();
-            this.listBox1_6 = new System.Windows.Forms.ListBox();
-            this.label11class = new System.Windows.Forms.Label();
-            this.label10class = new System.Windows.Forms.Label();
-            this.label9class = new System.Windows.Forms.Label();
-            this.label8class = new System.Windows.Forms.Label();
-            this.label7class = new System.Windows.Forms.Label();
-            this.label6class = new System.Windows.Forms.Label();
-            this.label5class = new System.Windows.Forms.Label();
-            this.label4class = new System.Windows.Forms.Label();
-            this.label3class = new System.Windows.Forms.Label();
-            this.listBox1_1 = new System.Windows.Forms.ListBox();
-            this.label1class = new System.Windows.Forms.Label();
-            this.label2class = new System.Windows.Forms.Label();
-            this.listBox1_2 = new System.Windows.Forms.ListBox();
-            this.listBox1_3 = new System.Windows.Forms.ListBox();
-            this.listBox1_4 = new System.Windows.Forms.ListBox();
-            this.listBox2_1 = new System.Windows.Forms.ListBox();
-            this.listBox2_2 = new System.Windows.Forms.ListBox();
-            this.listBox2_3 = new System.Windows.Forms.ListBox();
-            this.listBox2_4 = new System.Windows.Forms.ListBox();
-            this.listBox3_1 = new System.Windows.Forms.ListBox();
-            this.listBox4_1 = new System.Windows.Forms.ListBox();
-            this.listBox3_2 = new System.Windows.Forms.ListBox();
-            this.listBox3_3 = new System.Windows.Forms.ListBox();
-            this.listBox3_4 = new System.Windows.Forms.ListBox();
-            this.listBox4_2 = new System.Windows.Forms.ListBox();
-            this.listBox4_3 = new System.Windows.Forms.ListBox();
-            this.listBox4_4 = new System.Windows.Forms.ListBox();
-            this.listBox1_5 = new System.Windows.Forms.ListBox();
-            this.listBox2_5 = new System.Windows.Forms.ListBox();
-            this.listBox3_5 = new System.Windows.Forms.ListBox();
-            this.listBox4_5 = new System.Windows.Forms.ListBox();
-            this.listBox5_11 = new System.Windows.Forms.ListBox();
-            this.listBox4_11 = new System.Windows.Forms.ListBox();
-            this.listBox3_11 = new System.Windows.Forms.ListBox();
-            this.listBox1_11 = new System.Windows.Forms.ListBox();
-            this.listBox2_11 = new System.Windows.Forms.ListBox();
-            this.listBox1_10 = new System.Windows.Forms.ListBox();
-            this.listBox2_10 = new System.Windows.Forms.ListBox();
-            this.labelMonday = new System.Windows.Forms.Label();
-            this.labelTuesday = new System.Windows.Forms.Label();
-            this.labelWednesday = new System.Windows.Forms.Label();
-            this.labelThursday = new System.Windows.Forms.Label();
-            this.labelFriday = new System.Windows.Forms.Label();
-            this.buttonShowEditingLessonsForm = new System.Windows.Forms.Button();
-            this.buttonSaveClasses = new System.Windows.Forms.Button();
-            this.buttonClearSchedule = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.SuspendLayout();
+            panel1 = new Panel();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            listBox5_10 = new ListBox();
+            listBox5_9 = new ListBox();
+            listBox5_8 = new ListBox();
+            listBox5_7 = new ListBox();
+            listBox5_6 = new ListBox();
+            listBox5_5 = new ListBox();
+            listBox5_4 = new ListBox();
+            listBox5_3 = new ListBox();
+            listBox5_2 = new ListBox();
+            listBox5_1 = new ListBox();
+            listBox4_10 = new ListBox();
+            listBox4_9 = new ListBox();
+            listBox4_8 = new ListBox();
+            listBox4_7 = new ListBox();
+            listBox4_6 = new ListBox();
+            listBox3_10 = new ListBox();
+            listBox3_9 = new ListBox();
+            listBox3_8 = new ListBox();
+            listBox3_7 = new ListBox();
+            listBox3_6 = new ListBox();
+            listBox2_9 = new ListBox();
+            listBox2_8 = new ListBox();
+            listBox2_7 = new ListBox();
+            listBox2_6 = new ListBox();
+            listBox1_9 = new ListBox();
+            listBox1_8 = new ListBox();
+            listBox1_7 = new ListBox();
+            listBox1_6 = new ListBox();
+            label11class = new Label();
+            label10class = new Label();
+            label9class = new Label();
+            label8class = new Label();
+            label7class = new Label();
+            label6class = new Label();
+            label5class = new Label();
+            label4class = new Label();
+            label3class = new Label();
+            listBox1_1 = new ListBox();
+            label1class = new Label();
+            label2class = new Label();
+            listBox1_2 = new ListBox();
+            listBox1_3 = new ListBox();
+            listBox1_4 = new ListBox();
+            listBox2_1 = new ListBox();
+            listBox2_2 = new ListBox();
+            listBox2_3 = new ListBox();
+            listBox2_4 = new ListBox();
+            listBox3_1 = new ListBox();
+            listBox4_1 = new ListBox();
+            listBox3_2 = new ListBox();
+            listBox3_3 = new ListBox();
+            listBox3_4 = new ListBox();
+            listBox4_2 = new ListBox();
+            listBox4_3 = new ListBox();
+            listBox4_4 = new ListBox();
+            listBox1_5 = new ListBox();
+            listBox2_5 = new ListBox();
+            listBox3_5 = new ListBox();
+            listBox4_5 = new ListBox();
+            listBox5_11 = new ListBox();
+            listBox4_11 = new ListBox();
+            listBox3_11 = new ListBox();
+            listBox1_11 = new ListBox();
+            listBox2_11 = new ListBox();
+            listBox1_10 = new ListBox();
+            listBox2_10 = new ListBox();
+            labelMonday = new Label();
+            labelTuesday = new Label();
+            labelWednesday = new Label();
+            labelThursday = new Label();
+            labelFriday = new Label();
+            buttonShowEditingLessonsForm = new Button();
+            buttonClearSchedule = new Button();
+            labelWelcome = new Label();
+            panel1.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Location = new System.Drawing.Point(138, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(897, 829);
-            this.panel1.TabIndex = 0;
+            panel1.AutoScroll = true;
+            panel1.Controls.Add(tableLayoutPanel1);
+            panel1.Location = new Point(138, 83);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(897, 758);
+            panel1.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 11;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-            this.tableLayoutPanel1.Controls.Add(this.listBox5_10, 9, 5);
-            this.tableLayoutPanel1.Controls.Add(this.listBox5_9, 8, 5);
-            this.tableLayoutPanel1.Controls.Add(this.listBox5_8, 7, 5);
-            this.tableLayoutPanel1.Controls.Add(this.listBox5_7, 6, 5);
-            this.tableLayoutPanel1.Controls.Add(this.listBox5_6, 5, 5);
-            this.tableLayoutPanel1.Controls.Add(this.listBox5_5, 4, 5);
-            this.tableLayoutPanel1.Controls.Add(this.listBox5_4, 3, 5);
-            this.tableLayoutPanel1.Controls.Add(this.listBox5_3, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.listBox5_2, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.listBox5_1, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.listBox4_10, 9, 4);
-            this.tableLayoutPanel1.Controls.Add(this.listBox4_9, 8, 4);
-            this.tableLayoutPanel1.Controls.Add(this.listBox4_8, 7, 4);
-            this.tableLayoutPanel1.Controls.Add(this.listBox4_7, 6, 4);
-            this.tableLayoutPanel1.Controls.Add(this.listBox4_6, 5, 4);
-            this.tableLayoutPanel1.Controls.Add(this.listBox3_10, 9, 3);
-            this.tableLayoutPanel1.Controls.Add(this.listBox3_9, 8, 3);
-            this.tableLayoutPanel1.Controls.Add(this.listBox3_8, 7, 3);
-            this.tableLayoutPanel1.Controls.Add(this.listBox3_7, 6, 3);
-            this.tableLayoutPanel1.Controls.Add(this.listBox3_6, 5, 3);
-            this.tableLayoutPanel1.Controls.Add(this.listBox2_9, 8, 2);
-            this.tableLayoutPanel1.Controls.Add(this.listBox2_8, 7, 2);
-            this.tableLayoutPanel1.Controls.Add(this.listBox2_7, 6, 2);
-            this.tableLayoutPanel1.Controls.Add(this.listBox2_6, 5, 2);
-            this.tableLayoutPanel1.Controls.Add(this.listBox1_9, 8, 1);
-            this.tableLayoutPanel1.Controls.Add(this.listBox1_8, 7, 1);
-            this.tableLayoutPanel1.Controls.Add(this.listBox1_7, 6, 1);
-            this.tableLayoutPanel1.Controls.Add(this.listBox1_6, 5, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label11class, 10, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label10class, 9, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label9class, 8, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label8class, 7, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label7class, 6, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label6class, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label5class, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label4class, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label3class, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.listBox1_1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label1class, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label2class, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.listBox1_2, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.listBox1_3, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.listBox1_4, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.listBox2_1, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.listBox2_2, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.listBox2_3, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.listBox2_4, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.listBox3_1, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.listBox4_1, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.listBox3_2, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.listBox3_3, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.listBox3_4, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.listBox4_2, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.listBox4_3, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.listBox4_4, 3, 4);
-            this.tableLayoutPanel1.Controls.Add(this.listBox1_5, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.listBox2_5, 4, 2);
-            this.tableLayoutPanel1.Controls.Add(this.listBox3_5, 4, 3);
-            this.tableLayoutPanel1.Controls.Add(this.listBox4_5, 4, 4);
-            this.tableLayoutPanel1.Controls.Add(this.listBox5_11, 10, 5);
-            this.tableLayoutPanel1.Controls.Add(this.listBox4_11, 10, 4);
-            this.tableLayoutPanel1.Controls.Add(this.listBox3_11, 10, 3);
-            this.tableLayoutPanel1.Controls.Add(this.listBox1_11, 10, 1);
-            this.tableLayoutPanel1.Controls.Add(this.listBox2_11, 10, 2);
-            this.tableLayoutPanel1.Controls.Add(this.listBox1_10, 9, 1);
-            this.tableLayoutPanel1.Controls.Add(this.listBox2_10, 9, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(2199, 802);
-            this.tableLayoutPanel1.TabIndex = 0;
+            tableLayoutPanel1.ColumnCount = 11;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.090908F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.090908F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.090908F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.090908F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.090908F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.090908F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.090908F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.090908F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.090908F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.090908F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.090908F));
+            tableLayoutPanel1.Controls.Add(listBox5_10, 9, 5);
+            tableLayoutPanel1.Controls.Add(listBox5_9, 8, 5);
+            tableLayoutPanel1.Controls.Add(listBox5_8, 7, 5);
+            tableLayoutPanel1.Controls.Add(listBox5_7, 6, 5);
+            tableLayoutPanel1.Controls.Add(listBox5_6, 5, 5);
+            tableLayoutPanel1.Controls.Add(listBox5_5, 4, 5);
+            tableLayoutPanel1.Controls.Add(listBox5_4, 3, 5);
+            tableLayoutPanel1.Controls.Add(listBox5_3, 2, 5);
+            tableLayoutPanel1.Controls.Add(listBox5_2, 1, 5);
+            tableLayoutPanel1.Controls.Add(listBox5_1, 0, 5);
+            tableLayoutPanel1.Controls.Add(listBox4_10, 9, 4);
+            tableLayoutPanel1.Controls.Add(listBox4_9, 8, 4);
+            tableLayoutPanel1.Controls.Add(listBox4_8, 7, 4);
+            tableLayoutPanel1.Controls.Add(listBox4_7, 6, 4);
+            tableLayoutPanel1.Controls.Add(listBox4_6, 5, 4);
+            tableLayoutPanel1.Controls.Add(listBox3_10, 9, 3);
+            tableLayoutPanel1.Controls.Add(listBox3_9, 8, 3);
+            tableLayoutPanel1.Controls.Add(listBox3_8, 7, 3);
+            tableLayoutPanel1.Controls.Add(listBox3_7, 6, 3);
+            tableLayoutPanel1.Controls.Add(listBox3_6, 5, 3);
+            tableLayoutPanel1.Controls.Add(listBox2_9, 8, 2);
+            tableLayoutPanel1.Controls.Add(listBox2_8, 7, 2);
+            tableLayoutPanel1.Controls.Add(listBox2_7, 6, 2);
+            tableLayoutPanel1.Controls.Add(listBox2_6, 5, 2);
+            tableLayoutPanel1.Controls.Add(listBox1_9, 8, 1);
+            tableLayoutPanel1.Controls.Add(listBox1_8, 7, 1);
+            tableLayoutPanel1.Controls.Add(listBox1_7, 6, 1);
+            tableLayoutPanel1.Controls.Add(listBox1_6, 5, 1);
+            tableLayoutPanel1.Controls.Add(label11class, 10, 0);
+            tableLayoutPanel1.Controls.Add(label10class, 9, 0);
+            tableLayoutPanel1.Controls.Add(label9class, 8, 0);
+            tableLayoutPanel1.Controls.Add(label8class, 7, 0);
+            tableLayoutPanel1.Controls.Add(label7class, 6, 0);
+            tableLayoutPanel1.Controls.Add(label6class, 5, 0);
+            tableLayoutPanel1.Controls.Add(label5class, 4, 0);
+            tableLayoutPanel1.Controls.Add(label4class, 3, 0);
+            tableLayoutPanel1.Controls.Add(label3class, 2, 0);
+            tableLayoutPanel1.Controls.Add(listBox1_1, 0, 1);
+            tableLayoutPanel1.Controls.Add(label1class, 0, 0);
+            tableLayoutPanel1.Controls.Add(label2class, 1, 0);
+            tableLayoutPanel1.Controls.Add(listBox1_2, 1, 1);
+            tableLayoutPanel1.Controls.Add(listBox1_3, 2, 1);
+            tableLayoutPanel1.Controls.Add(listBox1_4, 3, 1);
+            tableLayoutPanel1.Controls.Add(listBox2_1, 0, 2);
+            tableLayoutPanel1.Controls.Add(listBox2_2, 1, 2);
+            tableLayoutPanel1.Controls.Add(listBox2_3, 2, 2);
+            tableLayoutPanel1.Controls.Add(listBox2_4, 3, 2);
+            tableLayoutPanel1.Controls.Add(listBox3_1, 0, 3);
+            tableLayoutPanel1.Controls.Add(listBox4_1, 0, 4);
+            tableLayoutPanel1.Controls.Add(listBox3_2, 1, 3);
+            tableLayoutPanel1.Controls.Add(listBox3_3, 2, 3);
+            tableLayoutPanel1.Controls.Add(listBox3_4, 3, 3);
+            tableLayoutPanel1.Controls.Add(listBox4_2, 1, 4);
+            tableLayoutPanel1.Controls.Add(listBox4_3, 2, 4);
+            tableLayoutPanel1.Controls.Add(listBox4_4, 3, 4);
+            tableLayoutPanel1.Controls.Add(listBox1_5, 4, 1);
+            tableLayoutPanel1.Controls.Add(listBox2_5, 4, 2);
+            tableLayoutPanel1.Controls.Add(listBox3_5, 4, 3);
+            tableLayoutPanel1.Controls.Add(listBox4_5, 4, 4);
+            tableLayoutPanel1.Controls.Add(listBox5_11, 10, 5);
+            tableLayoutPanel1.Controls.Add(listBox4_11, 10, 4);
+            tableLayoutPanel1.Controls.Add(listBox3_11, 10, 3);
+            tableLayoutPanel1.Controls.Add(listBox1_11, 10, 1);
+            tableLayoutPanel1.Controls.Add(listBox2_11, 10, 2);
+            tableLayoutPanel1.Controls.Add(listBox1_10, 9, 1);
+            tableLayoutPanel1.Controls.Add(listBox2_10, 9, 2);
+            tableLayoutPanel1.Location = new Point(3, 3);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 6;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.Size = new Size(2199, 731);
+            tableLayoutPanel1.TabIndex = 0;
             // 
             // listBox5_10
             // 
-            this.listBox5_10.FormattingEnabled = true;
-            this.listBox5_10.ItemHeight = 20;
-            this.listBox5_10.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox5_10.Location = new System.Drawing.Point(1794, 649);
-            this.listBox5_10.Name = "listBox5_10";
-            this.listBox5_10.Size = new System.Drawing.Size(193, 144);
-            this.listBox5_10.TabIndex = 65;
+            listBox5_10.FormattingEnabled = true;
+            listBox5_10.ItemHeight = 20;
+            listBox5_10.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox5_10.Location = new Point(1794, 593);
+            listBox5_10.Name = "listBox5_10";
+            listBox5_10.Size = new Size(193, 124);
+            listBox5_10.TabIndex = 65;
             // 
             // listBox5_9
             // 
-            this.listBox5_9.FormattingEnabled = true;
-            this.listBox5_9.ItemHeight = 20;
-            this.listBox5_9.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox5_9.Location = new System.Drawing.Point(1595, 649);
-            this.listBox5_9.Name = "listBox5_9";
-            this.listBox5_9.Size = new System.Drawing.Size(193, 144);
-            this.listBox5_9.TabIndex = 64;
+            listBox5_9.FormattingEnabled = true;
+            listBox5_9.ItemHeight = 20;
+            listBox5_9.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox5_9.Location = new Point(1595, 593);
+            listBox5_9.Name = "listBox5_9";
+            listBox5_9.Size = new Size(193, 124);
+            listBox5_9.TabIndex = 64;
             // 
             // listBox5_8
             // 
-            this.listBox5_8.FormattingEnabled = true;
-            this.listBox5_8.ItemHeight = 20;
-            this.listBox5_8.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox5_8.Location = new System.Drawing.Point(1396, 649);
-            this.listBox5_8.Name = "listBox5_8";
-            this.listBox5_8.Size = new System.Drawing.Size(193, 144);
-            this.listBox5_8.TabIndex = 63;
+            listBox5_8.FormattingEnabled = true;
+            listBox5_8.ItemHeight = 20;
+            listBox5_8.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox5_8.Location = new Point(1396, 593);
+            listBox5_8.Name = "listBox5_8";
+            listBox5_8.Size = new Size(193, 124);
+            listBox5_8.TabIndex = 63;
             // 
             // listBox5_7
             // 
-            this.listBox5_7.FormattingEnabled = true;
-            this.listBox5_7.ItemHeight = 20;
-            this.listBox5_7.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox5_7.Location = new System.Drawing.Point(1197, 649);
-            this.listBox5_7.Name = "listBox5_7";
-            this.listBox5_7.Size = new System.Drawing.Size(193, 144);
-            this.listBox5_7.TabIndex = 62;
+            listBox5_7.FormattingEnabled = true;
+            listBox5_7.ItemHeight = 20;
+            listBox5_7.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox5_7.Location = new Point(1197, 593);
+            listBox5_7.Name = "listBox5_7";
+            listBox5_7.Size = new Size(193, 124);
+            listBox5_7.TabIndex = 62;
             // 
             // listBox5_6
             // 
-            this.listBox5_6.FormattingEnabled = true;
-            this.listBox5_6.ItemHeight = 20;
-            this.listBox5_6.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox5_6.Location = new System.Drawing.Point(998, 649);
-            this.listBox5_6.Name = "listBox5_6";
-            this.listBox5_6.Size = new System.Drawing.Size(193, 144);
-            this.listBox5_6.TabIndex = 61;
+            listBox5_6.FormattingEnabled = true;
+            listBox5_6.ItemHeight = 20;
+            listBox5_6.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox5_6.Location = new Point(998, 593);
+            listBox5_6.Name = "listBox5_6";
+            listBox5_6.Size = new Size(193, 124);
+            listBox5_6.TabIndex = 61;
             // 
             // listBox5_5
             // 
-            this.listBox5_5.FormattingEnabled = true;
-            this.listBox5_5.ItemHeight = 20;
-            this.listBox5_5.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox5_5.Location = new System.Drawing.Point(799, 649);
-            this.listBox5_5.Name = "listBox5_5";
-            this.listBox5_5.Size = new System.Drawing.Size(193, 144);
-            this.listBox5_5.TabIndex = 60;
+            listBox5_5.FormattingEnabled = true;
+            listBox5_5.ItemHeight = 20;
+            listBox5_5.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox5_5.Location = new Point(799, 593);
+            listBox5_5.Name = "listBox5_5";
+            listBox5_5.Size = new Size(193, 124);
+            listBox5_5.TabIndex = 60;
             // 
             // listBox5_4
             // 
-            this.listBox5_4.FormattingEnabled = true;
-            this.listBox5_4.ItemHeight = 20;
-            this.listBox5_4.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox5_4.Location = new System.Drawing.Point(600, 649);
-            this.listBox5_4.Name = "listBox5_4";
-            this.listBox5_4.Size = new System.Drawing.Size(193, 144);
-            this.listBox5_4.TabIndex = 59;
+            listBox5_4.FormattingEnabled = true;
+            listBox5_4.ItemHeight = 20;
+            listBox5_4.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox5_4.Location = new Point(600, 593);
+            listBox5_4.Name = "listBox5_4";
+            listBox5_4.Size = new Size(193, 124);
+            listBox5_4.TabIndex = 59;
             // 
             // listBox5_3
             // 
-            this.listBox5_3.FormattingEnabled = true;
-            this.listBox5_3.ItemHeight = 20;
-            this.listBox5_3.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox5_3.Location = new System.Drawing.Point(401, 649);
-            this.listBox5_3.Name = "listBox5_3";
-            this.listBox5_3.Size = new System.Drawing.Size(193, 144);
-            this.listBox5_3.TabIndex = 58;
+            listBox5_3.FormattingEnabled = true;
+            listBox5_3.ItemHeight = 20;
+            listBox5_3.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox5_3.Location = new Point(401, 593);
+            listBox5_3.Name = "listBox5_3";
+            listBox5_3.Size = new Size(193, 124);
+            listBox5_3.TabIndex = 58;
             // 
             // listBox5_2
             // 
-            this.listBox5_2.FormattingEnabled = true;
-            this.listBox5_2.ItemHeight = 20;
-            this.listBox5_2.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox5_2.Location = new System.Drawing.Point(202, 649);
-            this.listBox5_2.Name = "listBox5_2";
-            this.listBox5_2.Size = new System.Drawing.Size(193, 144);
-            this.listBox5_2.TabIndex = 57;
+            listBox5_2.FormattingEnabled = true;
+            listBox5_2.ItemHeight = 20;
+            listBox5_2.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox5_2.Location = new Point(202, 593);
+            listBox5_2.Name = "listBox5_2";
+            listBox5_2.Size = new Size(193, 124);
+            listBox5_2.TabIndex = 57;
             // 
             // listBox5_1
             // 
-            this.listBox5_1.FormattingEnabled = true;
-            this.listBox5_1.ItemHeight = 20;
-            this.listBox5_1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox5_1.Location = new System.Drawing.Point(3, 649);
-            this.listBox5_1.Name = "listBox5_1";
-            this.listBox5_1.Size = new System.Drawing.Size(193, 144);
-            this.listBox5_1.TabIndex = 56;
+            listBox5_1.FormattingEnabled = true;
+            listBox5_1.ItemHeight = 20;
+            listBox5_1.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox5_1.Location = new Point(3, 593);
+            listBox5_1.Name = "listBox5_1";
+            listBox5_1.Size = new Size(193, 124);
+            listBox5_1.TabIndex = 56;
             // 
             // listBox4_10
             // 
-            this.listBox4_10.FormattingEnabled = true;
-            this.listBox4_10.ItemHeight = 20;
-            this.listBox4_10.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox4_10.Location = new System.Drawing.Point(1794, 495);
-            this.listBox4_10.Name = "listBox4_10";
-            this.listBox4_10.Size = new System.Drawing.Size(193, 144);
-            this.listBox4_10.TabIndex = 55;
+            listBox4_10.FormattingEnabled = true;
+            listBox4_10.ItemHeight = 20;
+            listBox4_10.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox4_10.Location = new Point(1794, 453);
+            listBox4_10.Name = "listBox4_10";
+            listBox4_10.Size = new Size(193, 124);
+            listBox4_10.TabIndex = 55;
             // 
             // listBox4_9
             // 
-            this.listBox4_9.FormattingEnabled = true;
-            this.listBox4_9.ItemHeight = 20;
-            this.listBox4_9.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox4_9.Location = new System.Drawing.Point(1595, 495);
-            this.listBox4_9.Name = "listBox4_9";
-            this.listBox4_9.Size = new System.Drawing.Size(193, 144);
-            this.listBox4_9.TabIndex = 54;
+            listBox4_9.FormattingEnabled = true;
+            listBox4_9.ItemHeight = 20;
+            listBox4_9.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox4_9.Location = new Point(1595, 453);
+            listBox4_9.Name = "listBox4_9";
+            listBox4_9.Size = new Size(193, 124);
+            listBox4_9.TabIndex = 54;
             // 
             // listBox4_8
             // 
-            this.listBox4_8.FormattingEnabled = true;
-            this.listBox4_8.ItemHeight = 20;
-            this.listBox4_8.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox4_8.Location = new System.Drawing.Point(1396, 495);
-            this.listBox4_8.Name = "listBox4_8";
-            this.listBox4_8.Size = new System.Drawing.Size(193, 144);
-            this.listBox4_8.TabIndex = 53;
+            listBox4_8.FormattingEnabled = true;
+            listBox4_8.ItemHeight = 20;
+            listBox4_8.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox4_8.Location = new Point(1396, 453);
+            listBox4_8.Name = "listBox4_8";
+            listBox4_8.Size = new Size(193, 124);
+            listBox4_8.TabIndex = 53;
             // 
             // listBox4_7
             // 
-            this.listBox4_7.FormattingEnabled = true;
-            this.listBox4_7.ItemHeight = 20;
-            this.listBox4_7.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox4_7.Location = new System.Drawing.Point(1197, 495);
-            this.listBox4_7.Name = "listBox4_7";
-            this.listBox4_7.Size = new System.Drawing.Size(193, 144);
-            this.listBox4_7.TabIndex = 52;
+            listBox4_7.FormattingEnabled = true;
+            listBox4_7.ItemHeight = 20;
+            listBox4_7.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox4_7.Location = new Point(1197, 453);
+            listBox4_7.Name = "listBox4_7";
+            listBox4_7.Size = new Size(193, 124);
+            listBox4_7.TabIndex = 52;
             // 
             // listBox4_6
             // 
-            this.listBox4_6.FormattingEnabled = true;
-            this.listBox4_6.ItemHeight = 20;
-            this.listBox4_6.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox4_6.Location = new System.Drawing.Point(998, 495);
-            this.listBox4_6.Name = "listBox4_6";
-            this.listBox4_6.Size = new System.Drawing.Size(193, 144);
-            this.listBox4_6.TabIndex = 51;
+            listBox4_6.FormattingEnabled = true;
+            listBox4_6.ItemHeight = 20;
+            listBox4_6.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox4_6.Location = new Point(998, 453);
+            listBox4_6.Name = "listBox4_6";
+            listBox4_6.Size = new Size(193, 124);
+            listBox4_6.TabIndex = 51;
             // 
             // listBox3_10
             // 
-            this.listBox3_10.FormattingEnabled = true;
-            this.listBox3_10.ItemHeight = 20;
-            this.listBox3_10.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox3_10.Location = new System.Drawing.Point(1794, 341);
-            this.listBox3_10.Name = "listBox3_10";
-            this.listBox3_10.Size = new System.Drawing.Size(193, 144);
-            this.listBox3_10.TabIndex = 50;
+            listBox3_10.FormattingEnabled = true;
+            listBox3_10.ItemHeight = 20;
+            listBox3_10.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox3_10.Location = new Point(1794, 313);
+            listBox3_10.Name = "listBox3_10";
+            listBox3_10.Size = new Size(193, 124);
+            listBox3_10.TabIndex = 50;
             // 
             // listBox3_9
             // 
-            this.listBox3_9.FormattingEnabled = true;
-            this.listBox3_9.ItemHeight = 20;
-            this.listBox3_9.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox3_9.Location = new System.Drawing.Point(1595, 341);
-            this.listBox3_9.Name = "listBox3_9";
-            this.listBox3_9.Size = new System.Drawing.Size(193, 144);
-            this.listBox3_9.TabIndex = 49;
+            listBox3_9.FormattingEnabled = true;
+            listBox3_9.ItemHeight = 20;
+            listBox3_9.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox3_9.Location = new Point(1595, 313);
+            listBox3_9.Name = "listBox3_9";
+            listBox3_9.Size = new Size(193, 124);
+            listBox3_9.TabIndex = 49;
             // 
             // listBox3_8
             // 
-            this.listBox3_8.FormattingEnabled = true;
-            this.listBox3_8.ItemHeight = 20;
-            this.listBox3_8.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox3_8.Location = new System.Drawing.Point(1396, 341);
-            this.listBox3_8.Name = "listBox3_8";
-            this.listBox3_8.Size = new System.Drawing.Size(193, 144);
-            this.listBox3_8.TabIndex = 48;
+            listBox3_8.FormattingEnabled = true;
+            listBox3_8.ItemHeight = 20;
+            listBox3_8.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox3_8.Location = new Point(1396, 313);
+            listBox3_8.Name = "listBox3_8";
+            listBox3_8.Size = new Size(193, 124);
+            listBox3_8.TabIndex = 48;
             // 
             // listBox3_7
             // 
-            this.listBox3_7.FormattingEnabled = true;
-            this.listBox3_7.ItemHeight = 20;
-            this.listBox3_7.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox3_7.Location = new System.Drawing.Point(1197, 341);
-            this.listBox3_7.Name = "listBox3_7";
-            this.listBox3_7.Size = new System.Drawing.Size(193, 144);
-            this.listBox3_7.TabIndex = 47;
+            listBox3_7.FormattingEnabled = true;
+            listBox3_7.ItemHeight = 20;
+            listBox3_7.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox3_7.Location = new Point(1197, 313);
+            listBox3_7.Name = "listBox3_7";
+            listBox3_7.Size = new Size(193, 124);
+            listBox3_7.TabIndex = 47;
             // 
             // listBox3_6
             // 
-            this.listBox3_6.FormattingEnabled = true;
-            this.listBox3_6.ItemHeight = 20;
-            this.listBox3_6.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox3_6.Location = new System.Drawing.Point(998, 341);
-            this.listBox3_6.Name = "listBox3_6";
-            this.listBox3_6.Size = new System.Drawing.Size(193, 144);
-            this.listBox3_6.TabIndex = 46;
+            listBox3_6.FormattingEnabled = true;
+            listBox3_6.ItemHeight = 20;
+            listBox3_6.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox3_6.Location = new Point(998, 313);
+            listBox3_6.Name = "listBox3_6";
+            listBox3_6.Size = new Size(193, 124);
+            listBox3_6.TabIndex = 46;
             // 
             // listBox2_9
             // 
-            this.listBox2_9.FormattingEnabled = true;
-            this.listBox2_9.ItemHeight = 20;
-            this.listBox2_9.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox2_9.Location = new System.Drawing.Point(1595, 187);
-            this.listBox2_9.Name = "listBox2_9";
-            this.listBox2_9.Size = new System.Drawing.Size(193, 144);
-            this.listBox2_9.TabIndex = 45;
+            listBox2_9.FormattingEnabled = true;
+            listBox2_9.ItemHeight = 20;
+            listBox2_9.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox2_9.Location = new Point(1595, 173);
+            listBox2_9.Name = "listBox2_9";
+            listBox2_9.Size = new Size(193, 124);
+            listBox2_9.TabIndex = 45;
             // 
             // listBox2_8
             // 
-            this.listBox2_8.FormattingEnabled = true;
-            this.listBox2_8.ItemHeight = 20;
-            this.listBox2_8.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox2_8.Location = new System.Drawing.Point(1396, 187);
-            this.listBox2_8.Name = "listBox2_8";
-            this.listBox2_8.Size = new System.Drawing.Size(193, 144);
-            this.listBox2_8.TabIndex = 44;
+            listBox2_8.FormattingEnabled = true;
+            listBox2_8.ItemHeight = 20;
+            listBox2_8.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox2_8.Location = new Point(1396, 173);
+            listBox2_8.Name = "listBox2_8";
+            listBox2_8.Size = new Size(193, 124);
+            listBox2_8.TabIndex = 44;
             // 
             // listBox2_7
             // 
-            this.listBox2_7.FormattingEnabled = true;
-            this.listBox2_7.ItemHeight = 20;
-            this.listBox2_7.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox2_7.Location = new System.Drawing.Point(1197, 187);
-            this.listBox2_7.Name = "listBox2_7";
-            this.listBox2_7.Size = new System.Drawing.Size(193, 144);
-            this.listBox2_7.TabIndex = 43;
+            listBox2_7.FormattingEnabled = true;
+            listBox2_7.ItemHeight = 20;
+            listBox2_7.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox2_7.Location = new Point(1197, 173);
+            listBox2_7.Name = "listBox2_7";
+            listBox2_7.Size = new Size(193, 124);
+            listBox2_7.TabIndex = 43;
             // 
             // listBox2_6
             // 
-            this.listBox2_6.FormattingEnabled = true;
-            this.listBox2_6.ItemHeight = 20;
-            this.listBox2_6.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox2_6.Location = new System.Drawing.Point(998, 187);
-            this.listBox2_6.Name = "listBox2_6";
-            this.listBox2_6.Size = new System.Drawing.Size(193, 144);
-            this.listBox2_6.TabIndex = 42;
+            listBox2_6.FormattingEnabled = true;
+            listBox2_6.ItemHeight = 20;
+            listBox2_6.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox2_6.Location = new Point(998, 173);
+            listBox2_6.Name = "listBox2_6";
+            listBox2_6.Size = new Size(193, 124);
+            listBox2_6.TabIndex = 42;
             // 
             // listBox1_9
             // 
-            this.listBox1_9.FormattingEnabled = true;
-            this.listBox1_9.ItemHeight = 20;
-            this.listBox1_9.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox1_9.Location = new System.Drawing.Point(1595, 33);
-            this.listBox1_9.Name = "listBox1_9";
-            this.listBox1_9.Size = new System.Drawing.Size(193, 144);
-            this.listBox1_9.TabIndex = 41;
+            listBox1_9.FormattingEnabled = true;
+            listBox1_9.ItemHeight = 20;
+            listBox1_9.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox1_9.Location = new Point(1595, 33);
+            listBox1_9.Name = "listBox1_9";
+            listBox1_9.Size = new Size(193, 124);
+            listBox1_9.TabIndex = 41;
             // 
             // listBox1_8
             // 
-            this.listBox1_8.FormattingEnabled = true;
-            this.listBox1_8.ItemHeight = 20;
-            this.listBox1_8.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox1_8.Location = new System.Drawing.Point(1396, 33);
-            this.listBox1_8.Name = "listBox1_8";
-            this.listBox1_8.Size = new System.Drawing.Size(193, 144);
-            this.listBox1_8.TabIndex = 40;
+            listBox1_8.FormattingEnabled = true;
+            listBox1_8.ItemHeight = 20;
+            listBox1_8.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox1_8.Location = new Point(1396, 33);
+            listBox1_8.Name = "listBox1_8";
+            listBox1_8.Size = new Size(193, 124);
+            listBox1_8.TabIndex = 40;
             // 
             // listBox1_7
             // 
-            this.listBox1_7.FormattingEnabled = true;
-            this.listBox1_7.ItemHeight = 20;
-            this.listBox1_7.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox1_7.Location = new System.Drawing.Point(1197, 33);
-            this.listBox1_7.Name = "listBox1_7";
-            this.listBox1_7.Size = new System.Drawing.Size(193, 144);
-            this.listBox1_7.TabIndex = 39;
+            listBox1_7.FormattingEnabled = true;
+            listBox1_7.ItemHeight = 20;
+            listBox1_7.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox1_7.Location = new Point(1197, 33);
+            listBox1_7.Name = "listBox1_7";
+            listBox1_7.Size = new Size(193, 124);
+            listBox1_7.TabIndex = 39;
             // 
             // listBox1_6
             // 
-            this.listBox1_6.FormattingEnabled = true;
-            this.listBox1_6.ItemHeight = 20;
-            this.listBox1_6.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox1_6.Location = new System.Drawing.Point(998, 33);
-            this.listBox1_6.Name = "listBox1_6";
-            this.listBox1_6.Size = new System.Drawing.Size(193, 144);
-            this.listBox1_6.TabIndex = 38;
+            listBox1_6.FormattingEnabled = true;
+            listBox1_6.ItemHeight = 20;
+            listBox1_6.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox1_6.Location = new Point(998, 33);
+            listBox1_6.Name = "listBox1_6";
+            listBox1_6.Size = new Size(193, 124);
+            listBox1_6.TabIndex = 38;
             // 
             // label11class
             // 
-            this.label11class.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11class.AutoSize = true;
-            this.label11class.Location = new System.Drawing.Point(1993, 0);
-            this.label11class.Name = "label11class";
-            this.label11class.Size = new System.Drawing.Size(203, 30);
-            this.label11class.TabIndex = 11;
-            this.label11class.Text = "11 класс";
-            this.label11class.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label11class.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label11class.AutoSize = true;
+            label11class.Location = new Point(1993, 0);
+            label11class.Name = "label11class";
+            label11class.Size = new Size(203, 30);
+            label11class.TabIndex = 11;
+            label11class.Text = "11 класс";
+            label11class.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label10class
             // 
-            this.label10class.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10class.AutoSize = true;
-            this.label10class.Location = new System.Drawing.Point(1794, 0);
-            this.label10class.Name = "label10class";
-            this.label10class.Size = new System.Drawing.Size(193, 30);
-            this.label10class.TabIndex = 10;
-            this.label10class.Text = "10 класс";
-            this.label10class.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label10class.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label10class.AutoSize = true;
+            label10class.Location = new Point(1794, 0);
+            label10class.Name = "label10class";
+            label10class.Size = new Size(193, 30);
+            label10class.TabIndex = 10;
+            label10class.Text = "10 класс";
+            label10class.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label9class
             // 
-            this.label9class.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9class.AutoSize = true;
-            this.label9class.Location = new System.Drawing.Point(1595, 0);
-            this.label9class.Name = "label9class";
-            this.label9class.Size = new System.Drawing.Size(193, 30);
-            this.label9class.TabIndex = 9;
-            this.label9class.Text = "9 класс";
-            this.label9class.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label9class.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label9class.AutoSize = true;
+            label9class.Location = new Point(1595, 0);
+            label9class.Name = "label9class";
+            label9class.Size = new Size(193, 30);
+            label9class.TabIndex = 9;
+            label9class.Text = "9 класс";
+            label9class.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label8class
             // 
-            this.label8class.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8class.AutoSize = true;
-            this.label8class.Location = new System.Drawing.Point(1396, 0);
-            this.label8class.Name = "label8class";
-            this.label8class.Size = new System.Drawing.Size(193, 30);
-            this.label8class.TabIndex = 8;
-            this.label8class.Text = "8 класс";
-            this.label8class.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label8class.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label8class.AutoSize = true;
+            label8class.Location = new Point(1396, 0);
+            label8class.Name = "label8class";
+            label8class.Size = new Size(193, 30);
+            label8class.TabIndex = 8;
+            label8class.Text = "8 класс";
+            label8class.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label7class
             // 
-            this.label7class.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7class.AutoSize = true;
-            this.label7class.Location = new System.Drawing.Point(1197, 0);
-            this.label7class.Name = "label7class";
-            this.label7class.Size = new System.Drawing.Size(193, 30);
-            this.label7class.TabIndex = 7;
-            this.label7class.Text = "7 класс";
-            this.label7class.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label7class.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label7class.AutoSize = true;
+            label7class.Location = new Point(1197, 0);
+            label7class.Name = "label7class";
+            label7class.Size = new Size(193, 30);
+            label7class.TabIndex = 7;
+            label7class.Text = "7 класс";
+            label7class.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label6class
             // 
-            this.label6class.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6class.AutoSize = true;
-            this.label6class.Location = new System.Drawing.Point(998, 0);
-            this.label6class.Name = "label6class";
-            this.label6class.Size = new System.Drawing.Size(193, 30);
-            this.label6class.TabIndex = 6;
-            this.label6class.Text = "6 класс";
-            this.label6class.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label6class.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label6class.AutoSize = true;
+            label6class.Location = new Point(998, 0);
+            label6class.Name = "label6class";
+            label6class.Size = new Size(193, 30);
+            label6class.TabIndex = 6;
+            label6class.Text = "6 класс";
+            label6class.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label5class
             // 
-            this.label5class.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5class.AutoSize = true;
-            this.label5class.Location = new System.Drawing.Point(799, 0);
-            this.label5class.Name = "label5class";
-            this.label5class.Size = new System.Drawing.Size(193, 30);
-            this.label5class.TabIndex = 5;
-            this.label5class.Text = "5 класс";
-            this.label5class.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label5class.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label5class.AutoSize = true;
+            label5class.Location = new Point(799, 0);
+            label5class.Name = "label5class";
+            label5class.Size = new Size(193, 30);
+            label5class.TabIndex = 5;
+            label5class.Text = "5 класс";
+            label5class.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label4class
             // 
-            this.label4class.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4class.AutoSize = true;
-            this.label4class.Location = new System.Drawing.Point(600, 0);
-            this.label4class.Name = "label4class";
-            this.label4class.Size = new System.Drawing.Size(193, 30);
-            this.label4class.TabIndex = 4;
-            this.label4class.Text = "4 класс";
-            this.label4class.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label4class.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label4class.AutoSize = true;
+            label4class.Location = new Point(600, 0);
+            label4class.Name = "label4class";
+            label4class.Size = new Size(193, 30);
+            label4class.TabIndex = 4;
+            label4class.Text = "4 класс";
+            label4class.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label3class
             // 
-            this.label3class.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3class.AutoSize = true;
-            this.label3class.Location = new System.Drawing.Point(401, 0);
-            this.label3class.Name = "label3class";
-            this.label3class.Size = new System.Drawing.Size(193, 30);
-            this.label3class.TabIndex = 3;
-            this.label3class.Text = "3 класс";
-            this.label3class.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label3class.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label3class.AutoSize = true;
+            label3class.Location = new Point(401, 0);
+            label3class.Name = "label3class";
+            label3class.Size = new Size(193, 30);
+            label3class.TabIndex = 3;
+            label3class.Text = "3 класс";
+            label3class.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // listBox1_1
             // 
-            this.listBox1_1.FormattingEnabled = true;
-            this.listBox1_1.ItemHeight = 20;
-            this.listBox1_1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox1_1.Location = new System.Drawing.Point(3, 33);
-            this.listBox1_1.Name = "listBox1_1";
-            this.listBox1_1.Size = new System.Drawing.Size(193, 144);
-            this.listBox1_1.TabIndex = 0;
+            listBox1_1.FormattingEnabled = true;
+            listBox1_1.ItemHeight = 20;
+            listBox1_1.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox1_1.Location = new Point(3, 33);
+            listBox1_1.Name = "listBox1_1";
+            listBox1_1.Size = new Size(193, 124);
+            listBox1_1.TabIndex = 0;
             // 
             // label1class
             // 
-            this.label1class.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1class.AutoSize = true;
-            this.label1class.Location = new System.Drawing.Point(3, 0);
-            this.label1class.Name = "label1class";
-            this.label1class.Size = new System.Drawing.Size(193, 30);
-            this.label1class.TabIndex = 1;
-            this.label1class.Text = "1 класс";
-            this.label1class.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label1class.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label1class.AutoSize = true;
+            label1class.Location = new Point(3, 0);
+            label1class.Name = "label1class";
+            label1class.Size = new Size(193, 30);
+            label1class.TabIndex = 1;
+            label1class.Text = "1 класс";
+            label1class.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label2class
             // 
-            this.label2class.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2class.AutoSize = true;
-            this.label2class.Location = new System.Drawing.Point(202, 0);
-            this.label2class.Name = "label2class";
-            this.label2class.Size = new System.Drawing.Size(193, 30);
-            this.label2class.TabIndex = 2;
-            this.label2class.Text = "2 класс";
-            this.label2class.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label2class.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label2class.AutoSize = true;
+            label2class.Location = new Point(202, 0);
+            label2class.Name = "label2class";
+            label2class.Size = new Size(193, 30);
+            label2class.TabIndex = 2;
+            label2class.Text = "2 класс";
+            label2class.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // listBox1_2
             // 
-            this.listBox1_2.FormattingEnabled = true;
-            this.listBox1_2.ItemHeight = 20;
-            this.listBox1_2.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox1_2.Location = new System.Drawing.Point(202, 33);
-            this.listBox1_2.Name = "listBox1_2";
-            this.listBox1_2.Size = new System.Drawing.Size(193, 144);
-            this.listBox1_2.TabIndex = 12;
+            listBox1_2.FormattingEnabled = true;
+            listBox1_2.ItemHeight = 20;
+            listBox1_2.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox1_2.Location = new Point(202, 33);
+            listBox1_2.Name = "listBox1_2";
+            listBox1_2.Size = new Size(193, 124);
+            listBox1_2.TabIndex = 12;
             // 
             // listBox1_3
             // 
-            this.listBox1_3.FormattingEnabled = true;
-            this.listBox1_3.ItemHeight = 20;
-            this.listBox1_3.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox1_3.Location = new System.Drawing.Point(401, 33);
-            this.listBox1_3.Name = "listBox1_3";
-            this.listBox1_3.Size = new System.Drawing.Size(193, 144);
-            this.listBox1_3.TabIndex = 13;
+            listBox1_3.FormattingEnabled = true;
+            listBox1_3.ItemHeight = 20;
+            listBox1_3.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox1_3.Location = new Point(401, 33);
+            listBox1_3.Name = "listBox1_3";
+            listBox1_3.Size = new Size(193, 124);
+            listBox1_3.TabIndex = 13;
             // 
             // listBox1_4
             // 
-            this.listBox1_4.FormattingEnabled = true;
-            this.listBox1_4.ItemHeight = 20;
-            this.listBox1_4.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox1_4.Location = new System.Drawing.Point(600, 33);
-            this.listBox1_4.Name = "listBox1_4";
-            this.listBox1_4.Size = new System.Drawing.Size(193, 144);
-            this.listBox1_4.TabIndex = 14;
+            listBox1_4.FormattingEnabled = true;
+            listBox1_4.ItemHeight = 20;
+            listBox1_4.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox1_4.Location = new Point(600, 33);
+            listBox1_4.Name = "listBox1_4";
+            listBox1_4.Size = new Size(193, 124);
+            listBox1_4.TabIndex = 14;
             // 
             // listBox2_1
             // 
-            this.listBox2_1.FormattingEnabled = true;
-            this.listBox2_1.ItemHeight = 20;
-            this.listBox2_1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox2_1.Location = new System.Drawing.Point(3, 187);
-            this.listBox2_1.Name = "listBox2_1";
-            this.listBox2_1.Size = new System.Drawing.Size(193, 144);
-            this.listBox2_1.TabIndex = 15;
+            listBox2_1.FormattingEnabled = true;
+            listBox2_1.ItemHeight = 20;
+            listBox2_1.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox2_1.Location = new Point(3, 173);
+            listBox2_1.Name = "listBox2_1";
+            listBox2_1.Size = new Size(193, 124);
+            listBox2_1.TabIndex = 15;
             // 
             // listBox2_2
             // 
-            this.listBox2_2.FormattingEnabled = true;
-            this.listBox2_2.ItemHeight = 20;
-            this.listBox2_2.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox2_2.Location = new System.Drawing.Point(202, 187);
-            this.listBox2_2.Name = "listBox2_2";
-            this.listBox2_2.Size = new System.Drawing.Size(193, 144);
-            this.listBox2_2.TabIndex = 16;
+            listBox2_2.FormattingEnabled = true;
+            listBox2_2.ItemHeight = 20;
+            listBox2_2.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox2_2.Location = new Point(202, 173);
+            listBox2_2.Name = "listBox2_2";
+            listBox2_2.Size = new Size(193, 124);
+            listBox2_2.TabIndex = 16;
             // 
             // listBox2_3
             // 
-            this.listBox2_3.FormattingEnabled = true;
-            this.listBox2_3.ItemHeight = 20;
-            this.listBox2_3.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox2_3.Location = new System.Drawing.Point(401, 187);
-            this.listBox2_3.Name = "listBox2_3";
-            this.listBox2_3.Size = new System.Drawing.Size(193, 144);
-            this.listBox2_3.TabIndex = 17;
+            listBox2_3.FormattingEnabled = true;
+            listBox2_3.ItemHeight = 20;
+            listBox2_3.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox2_3.Location = new Point(401, 173);
+            listBox2_3.Name = "listBox2_3";
+            listBox2_3.Size = new Size(193, 124);
+            listBox2_3.TabIndex = 17;
             // 
             // listBox2_4
             // 
-            this.listBox2_4.FormattingEnabled = true;
-            this.listBox2_4.ItemHeight = 20;
-            this.listBox2_4.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox2_4.Location = new System.Drawing.Point(600, 187);
-            this.listBox2_4.Name = "listBox2_4";
-            this.listBox2_4.Size = new System.Drawing.Size(193, 144);
-            this.listBox2_4.TabIndex = 18;
+            listBox2_4.FormattingEnabled = true;
+            listBox2_4.ItemHeight = 20;
+            listBox2_4.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox2_4.Location = new Point(600, 173);
+            listBox2_4.Name = "listBox2_4";
+            listBox2_4.Size = new Size(193, 124);
+            listBox2_4.TabIndex = 18;
             // 
             // listBox3_1
             // 
-            this.listBox3_1.FormattingEnabled = true;
-            this.listBox3_1.ItemHeight = 20;
-            this.listBox3_1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox3_1.Location = new System.Drawing.Point(3, 341);
-            this.listBox3_1.Name = "listBox3_1";
-            this.listBox3_1.Size = new System.Drawing.Size(193, 144);
-            this.listBox3_1.TabIndex = 19;
+            listBox3_1.FormattingEnabled = true;
+            listBox3_1.ItemHeight = 20;
+            listBox3_1.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox3_1.Location = new Point(3, 313);
+            listBox3_1.Name = "listBox3_1";
+            listBox3_1.Size = new Size(193, 124);
+            listBox3_1.TabIndex = 19;
             // 
             // listBox4_1
             // 
-            this.listBox4_1.FormattingEnabled = true;
-            this.listBox4_1.ItemHeight = 20;
-            this.listBox4_1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox4_1.Location = new System.Drawing.Point(3, 495);
-            this.listBox4_1.Name = "listBox4_1";
-            this.listBox4_1.Size = new System.Drawing.Size(193, 144);
-            this.listBox4_1.TabIndex = 20;
+            listBox4_1.FormattingEnabled = true;
+            listBox4_1.ItemHeight = 20;
+            listBox4_1.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox4_1.Location = new Point(3, 453);
+            listBox4_1.Name = "listBox4_1";
+            listBox4_1.Size = new Size(193, 124);
+            listBox4_1.TabIndex = 20;
             // 
             // listBox3_2
             // 
-            this.listBox3_2.FormattingEnabled = true;
-            this.listBox3_2.ItemHeight = 20;
-            this.listBox3_2.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox3_2.Location = new System.Drawing.Point(202, 341);
-            this.listBox3_2.Name = "listBox3_2";
-            this.listBox3_2.Size = new System.Drawing.Size(193, 144);
-            this.listBox3_2.TabIndex = 21;
+            listBox3_2.FormattingEnabled = true;
+            listBox3_2.ItemHeight = 20;
+            listBox3_2.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox3_2.Location = new Point(202, 313);
+            listBox3_2.Name = "listBox3_2";
+            listBox3_2.Size = new Size(193, 124);
+            listBox3_2.TabIndex = 21;
             // 
             // listBox3_3
             // 
-            this.listBox3_3.FormattingEnabled = true;
-            this.listBox3_3.ItemHeight = 20;
-            this.listBox3_3.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox3_3.Location = new System.Drawing.Point(401, 341);
-            this.listBox3_3.Name = "listBox3_3";
-            this.listBox3_3.Size = new System.Drawing.Size(193, 144);
-            this.listBox3_3.TabIndex = 22;
+            listBox3_3.FormattingEnabled = true;
+            listBox3_3.ItemHeight = 20;
+            listBox3_3.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox3_3.Location = new Point(401, 313);
+            listBox3_3.Name = "listBox3_3";
+            listBox3_3.Size = new Size(193, 124);
+            listBox3_3.TabIndex = 22;
             // 
             // listBox3_4
             // 
-            this.listBox3_4.FormattingEnabled = true;
-            this.listBox3_4.ItemHeight = 20;
-            this.listBox3_4.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox3_4.Location = new System.Drawing.Point(600, 341);
-            this.listBox3_4.Name = "listBox3_4";
-            this.listBox3_4.Size = new System.Drawing.Size(193, 144);
-            this.listBox3_4.TabIndex = 23;
+            listBox3_4.FormattingEnabled = true;
+            listBox3_4.ItemHeight = 20;
+            listBox3_4.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox3_4.Location = new Point(600, 313);
+            listBox3_4.Name = "listBox3_4";
+            listBox3_4.Size = new Size(193, 124);
+            listBox3_4.TabIndex = 23;
             // 
             // listBox4_2
             // 
-            this.listBox4_2.FormattingEnabled = true;
-            this.listBox4_2.ItemHeight = 20;
-            this.listBox4_2.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox4_2.Location = new System.Drawing.Point(202, 495);
-            this.listBox4_2.Name = "listBox4_2";
-            this.listBox4_2.Size = new System.Drawing.Size(193, 144);
-            this.listBox4_2.TabIndex = 25;
+            listBox4_2.FormattingEnabled = true;
+            listBox4_2.ItemHeight = 20;
+            listBox4_2.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox4_2.Location = new Point(202, 453);
+            listBox4_2.Name = "listBox4_2";
+            listBox4_2.Size = new Size(193, 124);
+            listBox4_2.TabIndex = 25;
             // 
             // listBox4_3
             // 
-            this.listBox4_3.FormattingEnabled = true;
-            this.listBox4_3.ItemHeight = 20;
-            this.listBox4_3.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox4_3.Location = new System.Drawing.Point(401, 495);
-            this.listBox4_3.Name = "listBox4_3";
-            this.listBox4_3.Size = new System.Drawing.Size(193, 144);
-            this.listBox4_3.TabIndex = 24;
+            listBox4_3.FormattingEnabled = true;
+            listBox4_3.ItemHeight = 20;
+            listBox4_3.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox4_3.Location = new Point(401, 453);
+            listBox4_3.Name = "listBox4_3";
+            listBox4_3.Size = new Size(193, 124);
+            listBox4_3.TabIndex = 24;
             // 
             // listBox4_4
             // 
-            this.listBox4_4.FormattingEnabled = true;
-            this.listBox4_4.ItemHeight = 20;
-            this.listBox4_4.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox4_4.Location = new System.Drawing.Point(600, 495);
-            this.listBox4_4.Name = "listBox4_4";
-            this.listBox4_4.Size = new System.Drawing.Size(193, 144);
-            this.listBox4_4.TabIndex = 26;
+            listBox4_4.FormattingEnabled = true;
+            listBox4_4.ItemHeight = 20;
+            listBox4_4.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox4_4.Location = new Point(600, 453);
+            listBox4_4.Name = "listBox4_4";
+            listBox4_4.Size = new Size(193, 124);
+            listBox4_4.TabIndex = 26;
             // 
             // listBox1_5
             // 
-            this.listBox1_5.FormattingEnabled = true;
-            this.listBox1_5.ItemHeight = 20;
-            this.listBox1_5.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox1_5.Location = new System.Drawing.Point(799, 33);
-            this.listBox1_5.Name = "listBox1_5";
-            this.listBox1_5.Size = new System.Drawing.Size(193, 144);
-            this.listBox1_5.TabIndex = 34;
+            listBox1_5.FormattingEnabled = true;
+            listBox1_5.ItemHeight = 20;
+            listBox1_5.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox1_5.Location = new Point(799, 33);
+            listBox1_5.Name = "listBox1_5";
+            listBox1_5.Size = new Size(193, 124);
+            listBox1_5.TabIndex = 34;
             // 
             // listBox2_5
             // 
-            this.listBox2_5.FormattingEnabled = true;
-            this.listBox2_5.ItemHeight = 20;
-            this.listBox2_5.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox2_5.Location = new System.Drawing.Point(799, 187);
-            this.listBox2_5.Name = "listBox2_5";
-            this.listBox2_5.Size = new System.Drawing.Size(193, 144);
-            this.listBox2_5.TabIndex = 37;
+            listBox2_5.FormattingEnabled = true;
+            listBox2_5.ItemHeight = 20;
+            listBox2_5.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox2_5.Location = new Point(799, 173);
+            listBox2_5.Name = "listBox2_5";
+            listBox2_5.Size = new Size(193, 124);
+            listBox2_5.TabIndex = 37;
             // 
             // listBox3_5
             // 
-            this.listBox3_5.FormattingEnabled = true;
-            this.listBox3_5.ItemHeight = 20;
-            this.listBox3_5.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox3_5.Location = new System.Drawing.Point(799, 341);
-            this.listBox3_5.Name = "listBox3_5";
-            this.listBox3_5.Size = new System.Drawing.Size(193, 144);
-            this.listBox3_5.TabIndex = 35;
+            listBox3_5.FormattingEnabled = true;
+            listBox3_5.ItemHeight = 20;
+            listBox3_5.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox3_5.Location = new Point(799, 313);
+            listBox3_5.Name = "listBox3_5";
+            listBox3_5.Size = new Size(193, 124);
+            listBox3_5.TabIndex = 35;
             // 
             // listBox4_5
             // 
-            this.listBox4_5.FormattingEnabled = true;
-            this.listBox4_5.ItemHeight = 20;
-            this.listBox4_5.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox4_5.Location = new System.Drawing.Point(799, 495);
-            this.listBox4_5.Name = "listBox4_5";
-            this.listBox4_5.Size = new System.Drawing.Size(193, 144);
-            this.listBox4_5.TabIndex = 33;
+            listBox4_5.FormattingEnabled = true;
+            listBox4_5.ItemHeight = 20;
+            listBox4_5.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox4_5.Location = new Point(799, 453);
+            listBox4_5.Name = "listBox4_5";
+            listBox4_5.Size = new Size(193, 124);
+            listBox4_5.TabIndex = 33;
             // 
             // listBox5_11
             // 
-            this.listBox5_11.FormattingEnabled = true;
-            this.listBox5_11.ItemHeight = 20;
-            this.listBox5_11.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox5_11.Location = new System.Drawing.Point(1993, 649);
-            this.listBox5_11.Name = "listBox5_11";
-            this.listBox5_11.Size = new System.Drawing.Size(193, 144);
-            this.listBox5_11.TabIndex = 28;
+            listBox5_11.FormattingEnabled = true;
+            listBox5_11.ItemHeight = 20;
+            listBox5_11.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox5_11.Location = new Point(1993, 593);
+            listBox5_11.Name = "listBox5_11";
+            listBox5_11.Size = new Size(193, 124);
+            listBox5_11.TabIndex = 28;
             // 
             // listBox4_11
             // 
-            this.listBox4_11.FormattingEnabled = true;
-            this.listBox4_11.ItemHeight = 20;
-            this.listBox4_11.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox4_11.Location = new System.Drawing.Point(1993, 495);
-            this.listBox4_11.Name = "listBox4_11";
-            this.listBox4_11.Size = new System.Drawing.Size(193, 144);
-            this.listBox4_11.TabIndex = 27;
+            listBox4_11.FormattingEnabled = true;
+            listBox4_11.ItemHeight = 20;
+            listBox4_11.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox4_11.Location = new Point(1993, 453);
+            listBox4_11.Name = "listBox4_11";
+            listBox4_11.Size = new Size(193, 124);
+            listBox4_11.TabIndex = 27;
             // 
             // listBox3_11
             // 
-            this.listBox3_11.FormattingEnabled = true;
-            this.listBox3_11.ItemHeight = 20;
-            this.listBox3_11.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox3_11.Location = new System.Drawing.Point(1993, 341);
-            this.listBox3_11.Name = "listBox3_11";
-            this.listBox3_11.Size = new System.Drawing.Size(193, 144);
-            this.listBox3_11.TabIndex = 30;
+            listBox3_11.FormattingEnabled = true;
+            listBox3_11.ItemHeight = 20;
+            listBox3_11.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox3_11.Location = new Point(1993, 313);
+            listBox3_11.Name = "listBox3_11";
+            listBox3_11.Size = new Size(193, 124);
+            listBox3_11.TabIndex = 30;
             // 
             // listBox1_11
             // 
-            this.listBox1_11.FormattingEnabled = true;
-            this.listBox1_11.ItemHeight = 20;
-            this.listBox1_11.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox1_11.Location = new System.Drawing.Point(1993, 33);
-            this.listBox1_11.Name = "listBox1_11";
-            this.listBox1_11.Size = new System.Drawing.Size(193, 144);
-            this.listBox1_11.TabIndex = 32;
+            listBox1_11.FormattingEnabled = true;
+            listBox1_11.ItemHeight = 20;
+            listBox1_11.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox1_11.Location = new Point(1993, 33);
+            listBox1_11.Name = "listBox1_11";
+            listBox1_11.Size = new Size(193, 124);
+            listBox1_11.TabIndex = 32;
             // 
             // listBox2_11
             // 
-            this.listBox2_11.FormattingEnabled = true;
-            this.listBox2_11.ItemHeight = 20;
-            this.listBox2_11.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox2_11.Location = new System.Drawing.Point(1993, 187);
-            this.listBox2_11.Name = "listBox2_11";
-            this.listBox2_11.Size = new System.Drawing.Size(193, 144);
-            this.listBox2_11.TabIndex = 36;
+            listBox2_11.FormattingEnabled = true;
+            listBox2_11.ItemHeight = 20;
+            listBox2_11.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox2_11.Location = new Point(1993, 173);
+            listBox2_11.Name = "listBox2_11";
+            listBox2_11.Size = new Size(193, 124);
+            listBox2_11.TabIndex = 36;
             // 
             // listBox1_10
             // 
-            this.listBox1_10.FormattingEnabled = true;
-            this.listBox1_10.ItemHeight = 20;
-            this.listBox1_10.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox1_10.Location = new System.Drawing.Point(1794, 33);
-            this.listBox1_10.Name = "listBox1_10";
-            this.listBox1_10.Size = new System.Drawing.Size(193, 144);
-            this.listBox1_10.TabIndex = 31;
+            listBox1_10.FormattingEnabled = true;
+            listBox1_10.ItemHeight = 20;
+            listBox1_10.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox1_10.Location = new Point(1794, 33);
+            listBox1_10.Name = "listBox1_10";
+            listBox1_10.Size = new Size(193, 124);
+            listBox1_10.TabIndex = 31;
             // 
             // listBox2_10
             // 
-            this.listBox2_10.FormattingEnabled = true;
-            this.listBox2_10.ItemHeight = 20;
-            this.listBox2_10.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.listBox2_10.Location = new System.Drawing.Point(1794, 187);
-            this.listBox2_10.Name = "listBox2_10";
-            this.listBox2_10.Size = new System.Drawing.Size(193, 144);
-            this.listBox2_10.TabIndex = 29;
+            listBox2_10.FormattingEnabled = true;
+            listBox2_10.ItemHeight = 20;
+            listBox2_10.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            listBox2_10.Location = new Point(1794, 173);
+            listBox2_10.Name = "listBox2_10";
+            listBox2_10.Size = new Size(193, 124);
+            listBox2_10.TabIndex = 29;
             // 
             // labelMonday
             // 
-            this.labelMonday.AutoSize = true;
-            this.labelMonday.Location = new System.Drawing.Point(29, 106);
-            this.labelMonday.Name = "labelMonday";
-            this.labelMonday.Size = new System.Drawing.Size(103, 20);
-            this.labelMonday.TabIndex = 1;
-            this.labelMonday.Text = "Понедельник";
+            labelMonday.AutoSize = true;
+            labelMonday.Location = new Point(29, 170);
+            labelMonday.Name = "labelMonday";
+            labelMonday.Size = new Size(103, 20);
+            labelMonday.TabIndex = 1;
+            labelMonday.Text = "Понедельник";
             // 
             // labelTuesday
             // 
-            this.labelTuesday.AutoSize = true;
-            this.labelTuesday.Location = new System.Drawing.Point(65, 264);
-            this.labelTuesday.Name = "labelTuesday";
-            this.labelTuesday.Size = new System.Drawing.Size(67, 20);
-            this.labelTuesday.TabIndex = 2;
-            this.labelTuesday.Text = "Вторник";
+            labelTuesday.AutoSize = true;
+            labelTuesday.Location = new Point(65, 313);
+            labelTuesday.Name = "labelTuesday";
+            labelTuesday.Size = new Size(67, 20);
+            labelTuesday.TabIndex = 2;
+            labelTuesday.Text = "Вторник";
             // 
             // labelWednesday
             // 
-            this.labelWednesday.AutoSize = true;
-            this.labelWednesday.Location = new System.Drawing.Point(81, 418);
-            this.labelWednesday.Name = "labelWednesday";
-            this.labelWednesday.Size = new System.Drawing.Size(51, 20);
-            this.labelWednesday.TabIndex = 3;
-            this.labelWednesday.Text = "Среда";
+            labelWednesday.AutoSize = true;
+            labelWednesday.Location = new Point(81, 454);
+            labelWednesday.Name = "labelWednesday";
+            labelWednesday.Size = new Size(51, 20);
+            labelWednesday.TabIndex = 3;
+            labelWednesday.Text = "Среда";
             // 
             // labelThursday
             // 
-            this.labelThursday.AutoSize = true;
-            this.labelThursday.Location = new System.Drawing.Point(68, 570);
-            this.labelThursday.Name = "labelThursday";
-            this.labelThursday.Size = new System.Drawing.Size(64, 20);
-            this.labelThursday.TabIndex = 4;
-            this.labelThursday.Text = "Четверг";
+            labelThursday.AutoSize = true;
+            labelThursday.Location = new Point(68, 590);
+            labelThursday.Name = "labelThursday";
+            labelThursday.Size = new Size(64, 20);
+            labelThursday.TabIndex = 4;
+            labelThursday.Text = "Четверг";
             // 
             // labelFriday
             // 
-            this.labelFriday.AutoSize = true;
-            this.labelFriday.Location = new System.Drawing.Point(63, 729);
-            this.labelFriday.Name = "labelFriday";
-            this.labelFriday.Size = new System.Drawing.Size(69, 20);
-            this.labelFriday.TabIndex = 5;
-            this.labelFriday.Text = "Пятница";
+            labelFriday.AutoSize = true;
+            labelFriday.Location = new Point(63, 735);
+            labelFriday.Name = "labelFriday";
+            labelFriday.Size = new Size(69, 20);
+            labelFriday.TabIndex = 5;
+            labelFriday.Text = "Пятница";
             // 
             // buttonShowEditingLessonsForm
             // 
-            this.buttonShowEditingLessonsForm.Location = new System.Drawing.Point(1059, 260);
-            this.buttonShowEditingLessonsForm.Name = "buttonShowEditingLessonsForm";
-            this.buttonShowEditingLessonsForm.Size = new System.Drawing.Size(102, 61);
-            this.buttonShowEditingLessonsForm.TabIndex = 6;
-            this.buttonShowEditingLessonsForm.Text = "Список уроков";
-            this.buttonShowEditingLessonsForm.UseVisualStyleBackColor = true;
-            this.buttonShowEditingLessonsForm.Click += new System.EventHandler(this.buttonShowEditingLessonsForm_Click);
-            // 
-            // buttonSaveClasses
-            // 
-            this.buttonSaveClasses.Location = new System.Drawing.Point(1059, 395);
-            this.buttonSaveClasses.Name = "buttonSaveClasses";
-            this.buttonSaveClasses.Size = new System.Drawing.Size(102, 76);
-            this.buttonSaveClasses.TabIndex = 7;
-            this.buttonSaveClasses.Text = "Сохранить расписание";
-            this.buttonSaveClasses.UseVisualStyleBackColor = true;
-            this.buttonSaveClasses.Click += new System.EventHandler(this.buttonSaveClasses_Click);
+            buttonShowEditingLessonsForm.Location = new Point(1059, 260);
+            buttonShowEditingLessonsForm.Name = "buttonShowEditingLessonsForm";
+            buttonShowEditingLessonsForm.Size = new Size(102, 61);
+            buttonShowEditingLessonsForm.TabIndex = 6;
+            buttonShowEditingLessonsForm.Text = "Список уроков";
+            buttonShowEditingLessonsForm.UseVisualStyleBackColor = true;
+            buttonShowEditingLessonsForm.Click += buttonShowEditingLessonsForm_Click;
             // 
             // buttonClearSchedule
             // 
-            this.buttonClearSchedule.Location = new System.Drawing.Point(1059, 540);
-            this.buttonClearSchedule.Name = "buttonClearSchedule";
-            this.buttonClearSchedule.Size = new System.Drawing.Size(102, 70);
-            this.buttonClearSchedule.TabIndex = 8;
-            this.buttonClearSchedule.Text = "Стереть расписание";
-            this.buttonClearSchedule.UseVisualStyleBackColor = true;
-            this.buttonClearSchedule.Click += new System.EventHandler(this.buttonClearSchedule_Click);
+            buttonClearSchedule.Location = new Point(1059, 540);
+            buttonClearSchedule.Name = "buttonClearSchedule";
+            buttonClearSchedule.Size = new Size(102, 70);
+            buttonClearSchedule.TabIndex = 8;
+            buttonClearSchedule.Text = "Стереть расписание";
+            buttonClearSchedule.UseVisualStyleBackColor = true;
+            buttonClearSchedule.Click += buttonClearSchedule_Click;
+            // 
+            // labelWelcome
+            // 
+            labelWelcome.AutoSize = true;
+            labelWelcome.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            labelWelcome.Location = new Point(356, 25);
+            labelWelcome.Name = "labelWelcome";
+            labelWelcome.Size = new Size(180, 32);
+            labelWelcome.TabIndex = 9;
+            labelWelcome.Text = "Вы вошли как: ";
             // 
             // MainPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1182, 853);
-            this.Controls.Add(this.buttonClearSchedule);
-            this.Controls.Add(this.buttonSaveClasses);
-            this.Controls.Add(this.buttonShowEditingLessonsForm);
-            this.Controls.Add(this.labelFriday);
-            this.Controls.Add(this.labelThursday);
-            this.Controls.Add(this.labelWednesday);
-            this.Controls.Add(this.labelTuesday);
-            this.Controls.Add(this.labelMonday);
-            this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.Name = "MainPage";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Расписание";
-            this.panel1.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1182, 853);
+            Controls.Add(labelWelcome);
+            Controls.Add(buttonClearSchedule);
+            Controls.Add(buttonShowEditingLessonsForm);
+            Controls.Add(labelFriday);
+            Controls.Add(labelThursday);
+            Controls.Add(labelWednesday);
+            Controls.Add(labelTuesday);
+            Controls.Add(labelMonday);
+            Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            Name = "MainPage";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Расписание";
+            panel1.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -1521,7 +1057,7 @@
         private Label labelThursday;
         private Label labelFriday;
         private Button buttonShowEditingLessonsForm;
-        private Button buttonSaveClasses;
         private Button buttonClearSchedule;
+        private Label labelWelcome;
     }
 }

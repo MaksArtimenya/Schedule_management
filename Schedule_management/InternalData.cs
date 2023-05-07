@@ -10,6 +10,8 @@ namespace Schedule_management
     internal static class InternalData
     {
         private static string connectionString = "Data Source=(local);Initial Catalog=ScheduleDB;Integrated Security=true";
+        public static User User { get; set; } = new User(string.Empty, -1);
+
         public static readonly int countOfClasses = 11;
         public static readonly int countOfLessons = 8;
 
@@ -29,6 +31,55 @@ namespace Schedule_management
             GetLessonsFromDB();
             GetTeachersFromDB();
             GetScheduleListFromDB();
+        }
+
+        public static void GetUserFromDB(string login, string password)
+        {
+            try
+            {
+                string sqlExpression = $"SELECT Name, Type_Of_User FROM Users WHERE Login = '{login}' AND Password = '{password}'";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    string userName = string.Empty;
+                    int typeOfUser = -1;
+                    while (reader.Read())
+                    {
+                        userName = reader.GetString(0);
+                        typeOfUser = reader.GetInt32(1);
+                    }
+
+                    User = new User(userName, typeOfUser);
+
+                    reader.Close();
+                    connection.Close();
+                }
+            }
+            catch (SqlException ex)
+            {
+                string error = string.Empty;
+
+                foreach (SqlError err in ex.Errors)
+                {
+                    error += "Message: "
+                    + err.Message
+                    + "\n"
+                    + "Level: "
+                    + err.Class
+                    + "\n"
+                    + "Procedure: "
+                    + err.Procedure
+                    + "\n"
+                    + "Line Number: "
+                    + err.LineNumber
+                    + "\n";
+                    MessageBox.Show(error);
+                }
+            }
         }
 
         public static void GetLessonsFromDB()

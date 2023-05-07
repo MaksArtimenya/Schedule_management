@@ -28,5 +28,12 @@
       <FileName>Teacher.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Schedule_management.Schedule">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAkAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Schedule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
