@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +12,8 @@ namespace Schedule_management
     internal static class InternalData
     {
         private static string connectionString = "Data Source=(local);Initial Catalog=ScheduleDB;Integrated Security=true";
+        public static TcpClient? Client { get; private set; }
+        public static NetworkStream? NetworkStream { get; private set; }
         public static User User { get; private set; } = new User(string.Empty, -1);
 
         public static readonly int countOfClasses = 11;
@@ -33,53 +37,35 @@ namespace Schedule_management
             GetScheduleListFromDB();
         }
 
-        public static void GetUserFromDB(string login, string password)
+        public static void GetUser(string login, string password, string ipAddress, string port)
         {
             User = new User(string.Empty, -1);
             try
             {
-                string sqlExpression = $"SELECT Name, Type_Of_User FROM Users WHERE Login = '{login}' AND Password = '{password}'";
+                Client = new TcpClient(ipAddress, int.Parse(port));
+                NetworkStream = Client.GetStream();
 
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                string message = $"Connect\nSELECT Name, Type_Of_User FROM Users WHERE Login = '{login}' AND Password = '{password}'";
+
+                byte[] data = Encoding.Unicode.GetBytes(message);
+                NetworkStream.Write(data, 0, data.Length);
+                data = new byte[256];
+                StringBuilder response = new StringBuilder();
+                int bytes = 0;
+                do
                 {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand(sqlExpression, connection);
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    string userName = string.Empty;
-                    int typeOfUser = -1;
-                    while (reader.Read())
-                    {
-                        userName = reader.GetString(0);
-                        typeOfUser = reader.GetInt32(1);
-                    }
-
-                    User = new User(userName, typeOfUser);
-
-                    reader.Close();
-                    connection.Close();
+                    bytes = NetworkStream.Read(data, 0, data.Length);
+                    response.Append(Encoding.Unicode.GetString(data, 0, bytes));
                 }
+                while (NetworkStream.DataAvailable);
+
+                message = response.ToString();
+
+                User = User.GetUser(message);
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
-                string error = string.Empty;
-
-                foreach (SqlError err in ex.Errors)
-                {
-                    error += "Message: "
-                    + err.Message
-                    + "\n"
-                    + "Level: "
-                    + err.Class
-                    + "\n"
-                    + "Procedure: "
-                    + err.Procedure
-                    + "\n"
-                    + "Line Number: "
-                    + err.LineNumber
-                    + "\n";
-                    MessageBox.Show(error);
-                }
+                MessageBox.Show(ex.Message);
             }
         }
 

@@ -18,6 +18,12 @@ namespace Schedule_management
             TypeOfUser = typeOfUser;
         }
 
+        public static User GetUser(string userString)
+        {
+            string[] strings = userString.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+            return new User(strings[0], int.Parse(strings[1]));
+        }
+
         public override bool Equals(object? obj)
         {
             if (obj is not User)

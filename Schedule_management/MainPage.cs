@@ -128,10 +128,10 @@ namespace Schedule_management
 
         private void comboBoxTeachers_SelectedIndexChanged(object sender, EventArgs e)
         {
+            isAutomaticallyChangeSelectedIndexes = true;
             UpdateAllListBoxes();
             if (comboBoxTeachers.SelectedIndex != 0 && comboBoxTeachers.SelectedIndex != -1)
             {
-                isAutomaticallyChangeSelectedIndexes = true;
                 List<Lesson> lessons = InternalData.GetLessonsByTeacher((Teacher)comboBoxTeachers.SelectedItem);
                 for (int i = 0; i < listBoxes.Count; i++)
                 {
@@ -146,8 +146,8 @@ namespace Schedule_management
                         }
                     }
                 }
-                isAutomaticallyChangeSelectedIndexes = false;
             }
+            isAutomaticallyChangeSelectedIndexes = false;
         }
 
 
