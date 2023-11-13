@@ -27,6 +27,12 @@ namespace Schedule_management
             Id_Teacher = id_teacher;
         }
 
+        public static Lesson GetLesson(string lessonString)
+        {
+            string[] strings = lessonString.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+            return new Lesson(int.Parse(strings[0]), strings[1], int.Parse(strings[2]));
+        }
+
         public override string ToString()
         {
             if (Name != string.Empty)

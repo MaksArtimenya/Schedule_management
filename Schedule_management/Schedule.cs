@@ -23,5 +23,11 @@ namespace Schedule_management
             Number_Of_Lesson = number_Of_Lesson;
             Id_Lesson = id_Lesson;
         }
+
+        public static Schedule GetSchedule(string scheduleString)
+        {
+            string[] strings = scheduleString.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+            return new Schedule(int.Parse(strings[0]), int.Parse(strings[1]), int.Parse(strings[2]), int.Parse(strings[3]));
+        }
     }
 }

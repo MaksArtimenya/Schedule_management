@@ -34,7 +34,7 @@ namespace Schedule_management
             }*/
             try
             {
-                InternalData.GetUser(textBoxLogin.Text, textBoxPassword.Text, textBoxIpAddress.Text, textBoxPort.Text);
+                InternalData.GetUserFromServer(textBoxLogin.Text, textBoxPassword.Text, textBoxIpAddress.Text, textBoxPort.Text);
                 if (InternalData.User.Equals(new User(string.Empty, -1)))
                 {
                     MessageBox.Show("Пользователь не найден");

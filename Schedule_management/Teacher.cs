@@ -23,6 +23,11 @@ namespace Schedule_management
             Name = name;
         }
 
+        public static Teacher GetTeacher(string teacherString)
+        {
+            string[] strings = teacherString.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+            return new Teacher(int.Parse(strings[0]), strings[1]);
+        }
 
         public override string ToString()
         {

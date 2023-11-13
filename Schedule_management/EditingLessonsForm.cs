@@ -53,7 +53,7 @@ namespace Schedule_management
             textBoxNameOfLesson.Clear();
             comboBoxTeacherOfLesson.SelectedIndex = -1;
             listBoxShowLessons.SelectedItems.Clear();
-            InternalData.GetLessonsFromDB();
+            InternalData.GetLessonsFromServer();
             listBoxShowLessons.Items.Clear();
             listBoxShowLessons.Items.AddRange(InternalData.Lessons.ToArray());
             groupBoxNewLesson.Text = "Новый урок";

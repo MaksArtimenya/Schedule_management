@@ -32,12 +32,12 @@ namespace Schedule_management
 
         public static void Initialization()
         {
-            GetLessonsFromDB();
-            GetTeachersFromDB();
-            GetScheduleListFromDB();
+            GetLessonsFromServer();
+            GetTeachersFromServer();
+            GetScheduleListFromServer();
         }
 
-        public static void GetUser(string login, string password, string ipAddress, string port)
+        public static void GetUserFromServer(string login, string password, string ipAddress, string port)
         {
             User = new User(string.Empty, -1);
             try
@@ -69,48 +69,44 @@ namespace Schedule_management
             }
         }
 
-        public static void GetLessonsFromDB()
+        public static void GetLessonsFromServer()
         {
             try
             {
-                string sqlExpression = "SELECT * FROM Lessons";
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                if (NetworkStream is not null)
                 {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand(sqlExpression, connection);
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    Lessons.Clear();
-                    while (reader.Read())
+                    string message = "GetLessons\nSELECT * FROM Lessons";
+                    byte[] data = Encoding.Unicode.GetBytes(message);
+                    NetworkStream.Write(data, 0, data.Length);
+                    data = new byte[256];
+                    StringBuilder response = new StringBuilder();
+                    int bytes = 0;
+                    do
                     {
-                        Lessons.Add(new Lesson(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2)));
+                        bytes = NetworkStream.Read(data, 0, data.Length);
+                        response.Append(Encoding.Unicode.GetString(data, 0, bytes));
                     }
+                    while (NetworkStream.DataAvailable);
 
-                    reader.Close();
-                    connection.Close();
+                    message = response.ToString();
+                    string[] strings = message.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+                    int i = 0;
+                    while (i < strings.Length)
+                    {
+                        string lesssonString = string.Empty;
+                        for (int j = 0; j < 3; j++)
+                        {
+                            lesssonString += strings[i + j] + "\n";
+                        }
+
+                        Lessons.Add(Lesson.GetLesson(lesssonString));
+                        i += 3;
+                    }
                 }
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
-                string error = string.Empty;
-
-                foreach (SqlError err in ex.Errors)
-                {
-                    error += "Message: "
-                    + err.Message
-                    + "\n"
-                    + "Level: "
-                    + err.Class
-                    + "\n"
-                    + "Procedure: "
-                    + err.Procedure
-                    + "\n"
-                    + "Line Number: "
-                    + err.LineNumber
-                    + "\n";
-                    MessageBox.Show(error);
-                }
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -129,7 +125,7 @@ namespace Schedule_management
                     connection.Close();
                 }
 
-                GetLessonsFromDB();
+                GetLessonsFromServer();
             }
             catch (SqlException ex)
             {
@@ -168,7 +164,7 @@ namespace Schedule_management
                     connection.Close();
                 }
 
-                GetLessonsFromDB();
+                GetLessonsFromServer();
             }
             catch (SqlException ex)
             {
@@ -208,7 +204,7 @@ namespace Schedule_management
                     connection.Close();
                 }
 
-                GetLessonsFromDB();
+                GetLessonsFromServer();
             }
             catch (SqlException ex)
             {
@@ -233,93 +229,85 @@ namespace Schedule_management
             }
         }
 
-        public static void GetTeachersFromDB()
+        public static void GetTeachersFromServer()
         {
             try
             {
-                string sqlExpression = "SELECT * FROM Teachers";
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                if (NetworkStream is not null)
                 {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand(sqlExpression, connection);
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    Teachers.Clear();
-                    while (reader.Read())
+                    string message = "GetTeachers\nSELECT * FROM Teachers";
+                    byte[] data = Encoding.Unicode.GetBytes(message);
+                    NetworkStream.Write(data, 0, data.Length);
+                    data = new byte[256];
+                    StringBuilder response = new StringBuilder();
+                    int bytes = 0;
+                    do
                     {
-                        Teachers.Add(new Teacher(reader.GetInt32(0), reader.GetString(1)));
+                        bytes = NetworkStream.Read(data, 0, data.Length);
+                        response.Append(Encoding.Unicode.GetString(data, 0, bytes));
                     }
+                    while (NetworkStream.DataAvailable);
 
-                    reader.Close();
-                    connection.Close();
+                    message = response.ToString();
+                    string[] strings = message.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+                    int i = 0;
+                    while (i < strings.Length)
+                    {
+                        string teachersString = string.Empty;
+                        for (int j = 0; j < 2; j++)
+                        {
+                            teachersString += strings[i + j] + "\n";
+                        }
+
+                        Teachers.Add(Teacher.GetTeacher(teachersString));
+                        i += 2;
+                    }
                 }
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
-                string error = string.Empty;
-
-                foreach (SqlError err in ex.Errors)
-                {
-                    error += "Message: "
-                    + err.Message
-                    + "\n"
-                    + "Level: "
-                    + err.Class
-                    + "\n"
-                    + "Procedure: "
-                    + err.Procedure
-                    + "\n"
-                    + "Line Number: "
-                    + err.LineNumber
-                    + "\n";
-                    MessageBox.Show(error);
-                }
+                MessageBox.Show(ex.Message);
             }
         }
 
-        public static void GetScheduleListFromDB()
+        public static void GetScheduleListFromServer()
         {
             try
             {
-                string sqlExpression = "SELECT * FROM Schedule";
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                if (NetworkStream is not null)
                 {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand(sqlExpression, connection);
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    ScheduleList.Clear();
-                    while (reader.Read())
+                    string message = "GetSchedule\nSELECT * FROM Schedule";
+                    byte[] data = Encoding.Unicode.GetBytes(message);
+                    NetworkStream.Write(data, 0, data.Length);
+                    data = new byte[1024];
+                    StringBuilder response = new StringBuilder();
+                    int bytes = 0;
+                    do
                     {
-                        ScheduleList.Add(new Schedule(reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2), reader.GetInt32(3)));
+                        bytes = NetworkStream.Read(data, 0, data.Length);
+                        response.Append(Encoding.Unicode.GetString(data, 0, bytes));
                     }
+                    while (NetworkStream.DataAvailable);
 
-                    reader.Close();
-                    connection.Close();
+                    message = response.ToString();
+                    string[] strings = message.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+                    int i = 0;
+                    while (i < strings.Length)
+                    {
+                        string scheduleString = string.Empty;
+                        for (int j = 0; j < 4; j++)
+                        {
+                            scheduleString += strings[i + j] + "\n";
+                        }
+
+                        ScheduleList.Add(Schedule.GetSchedule(scheduleString));
+                        i += 4;
+                    }
                 }
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
-                string error = string.Empty;
-
-                foreach (SqlError err in ex.Errors)
-                {
-                    error += "Message: "
-                    + err.Message
-                    + "\n"
-                    + "Level: "
-                    + err.Class
-                    + "\n"
-                    + "Procedure: "
-                    + err.Procedure
-                    + "\n"
-                    + "Line Number: "
-                    + err.LineNumber
-                    + "\n";
-                    MessageBox.Show(error);
-                }
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -338,7 +326,7 @@ namespace Schedule_management
                     connection.Close();
                 }
 
-                GetScheduleListFromDB();
+                GetScheduleListFromServer();
             }
             catch (SqlException ex)
             {
@@ -379,7 +367,7 @@ namespace Schedule_management
                     connection.Close();
                 }
 
-                GetScheduleListFromDB();
+                GetScheduleListFromServer();
             }
             catch (SqlException ex)
             {
@@ -421,7 +409,7 @@ namespace Schedule_management
                     connection.Close();
                 }
 
-                GetScheduleListFromDB();
+                GetScheduleListFromServer();
             }
             catch (SqlException ex)
             {
