@@ -270,6 +270,9 @@ namespace Schedule_management
             UpdateAllListBoxes();
         }
 
-        
+        private void MainPage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            InternalData.DisconnectFromServer();
+        }
     }
 }

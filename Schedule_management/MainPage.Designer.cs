@@ -1009,6 +1009,7 @@
             Name = "MainPage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Расписание";
+            FormClosing += MainPage_FormClosing;
             panel1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
