@@ -63,6 +63,15 @@ namespace Schedule_management
 
                 User = User.GetUser(message);
             }
+            catch (IndexOutOfRangeException)
+            {
+                MessageBox.Show("Пользователь не найден");
+                if (Client is not null && NetworkStream is not null)
+                {
+                    Client.Close();
+                    NetworkStream.Close();
+                }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);

@@ -20,26 +20,10 @@ namespace Schedule_management
 
         private void buttonSignIn_Click(object sender, EventArgs e)
         {
-            /*InternalData.GetUserFromDB(textBoxLogin.Text, textBoxPassword.Text);
-            if (InternalData.User.Equals(new User(string.Empty, -1)))
-            {
-                MessageBox.Show("Неверный логин или пароль");
-            }
-            else
-            {
-                InternalData.Initialization();
-                new MainPage().ShowDialog();
-                textBoxLogin.Text = string.Empty;
-                textBoxPassword.Text = string.Empty;
-            }*/
             try
             {
                 InternalData.GetUserFromServer(textBoxLogin.Text, textBoxPassword.Text, textBoxIpAddress.Text, textBoxPort.Text);
-                if (InternalData.User.Equals(new User(string.Empty, -1)))
-                {
-                    MessageBox.Show("Пользователь не найден");
-                }
-                else
+                if (!InternalData.User.Equals(new User(string.Empty, -1)))
                 {
                     InternalData.Initialization();
                     new MainPage().ShowDialog();
