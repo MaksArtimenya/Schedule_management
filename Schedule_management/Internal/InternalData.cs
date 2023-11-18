@@ -6,8 +6,9 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using Schedule_management.Objects;
 
-namespace Schedule_management
+namespace Schedule_management.Internal
 {
     internal static class InternalData
     {
@@ -555,7 +556,7 @@ namespace Schedule_management
 
             bool CheckingIdLesson(int id)
             {
-                for (int i = 0; i < lessons.Count;i++)
+                for (int i = 0; i < lessons.Count; i++)
                 {
                     if (lessons[i].Id == id)
                     {
@@ -568,7 +569,7 @@ namespace Schedule_management
 
             for (int i = 0; i < ScheduleList.Count; i++)
             {
-                if (ScheduleList[i].Number_Of_Day == (IndexOfSelectedDay / countOfClasses) + 1 &&
+                if (ScheduleList[i].Number_Of_Day == IndexOfSelectedDay / countOfClasses + 1 &&
                     ScheduleList[i].Number_Of_Lesson == IndexOfSelectedLesson + 1 &&
                     CheckingIdLesson(ScheduleList[i].Id_Lesson))
                 {

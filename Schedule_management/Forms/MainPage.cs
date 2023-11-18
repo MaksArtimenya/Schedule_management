@@ -1,3 +1,6 @@
+using Schedule_management.Internal;
+using Schedule_management.Objects;
+
 namespace Schedule_management
 {
     public partial class MainPage : Form
