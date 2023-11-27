@@ -290,7 +290,7 @@ namespace Schedule_management
                     InternalData.ReconnectToServer();
                 }
 
-                await Task.Delay(1000);
+                await Task.Delay(3000);
             }
         }
 
@@ -299,10 +299,12 @@ namespace Schedule_management
             if (InternalData.IsConnected)
             {
                 labelError.Visible = false;
+                progressBarReconnect.Visible = false;
             }
             else
             {
                 labelError.Visible = true;
+                progressBarReconnect.Visible = true;
             }
         }
     }

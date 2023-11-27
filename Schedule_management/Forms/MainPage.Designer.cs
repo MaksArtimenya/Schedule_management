@@ -110,6 +110,7 @@
             comboBoxTeachers = new ComboBox();
             labelError = new Label();
             timerForErrorLabel = new System.Windows.Forms.Timer(components);
+            progressBarReconnect = new ProgressBar();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -998,7 +999,7 @@
             // 
             labelError.AutoSize = true;
             labelError.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelError.Location = new Point(1062, 277);
+            labelError.Location = new Point(1062, 246);
             labelError.Name = "labelError";
             labelError.Size = new Size(240, 56);
             labelError.TabIndex = 11;
@@ -1010,11 +1011,22 @@
             timerForErrorLabel.Enabled = true;
             timerForErrorLabel.Tick += timerForErrorLabel_Tick;
             // 
+            // progressBarReconnect
+            // 
+            progressBarReconnect.Location = new Point(1062, 305);
+            progressBarReconnect.Name = "progressBarReconnect";
+            progressBarReconnect.Size = new Size(240, 29);
+            progressBarReconnect.Step = 30;
+            progressBarReconnect.Style = ProgressBarStyle.Marquee;
+            progressBarReconnect.TabIndex = 12;
+            progressBarReconnect.Visible = false;
+            // 
             // MainPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1332, 853);
+            Controls.Add(progressBarReconnect);
             Controls.Add(labelError);
             Controls.Add(groupBox1);
             Controls.Add(labelWelcome);
@@ -1122,5 +1134,6 @@
         private Label label1;
         private Label labelError;
         private System.Windows.Forms.Timer timerForErrorLabel;
+        private ProgressBar progressBarReconnect;
     }
 }

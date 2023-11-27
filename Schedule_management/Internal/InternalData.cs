@@ -80,7 +80,7 @@ namespace Schedule_management.Internal
         {
             try
             {
-                if (NetworkStream is not null)
+                if (NetworkStream is not null && IsConnected)
                 {
                     string message = "GetLessons\nSELECT * FROM Lessons";
                     byte[] data = Encoding.Unicode.GetBytes(message);
@@ -111,6 +111,10 @@ namespace Schedule_management.Internal
                         i += 3;
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Нет соединения с сервером");
+                }
             }
             catch (Exception ex)
             {
@@ -122,7 +126,7 @@ namespace Schedule_management.Internal
         {
             try
             {
-                if (NetworkStream is not null)
+                if (NetworkStream is not null && IsConnected)
                 {
                     string message = $"SqlExpression\nINSERT INTO Lessons (Name, ID_Teacher) VALUES " +
                         $"('{lesson.Name}', {lesson.Id_Teacher})";
@@ -149,6 +153,10 @@ namespace Schedule_management.Internal
                         MessageBox.Show($"Failed to add lesson: {message}");
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Нет соединения с сервером");
+                }
             }
             catch (Exception ex)
             {
@@ -160,7 +168,7 @@ namespace Schedule_management.Internal
         {
             try
             {
-                if (NetworkStream is not null)
+                if (NetworkStream is not null && IsConnected)
                 {
                     string message = $"SqlExpression\nDELETE FROM Lessons WHERE ID_Lesson = {lesson.Id}";
                     byte[] data = Encoding.Unicode.GetBytes(message);
@@ -186,6 +194,10 @@ namespace Schedule_management.Internal
                         MessageBox.Show($"Failed to remove lesson: {message}");
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Нет соединения с сервером");
+                }
             }
             catch (Exception ex)
             {
@@ -197,7 +209,7 @@ namespace Schedule_management.Internal
         {
             try
             {
-                if (NetworkStream is not null)
+                if (NetworkStream is not null && IsConnected)
                 {
                     string message = $"SqlExpression\nUPDATE Lessons SET Name = '{newLesson.Name}', ID_Teacher = {newLesson.Id_Teacher} " +
                         $"WHERE ID_Lesson = {oldLesson.Id}";
@@ -224,6 +236,10 @@ namespace Schedule_management.Internal
                         MessageBox.Show($"Failed to edit lesson: {message}");
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Нет соединения с сервером");
+                }
             }
             catch (Exception ex)
             {
@@ -235,7 +251,7 @@ namespace Schedule_management.Internal
         {
             try
             {
-                if (NetworkStream is not null)
+                if (NetworkStream is not null && IsConnected)
                 {
                     string message = "GetTeachers\nSELECT * FROM Teachers";
                     byte[] data = Encoding.Unicode.GetBytes(message);
@@ -266,6 +282,10 @@ namespace Schedule_management.Internal
                         i += 2;
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Нет соединения с сервером");
+                }
             }
             catch (Exception ex)
             {
@@ -277,7 +297,7 @@ namespace Schedule_management.Internal
         {
             try
             {
-                if (NetworkStream is not null)
+                if (NetworkStream is not null && IsConnected)
                 {
                     string message = "GetSchedule\nSELECT * FROM Schedule";
                     byte[] data = Encoding.Unicode.GetBytes(message);
@@ -308,6 +328,10 @@ namespace Schedule_management.Internal
                         i += 4;
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Нет соединения с сервером");
+                }
             }
             catch (Exception ex)
             {
@@ -319,7 +343,7 @@ namespace Schedule_management.Internal
         {
             try
             {
-                if (NetworkStream is not null)
+                if (NetworkStream is not null && IsConnected)
                 {
                     string message = $"SqlExpression\nINSERT INTO Schedule (Number_Of_Class, Number_Of_Day, Number_Of_lesson, ID_Lesson) VALUES " +
                         $"({schedule.Number_Of_Class}, {schedule.Number_Of_Day}, {schedule.Number_Of_Lesson}, {schedule.Id_Lesson})";
@@ -346,6 +370,10 @@ namespace Schedule_management.Internal
                         MessageBox.Show($"Failed to add schedule: {message}");
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Нет соединения с сервером");
+                }
             }
             catch (Exception ex)
             {
@@ -357,7 +385,7 @@ namespace Schedule_management.Internal
         {
             try
             {
-                if (NetworkStream is not null)
+                if (NetworkStream is not null && IsConnected)
                 {
                     string message = $"SqlExpression\nDELETE FROM Schedule " +
                         $"WHERE Number_Of_Class = {schedule.Number_Of_Class} AND Number_Of_Day = {schedule.Number_Of_Day} AND " +
@@ -385,6 +413,10 @@ namespace Schedule_management.Internal
                         MessageBox.Show($"Failed to remove schedule: {message}");
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Нет соединения с сервером");
+                }
             }
             catch (Exception ex)
             {
@@ -396,7 +428,7 @@ namespace Schedule_management.Internal
         {
             try
             {
-                if (NetworkStream is not null)
+                if (NetworkStream is not null && IsConnected)
                 {
                     string message = $"SqlExpression\nUPDATE Schedule SET Number_Of_Class = {newSchedule.Number_Of_Class}, Number_Of_Day = {newSchedule.Number_Of_Day}, " +
                         $"Number_Of_Lesson = {newSchedule.Number_Of_Lesson}, ID_Lesson = {newSchedule.Id_Lesson} " +
@@ -425,6 +457,10 @@ namespace Schedule_management.Internal
                         MessageBox.Show($"Failed to edit schedule: {message}");
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Нет соединения с сервером");
+                }
             }
             catch (Exception ex)
             {
@@ -436,7 +472,7 @@ namespace Schedule_management.Internal
         {
             try
             {
-                if (NetworkStream is not null)
+                if (NetworkStream is not null && IsConnected)
                 {
                     string message = $"SqlExpression\nDELETE FROM Schedule";
                     byte[] data = Encoding.Unicode.GetBytes(message);
@@ -462,6 +498,10 @@ namespace Schedule_management.Internal
                         MessageBox.Show($"Failed to delete schedule: {message}");
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Нет соединения с сервером");
+                }
             }
             catch (Exception ex)
             {
@@ -473,7 +513,7 @@ namespace Schedule_management.Internal
         {
             try
             {
-                if (NetworkStream is not null)
+                if (NetworkStream is not null && IsConnected)
                 {
                     string message = $"SqlExpression\nDELETE FROM Lessons";
                     byte[] data = Encoding.Unicode.GetBytes(message);
@@ -499,6 +539,10 @@ namespace Schedule_management.Internal
                         MessageBox.Show($"Failed to delete lessons: {message}");
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Нет соединения с сервером");
+                }
             }
             catch (Exception ex)
             {
@@ -512,9 +556,12 @@ namespace Schedule_management.Internal
             {
                 if (NetworkStream is not null && Client is not null)
                 {
-                    string message = $"Disconnect";
-                    byte[] data = Encoding.Unicode.GetBytes(message);
-                    NetworkStream.Write(data, 0, data.Length);
+                    if (IsConnected)
+                    {
+                        string message = $"Disconnect";
+                        byte[] data = Encoding.Unicode.GetBytes(message);
+                        NetworkStream.Write(data, 0, data.Length);
+                    }
 
                     NetworkStream.Close();
                     Client.Close();
