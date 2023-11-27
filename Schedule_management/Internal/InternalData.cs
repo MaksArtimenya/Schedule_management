@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.IO;
-using System.Linq;
-using System.Net.Sockets;
+﻿using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
+using Microsoft.VisualBasic.Logging;
 using Schedule_management.Objects;
 
 namespace Schedule_management.Internal
 {
     internal static class InternalData
     {
-        //private static string connectionString = "Data Source=(local);Initial Catalog=ScheduleDB;Integrated Security=true";
+        public static readonly SignInForm signInForm = new SignInForm();
         public static TcpClient? Client { get; private set; }
         public static NetworkStream? NetworkStream { get; private set; }
         public static User User { get; private set; } = new User(string.Empty, -1);
 
         public static readonly int countOfClasses = 11;
         public static readonly int countOfLessons = 8;
+        public static bool IsConnected { get; private set; }
 
 
         public static List<Lesson> Lessons { get; set; } = new List<Lesson>();
@@ -50,7 +46,7 @@ namespace Schedule_management.Internal
 
                 byte[] data = Encoding.Unicode.GetBytes(message);
                 NetworkStream.Write(data, 0, data.Length);
-                data = new byte[256];
+                data = new byte[2048];
                 StringBuilder response = new StringBuilder();
                 int bytes = 0;
                 do
@@ -63,6 +59,7 @@ namespace Schedule_management.Internal
                 message = response.ToString();
 
                 User = User.GetUser(message);
+                IsConnected = true;
             }
             catch (IndexOutOfRangeException)
             {
@@ -88,7 +85,7 @@ namespace Schedule_management.Internal
                     string message = "GetLessons\nSELECT * FROM Lessons";
                     byte[] data = Encoding.Unicode.GetBytes(message);
                     NetworkStream.Write(data, 0, data.Length);
-                    data = new byte[256];
+                    data = new byte[2048];
                     StringBuilder response = new StringBuilder();
                     int bytes = 0;
                     do
@@ -131,7 +128,7 @@ namespace Schedule_management.Internal
                         $"('{lesson.Name}', {lesson.Id_Teacher})";
                     byte[] data = Encoding.Unicode.GetBytes(message);
                     NetworkStream.Write(data, 0, data.Length);
-                    data = new byte[256];
+                    data = new byte[2048];
                     StringBuilder response = new StringBuilder();
                     int bytes = 0;
                     do
@@ -168,7 +165,7 @@ namespace Schedule_management.Internal
                     string message = $"SqlExpression\nDELETE FROM Lessons WHERE ID_Lesson = {lesson.Id}";
                     byte[] data = Encoding.Unicode.GetBytes(message);
                     NetworkStream.Write(data, 0, data.Length);
-                    data = new byte[256];
+                    data = new byte[2048];
                     StringBuilder response = new StringBuilder();
                     int bytes = 0;
                     do
@@ -206,7 +203,7 @@ namespace Schedule_management.Internal
                         $"WHERE ID_Lesson = {oldLesson.Id}";
                     byte[] data = Encoding.Unicode.GetBytes(message);
                     NetworkStream.Write(data, 0, data.Length);
-                    data = new byte[256];
+                    data = new byte[2048];
                     StringBuilder response = new StringBuilder();
                     int bytes = 0;
                     do
@@ -243,7 +240,7 @@ namespace Schedule_management.Internal
                     string message = "GetTeachers\nSELECT * FROM Teachers";
                     byte[] data = Encoding.Unicode.GetBytes(message);
                     NetworkStream.Write(data, 0, data.Length);
-                    data = new byte[256];
+                    data = new byte[2048];
                     StringBuilder response = new StringBuilder();
                     int bytes = 0;
                     do
@@ -285,7 +282,7 @@ namespace Schedule_management.Internal
                     string message = "GetSchedule\nSELECT * FROM Schedule";
                     byte[] data = Encoding.Unicode.GetBytes(message);
                     NetworkStream.Write(data, 0, data.Length);
-                    data = new byte[1024];
+                    data = new byte[2048];
                     StringBuilder response = new StringBuilder();
                     int bytes = 0;
                     do
@@ -328,7 +325,7 @@ namespace Schedule_management.Internal
                         $"({schedule.Number_Of_Class}, {schedule.Number_Of_Day}, {schedule.Number_Of_Lesson}, {schedule.Id_Lesson})";
                     byte[] data = Encoding.Unicode.GetBytes(message);
                     NetworkStream.Write(data, 0, data.Length);
-                    data = new byte[256];
+                    data = new byte[2048];
                     StringBuilder response = new StringBuilder();
                     int bytes = 0;
                     do
@@ -367,7 +364,7 @@ namespace Schedule_management.Internal
                         $"Number_Of_Lesson = {schedule.Number_Of_Lesson} AND ID_Lesson = {schedule.Id_Lesson}";
                     byte[] data = Encoding.Unicode.GetBytes(message);
                     NetworkStream.Write(data, 0, data.Length);
-                    data = new byte[256];
+                    data = new byte[2048];
                     StringBuilder response = new StringBuilder();
                     int bytes = 0;
                     do
@@ -407,7 +404,7 @@ namespace Schedule_management.Internal
                         $"Number_Of_Lesson = {oldSchedule.Number_Of_Lesson} AND ID_Lesson = {oldSchedule.Id_Lesson}";
                     byte[] data = Encoding.Unicode.GetBytes(message);
                     NetworkStream.Write(data, 0, data.Length);
-                    data = new byte[256];
+                    data = new byte[2048];
                     StringBuilder response = new StringBuilder();
                     int bytes = 0;
                     do
@@ -444,7 +441,7 @@ namespace Schedule_management.Internal
                     string message = $"SqlExpression\nDELETE FROM Schedule";
                     byte[] data = Encoding.Unicode.GetBytes(message);
                     NetworkStream.Write(data, 0, data.Length);
-                    data = new byte[256];
+                    data = new byte[2048];
                     StringBuilder response = new StringBuilder();
                     int bytes = 0;
                     do
@@ -481,7 +478,7 @@ namespace Schedule_management.Internal
                     string message = $"SqlExpression\nDELETE FROM Lessons";
                     byte[] data = Encoding.Unicode.GetBytes(message);
                     NetworkStream.Write(data, 0, data.Length);
-                    data = new byte[256];
+                    data = new byte[2048];
                     StringBuilder response = new StringBuilder();
                     int bytes = 0;
                     do
@@ -521,6 +518,7 @@ namespace Schedule_management.Internal
 
                     NetworkStream.Close();
                     Client.Close();
+                    IsConnected = false;
                 }
             }
             catch (Exception ex)
@@ -529,11 +527,69 @@ namespace Schedule_management.Internal
             }
         }
 
+        public static void TestingConnection()
+        {
+            try
+            {
+                if (signInForm.IPEndPoint is null || NetworkStream is null)
+                {
+                    IsConnected = false;
+                }
+                else
+                {
+                    string message = $"Test";
 
+                    byte[] data = Encoding.Unicode.GetBytes(message);
+                    NetworkStream.Write(data, 0, data.Length);
+                }
+            }
+            catch
+            {
+                IsConnected = false;
+                if (NetworkStream is not null && Client is not null)
+                {
+                    NetworkStream.Close();
+                    Client.Close();
+                }
+            }
+        }
+
+        public static void ReconnectToServer()
+        {
+            try
+            {
+                if (Client is not null && signInForm.IPEndPoint is not null)
+                {
+                    Client = new TcpClient(signInForm.IPEndPoint.Address.ToString(), signInForm.IPEndPoint.Port);
+                    NetworkStream = Client.GetStream();
+
+                    string message = $"Reconnect\n{User.Name}\n{User.TypeOfUser}";
+
+                    byte[] data = Encoding.Unicode.GetBytes(message);
+                    NetworkStream.Write(data, 0, data.Length);
+                    data = new byte[2048];
+                    StringBuilder response = new StringBuilder();
+                    int bytes = 0;
+                    do
+                    {
+                        bytes = NetworkStream.Read(data, 0, data.Length);
+                        response.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                    }
+                    while (NetworkStream.DataAvailable);
+
+                    message = response.ToString();
+
+                    IsConnected = true;
+                }
+            }
+            catch
+            {
+                IsConnected = false;
+            }
+        }
 
         //Вспомогательные методы:
 
-        //Метод проверки занятости преподавателя в определённое время
         public static bool CheckingTeacher(Teacher teacher, out int nameOfClass, out int numberOfDay, out int numberOfLesson)
         {
             nameOfClass = -1;

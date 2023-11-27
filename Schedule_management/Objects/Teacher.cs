@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Schedule_management.Objects
+﻿namespace Schedule_management.Objects
 {
     internal class Teacher
     {
@@ -17,6 +11,7 @@ namespace Schedule_management.Objects
         {
             Name = name;
         }
+
         public Teacher(int id, string name)
         {
             Id = id;
@@ -32,31 +27,6 @@ namespace Schedule_management.Objects
         public override string ToString()
         {
             return Name;
-        }
-
-        public override bool Equals(object? obj)
-        {
-            if (obj is not Teacher)
-            {
-                return false;
-            }
-
-            if (obj is null)
-            {
-                return false;
-            }
-
-            if (Id == ((Teacher)obj).Id)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        public override int GetHashCode()
-        {
-            return Name.GetHashCode();
         }
     }
 }

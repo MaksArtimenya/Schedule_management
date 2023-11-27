@@ -9,6 +9,7 @@ namespace Schedule_management
         public Lesson changeableLesson = new Lesson(string.Empty, -1);
         public int indexOfSelectedLesson = -1;
         private bool isAutomaticallyChangeSelectedIndexes = false;
+        private bool checkConnection = true;
 
         public MainPage()
         {
@@ -21,6 +22,8 @@ namespace Schedule_management
 
             comboBoxTeachers.Items.AddRange(InternalData.Teachers.ToArray());
             comboBoxTeachers.Items.Insert(0, new Teacher(string.Empty));
+
+            Task.Run(CheckingConnection);
         }
 
         private void CheckingTypeOfUser()
@@ -153,7 +156,11 @@ namespace Schedule_management
             isAutomaticallyChangeSelectedIndexes = false;
         }
 
-
+        private void MainPage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            checkConnection = false;
+            InternalData.DisconnectFromServer();
+        }
 
         //Вспомогательные методы:
 
@@ -273,9 +280,30 @@ namespace Schedule_management
             UpdateAllListBoxes();
         }
 
-        private void MainPage_FormClosing(object sender, FormClosingEventArgs e)
+        private async Task CheckingConnection()
         {
-            InternalData.DisconnectFromServer();
+            while (checkConnection)
+            {
+                InternalData.TestingConnection();
+                if (!InternalData.IsConnected)
+                {
+                    InternalData.ReconnectToServer();
+                }
+
+                await Task.Delay(1000);
+            }
+        }
+
+        private void timerForErrorLabel_Tick(object sender, EventArgs e)
+        {
+            if (InternalData.IsConnected)
+            {
+                labelError.Visible = false;
+            }
+            else
+            {
+                labelError.Visible = true;
+            }
         }
     }
 }

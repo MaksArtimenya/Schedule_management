@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel1 = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
             listBox5_10 = new ListBox();
@@ -107,6 +108,8 @@
             groupBox1 = new GroupBox();
             label1 = new Label();
             comboBoxTeachers = new ComboBox();
+            labelError = new Label();
+            timerForErrorLabel = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -991,11 +994,28 @@
             comboBoxTeachers.TabIndex = 11;
             comboBoxTeachers.SelectedIndexChanged += comboBoxTeachers_SelectedIndexChanged;
             // 
+            // labelError
+            // 
+            labelError.AutoSize = true;
+            labelError.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelError.Location = new Point(1062, 277);
+            labelError.Name = "labelError";
+            labelError.Size = new Size(240, 56);
+            labelError.TabIndex = 11;
+            labelError.Text = "Подключение к серверу \r\n             потеряно";
+            labelError.Visible = false;
+            // 
+            // timerForErrorLabel
+            // 
+            timerForErrorLabel.Enabled = true;
+            timerForErrorLabel.Tick += timerForErrorLabel_Tick;
+            // 
             // MainPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1332, 853);
+            Controls.Add(labelError);
             Controls.Add(groupBox1);
             Controls.Add(labelWelcome);
             Controls.Add(labelFriday);
@@ -1100,5 +1120,7 @@
         private GroupBox groupBox1;
         private ComboBox comboBoxTeachers;
         private Label label1;
+        private Label labelError;
+        private System.Windows.Forms.Timer timerForErrorLabel;
     }
 }

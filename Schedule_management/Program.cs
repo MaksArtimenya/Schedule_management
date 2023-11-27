@@ -1,3 +1,5 @@
+using Schedule_management.Internal;
+
 namespace Schedule_management
 {
     internal static class Program
@@ -10,10 +12,8 @@ namespace Schedule_management
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-
-            //InternalData.Initialization();
             ApplicationConfiguration.Initialize();
-            Application.Run(new SignInForm());
+            Application.Run(InternalData.signInForm);
         }
     }
 }
