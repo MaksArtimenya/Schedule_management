@@ -1,6 +1,5 @@
 ﻿using System.Net.Sockets;
 using System.Text;
-using Microsoft.VisualBasic.Logging;
 using Schedule_management.Objects;
 
 namespace Schedule_management.Internal
@@ -97,18 +96,21 @@ namespace Schedule_management.Internal
 
                     message = response.ToString();
                     Lessons.Clear();
-                    string[] strings = message.Split('\n', StringSplitOptions.RemoveEmptyEntries);
-                    int i = 0;
-                    while (i < strings.Length)
+                    if (message != "empty")
                     {
-                        string lesssonString = string.Empty;
-                        for (int j = 0; j < 3; j++)
+                        string[] strings = message.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+                        int i = 0;
+                        while (i < strings.Length)
                         {
-                            lesssonString += strings[i + j] + "\n";
-                        }
+                            string lesssonString = string.Empty;
+                            for (int j = 0; j < 3; j++)
+                            {
+                                lesssonString += strings[i + j] + "\n";
+                            }
 
-                        Lessons.Add(Lesson.GetLesson(lesssonString));
-                        i += 3;
+                            Lessons.Add(Lesson.GetLesson(lesssonString));
+                            i += 3;
+                        }
                     }
                 }
                 else
@@ -187,7 +189,7 @@ namespace Schedule_management.Internal
 
                     if (message == "Complete")
                     {
-                        GetLessonsFromServer();
+                        Initialization();
                     }
                     else
                     {
@@ -229,7 +231,7 @@ namespace Schedule_management.Internal
 
                     if (message == "Complete")
                     {
-                        GetLessonsFromServer();
+                        Initialization();
                     }
                     else
                     {
@@ -268,18 +270,148 @@ namespace Schedule_management.Internal
 
                     message = response.ToString();
                     Teachers.Clear();
-                    string[] strings = message.Split('\n', StringSplitOptions.RemoveEmptyEntries);
-                    int i = 0;
-                    while (i < strings.Length)
+                    if (message != "empty")
                     {
-                        string teachersString = string.Empty;
-                        for (int j = 0; j < 2; j++)
+                        string[] strings = message.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+                        int i = 0;
+                        while (i < strings.Length)
                         {
-                            teachersString += strings[i + j] + "\n";
-                        }
+                            string teachersString = string.Empty;
+                            for (int j = 0; j < 6; j++)
+                            {
+                                teachersString += strings[i + j] + "\n";
+                            }
 
-                        Teachers.Add(Teacher.GetTeacher(teachersString));
-                        i += 2;
+                            Teachers.Add(Teacher.GetTeacher(teachersString));
+                            i += 6;
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Нет соединения с сервером");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public static void AddTeacher(Teacher teacher)
+        {
+            try
+            {
+                if (NetworkStream is not null && IsConnected)
+                {
+                    string message = $"SqlExpression\nINSERT INTO Teachers (Full_Name, Gender, Experience, Skill, Education) VALUES " +
+                        $"('{teacher.Name}', '{teacher.Gender}', {teacher.Experience}, {teacher.Skill}, {teacher.Education})";
+                    byte[] data = Encoding.Unicode.GetBytes(message);
+                    NetworkStream.Write(data, 0, data.Length);
+                    data = new byte[2048];
+                    StringBuilder response = new StringBuilder();
+                    int bytes = 0;
+                    do
+                    {
+                        bytes = NetworkStream.Read(data, 0, data.Length);
+                        response.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                    }
+                    while (NetworkStream.DataAvailable);
+
+                    message = response.ToString();
+
+                    if (message == "Complete")
+                    {
+                        GetTeachersFromServer();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Failed to add teacher: {message}");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Нет соединения с сервером");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public static void RemoveTeacher(Teacher teacher)
+        {
+            try
+            {
+                if (NetworkStream is not null && IsConnected)
+                {
+                    string message = $"SqlExpression\nDELETE FROM Teachers " +
+                        $"WHERE ID_Teacher = {teacher.Id}";
+                    byte[] data = Encoding.Unicode.GetBytes(message);
+                    NetworkStream.Write(data, 0, data.Length);
+                    data = new byte[2048];
+                    StringBuilder response = new StringBuilder();
+                    int bytes = 0;
+                    do
+                    {
+                        bytes = NetworkStream.Read(data, 0, data.Length);
+                        response.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                    }
+                    while (NetworkStream.DataAvailable);
+
+                    message = response.ToString();
+
+                    if (message == "Complete")
+                    {
+                        Initialization();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Failed to remove teacher: {message}");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Нет соединения с сервером");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public static void EditTeacher(Teacher oldTeacher, Teacher newTeacher)
+        {
+            try
+            {
+                if (NetworkStream is not null && IsConnected)
+                {
+                    string message = $"SqlExpression\nUPDATE Teachers SET Full_Name = '{newTeacher.Name}', Gender = '{newTeacher.Gender}', " +
+                        $"Experience = {newTeacher.Experience}, Skill = {newTeacher.Skill}, Education = {newTeacher.Education} " +
+                        $"WHERE ID_Teacher = {oldTeacher.Id}";
+                    byte[] data = Encoding.Unicode.GetBytes(message);
+                    NetworkStream.Write(data, 0, data.Length);
+                    data = new byte[2048];
+                    StringBuilder response = new StringBuilder();
+                    int bytes = 0;
+                    do
+                    {
+                        bytes = NetworkStream.Read(data, 0, data.Length);
+                        response.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                    }
+                    while (NetworkStream.DataAvailable);
+
+                    message = response.ToString();
+
+                    if (message == "Complete")
+                    {
+                        GetTeachersFromServer();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Failed to edit teacher: {message}");
                     }
                 }
                 else
@@ -314,18 +446,21 @@ namespace Schedule_management.Internal
 
                     message = response.ToString();
                     ScheduleList.Clear();
-                    string[] strings = message.Split('\n', StringSplitOptions.RemoveEmptyEntries);
-                    int i = 0;
-                    while (i < strings.Length)
+                    if (message != "empty")
                     {
-                        string scheduleString = string.Empty;
-                        for (int j = 0; j < 4; j++)
+                        string[] strings = message.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+                        int i = 0;
+                        while (i < strings.Length)
                         {
-                            scheduleString += strings[i + j] + "\n";
-                        }
+                            string scheduleString = string.Empty;
+                            for (int j = 0; j < 4; j++)
+                            {
+                                scheduleString += strings[i + j] + "\n";
+                            }
 
-                        ScheduleList.Add(Schedule.GetSchedule(scheduleString));
-                        i += 4;
+                            ScheduleList.Add(Schedule.GetSchedule(scheduleString));
+                            i += 4;
+                        }
                     }
                 }
                 else
@@ -637,6 +772,42 @@ namespace Schedule_management.Internal
 
         //Вспомогательные методы:
 
+        public static string GetWorkload(Teacher teacher)
+        {
+            string result = string.Empty;
+            try
+            {
+                if (NetworkStream is not null && IsConnected)
+                {
+                    string message = $"GetWorkload\n{teacher.Id}";
+                    byte[] data = Encoding.Unicode.GetBytes(message);
+                    NetworkStream.Write(data, 0, data.Length);
+                    data = new byte[2048];
+                    StringBuilder response = new StringBuilder();
+                    int bytes = 0;
+                    do
+                    {
+                        bytes = NetworkStream.Read(data, 0, data.Length);
+                        response.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                    }
+                    while (NetworkStream.DataAvailable);
+
+                    message = response.ToString();
+                    result = message;
+                }
+                else
+                {
+                    MessageBox.Show("Нет соединения с сервером");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return result;
+        }
+
         public static bool CheckingTeacher(Teacher teacher, out int nameOfClass, out int numberOfDay, out int numberOfLesson)
         {
             nameOfClass = -1;
@@ -696,7 +867,7 @@ namespace Schedule_management.Internal
                 }
             }
 
-            return new Teacher(string.Empty);
+            return new Teacher(string.Empty, string.Empty, -1, -1, -1);
         }
 
         public static Lesson GetLessonByID(int id)

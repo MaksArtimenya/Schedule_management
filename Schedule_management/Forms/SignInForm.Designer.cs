@@ -125,6 +125,7 @@
             textBoxPort.PlaceholderText = "1234";
             textBoxPort.Size = new Size(165, 27);
             textBoxPort.TabIndex = 1;
+            textBoxPort.Text = "1234";
             textBoxPort.TextChanged += textBoxPort_TextChanged;
             // 
             // textBoxIpAddress
@@ -134,6 +135,7 @@
             textBoxIpAddress.PlaceholderText = "127.0.0.1";
             textBoxIpAddress.Size = new Size(165, 27);
             textBoxIpAddress.TabIndex = 0;
+            textBoxIpAddress.Text = "127.0.0.1";
             textBoxIpAddress.TextChanged += textBoxIpAddress_TextChanged;
             // 
             // SignInForm

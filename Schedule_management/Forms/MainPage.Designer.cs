@@ -106,6 +106,7 @@
             buttonClearSchedule = new Button();
             labelWelcome = new Label();
             groupBox1 = new GroupBox();
+            buttonToEditTeachers = new Button();
             label1 = new Label();
             comboBoxTeachers = new ComboBox();
             labelError = new Label();
@@ -965,21 +966,32 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(buttonToEditTeachers);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(comboBoxTeachers);
             groupBox1.Controls.Add(buttonShowEditingLessonsForm);
             groupBox1.Controls.Add(buttonClearSchedule);
             groupBox1.Location = new Point(1041, 346);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(279, 240);
+            groupBox1.Size = new Size(279, 327);
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
             groupBox1.Text = "Управление";
             // 
+            // buttonToEditTeachers
+            // 
+            buttonToEditTeachers.Location = new Point(6, 170);
+            buttonToEditTeachers.Name = "buttonToEditTeachers";
+            buttonToEditTeachers.Size = new Size(267, 70);
+            buttonToEditTeachers.TabIndex = 13;
+            buttonToEditTeachers.Text = "Преподаватели";
+            buttonToEditTeachers.UseVisualStyleBackColor = true;
+            buttonToEditTeachers.Click += buttonToEditTeachers_Click;
+            // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(6, 183);
+            label1.Location = new Point(6, 266);
             label1.Name = "label1";
             label1.Size = new Size(117, 20);
             label1.TabIndex = 12;
@@ -989,7 +1001,7 @@
             // 
             comboBoxTeachers.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTeachers.FormattingEnabled = true;
-            comboBoxTeachers.Location = new Point(6, 206);
+            comboBoxTeachers.Location = new Point(6, 289);
             comboBoxTeachers.Name = "comboBoxTeachers";
             comboBoxTeachers.Size = new Size(267, 28);
             comboBoxTeachers.TabIndex = 11;
@@ -1135,5 +1147,6 @@
         private Label labelError;
         private System.Windows.Forms.Timer timerForErrorLabel;
         private ProgressBar progressBarReconnect;
+        private Button buttonToEditTeachers;
     }
 }

@@ -1,45 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Schedule_management.InternalData">
-    <Position X="0.5" Y="0.5" Width="2.75" />
-    <TypeIdentifier>
-      <HashCode>AAAJDAgJAQQAIAmQAQAABAAABIBAACAAAAAQCgCACCE=</HashCode>
-      <FileName>InternalData.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Schedule_management.Lesson">
-    <Position X="4.25" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAEoAAAAAQAAAAAAIAAAAAAAAAAAAA=</HashCode>
-      <FileName>Lesson.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Schedule_management.Program">
-    <Position X="3.5" Y="0.5" Width="1.5" />
+    <Position X="3.5" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Schedule_management.Teacher">
-    <Position X="6.25" Y="2.75" Width="1.5" />
+  <Class Name="Schedule_management.Internal.InternalData">
+    <Position X="0.5" Y="0.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAEgAAAAAQAAAAAAIAAAAAAAAAAAAA=</HashCode>
-      <FileName>Teacher.cs</FileName>
+      <HashCode>AAEJDAgIAUQAIADQACAABCAABIBgASAAIABQCgCACAU=</HashCode>
+      <FileName>Internal\InternalData.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Schedule_management.Schedule">
-    <Position X="8.25" Y="2.75" Width="1.5" />
+  <Class Name="Schedule_management.Objects.Lesson">
+    <Position X="5.5" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAkAABAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Schedule.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAAEoAAAAAQAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\Lesson.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Schedule_management.User">
-    <Position X="10.25" Y="2.75" Width="1.5" />
+  <Class Name="Schedule_management.Objects.Schedule">
+    <Position X="3.5" Y="4.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAgAAAAAQAAAAAAIgAAAAAAAAAAAA=</HashCode>
-      <FileName>User.cs</FileName>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAQkAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\Schedule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule_management.Objects.Teacher">
+    <Position X="5.5" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAAAAQAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\Teacher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule_management.Objects.User">
+    <Position X="3.5" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAQAAAAAAIgAEAAAAAAAAAA=</HashCode>
+      <FileName>Objects\User.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

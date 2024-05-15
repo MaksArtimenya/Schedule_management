@@ -49,7 +49,7 @@ namespace Schedule_management
             {
                 IPAddress.Parse(textBoxIpAddress.Text);
                 int.Parse(textBoxPort.Text);
-                if (textBoxLogin.Text != string.Empty && textBoxPassword.Text != string.Empty && textBoxPort.Text.Length == 4) 
+                if (textBoxLogin.Text != string.Empty && textBoxPassword.Text != string.Empty && textBoxPort.Text.Length == 4)
                 {
                     buttonSignIn.Enabled = true;
                 }

@@ -1,3 +1,4 @@
+using Schedule_management.Forms;
 using Schedule_management.Internal;
 using Schedule_management.Objects;
 
@@ -18,10 +19,7 @@ namespace Schedule_management
             UpdateAllListBoxes();
             ChangeLabelWelcomeText();
             CheckingTypeOfUser();
-
-
-            comboBoxTeachers.Items.AddRange(InternalData.Teachers.ToArray());
-            comboBoxTeachers.Items.Insert(0, new Teacher(string.Empty));
+            UpdateTeachers();
 
             Task.Run(CheckingConnection);
         }
@@ -44,6 +42,7 @@ namespace Schedule_management
 
                     buttonShowEditingLessonsForm.Enabled = false;
                     buttonClearSchedule.Enabled = false;
+                    buttonToEditTeachers.Enabled = false;
                     break;
                 case 2:
                     for (int i = 0; i < listBoxes.Count; i++)
@@ -54,6 +53,7 @@ namespace Schedule_management
                     buttonShowEditingLessonsForm.Enabled = false;
                     buttonClearSchedule.Enabled = false;
                     comboBoxTeachers.Enabled = false;
+                    buttonToEditTeachers.Enabled = false;
                     break;
             }
         }
@@ -306,6 +306,18 @@ namespace Schedule_management
                 labelError.Visible = true;
                 progressBarReconnect.Visible = true;
             }
+        }
+
+        private void buttonToEditTeachers_Click(object sender, EventArgs e)
+        {
+            new EditingTeachersForm(this).ShowDialog();
+        }
+
+        public void UpdateTeachers()
+        {
+            comboBoxTeachers.Items.Clear();
+            comboBoxTeachers.Items.AddRange(InternalData.Teachers.ToArray());
+            comboBoxTeachers.Items.Insert(0, new Teacher(string.Empty, string.Empty, -1, -1, -1));
         }
     }
 }
