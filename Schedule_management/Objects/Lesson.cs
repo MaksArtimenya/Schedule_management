@@ -51,7 +51,7 @@
                 return false;
             }
 
-            if (Id == ((Lesson)obj).Id)
+            if (Id == ((Lesson)obj).Id || (Name == ((Lesson)obj).Name && Id_Teacher == ((Lesson)obj).Id_Teacher))
             {
                 return true;
             }

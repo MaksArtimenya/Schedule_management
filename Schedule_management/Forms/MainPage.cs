@@ -16,6 +16,7 @@ namespace Schedule_management
         {
             InitializeComponent();
             AddingListBoxesToList();
+            FixListBoxesSelecting();
             UpdateAllListBoxes();
             ChangeLabelWelcomeText();
             CheckingTypeOfUser();
@@ -147,7 +148,8 @@ namespace Schedule_management
                         {
                             if (((Lesson)listBoxes[i].Items[j]).Equals(lessons[k]))
                             {
-                                listBoxes[i].SelectedItems.Add(listBoxes[i].Items[j]);
+                                //listBoxes[i].SelectedItems.Add(listBoxes[i].Items[j]);
+                                listBoxes[i].SetSelected(j, true);
                             }
                         }
                     }
@@ -236,6 +238,14 @@ namespace Schedule_management
             listBoxes.Add(listBox5_9);
             listBoxes.Add(listBox5_10);
             listBoxes.Add(listBox5_11);
+        }
+
+        private void FixListBoxesSelecting()
+        {
+            foreach (ListBox box in listBoxes)
+            {
+                box.SelectionMode = SelectionMode.MultiExtended;
+            }
         }
 
         //Метод обновления информации на всех объектах ListBox
