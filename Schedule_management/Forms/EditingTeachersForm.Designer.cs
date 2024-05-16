@@ -312,7 +312,7 @@
             // 
             comboBoxEducation.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxEducation.FormattingEnabled = true;
-            comboBoxEducation.Items.AddRange(new object[] { "основное", "среднее", "высшее" });
+            comboBoxEducation.Items.AddRange(new object[] { "среднее специальное", "высшее" });
             comboBoxEducation.Location = new Point(32, 313);
             comboBoxEducation.Name = "comboBoxEducation";
             comboBoxEducation.Size = new Size(234, 28);
@@ -323,7 +323,7 @@
             // 
             comboBoxSkill.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxSkill.FormattingEnabled = true;
-            comboBoxSkill.Items.AddRange(new object[] { "вторая категория", "первая категория", "высшая категория" });
+            comboBoxSkill.Items.AddRange(new object[] { "без категории", "вторая категория", "первая категория", "высшая категория", "учитель-методист" });
             comboBoxSkill.Location = new Point(32, 243);
             comboBoxSkill.Name = "comboBoxSkill";
             comboBoxSkill.Size = new Size(234, 28);
