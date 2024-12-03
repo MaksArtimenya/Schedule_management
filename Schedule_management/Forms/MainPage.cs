@@ -44,6 +44,7 @@ namespace Schedule_management
                     buttonShowEditingLessonsForm.Enabled = false;
                     buttonClearSchedule.Enabled = false;
                     buttonToEditTeachers.Enabled = false;
+                    buttonReports.Enabled = false;
                     break;
                 case 2:
                     for (int i = 0; i < listBoxes.Count; i++)
@@ -55,6 +56,7 @@ namespace Schedule_management
                     buttonClearSchedule.Enabled = false;
                     comboBoxTeachers.Enabled = false;
                     buttonToEditTeachers.Enabled = false;
+                    buttonReports.Enabled = false;
                     break;
             }
         }
@@ -328,6 +330,11 @@ namespace Schedule_management
             comboBoxTeachers.Items.Clear();
             comboBoxTeachers.Items.AddRange(InternalData.Teachers.ToArray());
             comboBoxTeachers.Items.Insert(0, new Teacher(string.Empty, string.Empty, -1, -1, -1));
+        }
+
+        private void buttonReports_Click(object sender, EventArgs e)
+        {
+            new ReportsForm().ShowDialog();
         }
     }
 }

@@ -112,6 +112,7 @@
             labelError = new Label();
             timerForErrorLabel = new System.Windows.Forms.Timer(components);
             progressBarReconnect = new ProgressBar();
+            buttonReports = new Button();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -966,14 +967,15 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(buttonReports);
             groupBox1.Controls.Add(buttonToEditTeachers);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(comboBoxTeachers);
             groupBox1.Controls.Add(buttonShowEditingLessonsForm);
             groupBox1.Controls.Add(buttonClearSchedule);
-            groupBox1.Location = new Point(1041, 346);
+            groupBox1.Location = new Point(1041, 259);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(279, 327);
+            groupBox1.Size = new Size(279, 423);
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
             groupBox1.Text = "Управление";
@@ -991,7 +993,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(6, 266);
+            label1.Location = new Point(6, 366);
             label1.Name = "label1";
             label1.Size = new Size(117, 20);
             label1.TabIndex = 12;
@@ -1001,7 +1003,7 @@
             // 
             comboBoxTeachers.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTeachers.FormattingEnabled = true;
-            comboBoxTeachers.Location = new Point(6, 289);
+            comboBoxTeachers.Location = new Point(6, 389);
             comboBoxTeachers.Name = "comboBoxTeachers";
             comboBoxTeachers.Size = new Size(267, 28);
             comboBoxTeachers.TabIndex = 11;
@@ -1011,7 +1013,7 @@
             // 
             labelError.AutoSize = true;
             labelError.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelError.Location = new Point(1062, 246);
+            labelError.Location = new Point(1062, 134);
             labelError.Name = "labelError";
             labelError.Size = new Size(240, 56);
             labelError.TabIndex = 11;
@@ -1025,13 +1027,23 @@
             // 
             // progressBarReconnect
             // 
-            progressBarReconnect.Location = new Point(1062, 305);
+            progressBarReconnect.Location = new Point(1062, 193);
             progressBarReconnect.Name = "progressBarReconnect";
             progressBarReconnect.Size = new Size(240, 29);
             progressBarReconnect.Step = 30;
             progressBarReconnect.Style = ProgressBarStyle.Marquee;
             progressBarReconnect.TabIndex = 12;
             progressBarReconnect.Visible = false;
+            // 
+            // buttonReports
+            // 
+            buttonReports.Location = new Point(6, 247);
+            buttonReports.Name = "buttonReports";
+            buttonReports.Size = new Size(267, 70);
+            buttonReports.TabIndex = 14;
+            buttonReports.Text = "Отчеты";
+            buttonReports.UseVisualStyleBackColor = true;
+            buttonReports.Click += buttonReports_Click;
             // 
             // MainPage
             // 
@@ -1148,5 +1160,6 @@
         private System.Windows.Forms.Timer timerForErrorLabel;
         private ProgressBar progressBarReconnect;
         private Button buttonToEditTeachers;
+        private Button buttonReports;
     }
 }
