@@ -1,4 +1,5 @@
-﻿using Schedule_management.Objects;
+﻿using Schedule_management.Internal;
+using Schedule_management.Objects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +24,15 @@ namespace Schedule_management.Forms
             saveFileDialog1.FileName = $"{comboBoxTypeOfReport.Text}.txt";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                File.WriteAllText(saveFileDialog1.FileName, labelReport.Text);
+                try
+                {
+                    File.WriteAllText(saveFileDialog1.FileName, labelReport.Text);
+                    MessageBox.Show("Отчет сохранен");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -46,7 +55,7 @@ namespace Schedule_management.Forms
             int[] GetWorkloadOfTeacher(List<Lesson> lessons)
             {
                 int[] result = new int[] { 0, 0, 0, 0, 0, 0 };
-                foreach (Schedule schedule in Internal.InternalData.ScheduleList)
+                foreach (Schedule schedule in InternalData.ScheduleList)
                 {
                     foreach (Lesson lesson in lessons)
                     {
@@ -62,9 +71,9 @@ namespace Schedule_management.Forms
                 return result;
             }
             labelReport.Text = $"ОТЧЕТ О НАГРУЗКЕ ПРЕПОДАВАТЕЛЕЙ\n{DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss")}\n\n\n";
-            foreach (Teacher teacher in Internal.InternalData.Teachers)
+            foreach (Teacher teacher in InternalData.Teachers)
             {
-                int[] workload = GetWorkloadOfTeacher(Internal.InternalData.GetLessonsByTeacher(teacher));
+                int[] workload = GetWorkloadOfTeacher(InternalData.GetLessonsByTeacher(teacher));
                 labelReport.Text += $"{teacher.Name.Trim()} (Общая нагрузка: {workload[0]})" +
                     $"\n*Понедельник: {workload[1]}" +
                     $"\n*Вторник: {workload[2]}" +
@@ -81,20 +90,20 @@ namespace Schedule_management.Forms
             {
                 workloadByDays = new int[] { 0, 0, 0, 0, 0, 0 };
                 worklodByLessons = new List<int>();
-                foreach (Lesson lesson in  Internal.InternalData.Lessons)
+                foreach (Lesson lesson in  InternalData.Lessons)
                 {
                     worklodByLessons.Add(0);
                 }
 
-                foreach (Schedule schedule in Internal.InternalData.ScheduleList)
+                foreach (Schedule schedule in InternalData.ScheduleList)
                 {
                     if (schedule.Number_Of_Class == numberOfClass)
                     {
                         workloadByDays[0] += 1;
                         workloadByDays[schedule.Number_Of_Day] += 1;
-                        for (int i = 0; i < Internal.InternalData.Lessons.Count; i++)
+                        for (int i = 0; i < InternalData.Lessons.Count; i++)
                         {
-                            if (schedule.Id_Lesson == Internal.InternalData.Lessons[i].Id)
+                            if (schedule.Id_Lesson == InternalData.Lessons[i].Id)
                             {
                                 worklodByLessons[i] += 1;
                                 break;
@@ -104,7 +113,7 @@ namespace Schedule_management.Forms
                 }
             }
             labelReport.Text = $"ОТЧЕТ О ЗАНЯТОСТИ ОБУЧАЮЩИХСЯ\n{DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss")}\n\n\n";
-            for (int i = 1; i <= Internal.InternalData.countOfClasses; i++)
+            for (int i = 1; i <= InternalData.countOfClasses; i++)
             {
                 int[] workloadByDays;
                 List<int> worklodByLessons;
@@ -117,11 +126,11 @@ namespace Schedule_management.Forms
                     $"\n*Четверг: {workloadByDays[4]}" +
                     $"\n*Пятница: {workloadByDays[5]}\n" +
                     $"\nКол-во занятий по предметам";
-                for (int j = 0; j < Internal.InternalData.Lessons.Count; j++)
+                for (int j = 0; j < InternalData.Lessons.Count; j++)
                 {
                     if (worklodByLessons[j] != 0)
                     {
-                        labelReport.Text += $"\n-{Internal.InternalData.Lessons[j].Name.Trim()}: {worklodByLessons[j]}";
+                        labelReport.Text += $"\n-{InternalData.Lessons[j].Name.Trim()} ({InternalData.GetTeacherByID(InternalData.Lessons[j].Id_Teacher).Name.Trim()}): {worklodByLessons[j]}";
                     }
                 }
 

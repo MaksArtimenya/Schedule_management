@@ -1,3 +1,5 @@
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
 using Schedule_management.Forms;
 using Schedule_management.Internal;
 using Schedule_management.Objects;
@@ -336,5 +338,99 @@ namespace Schedule_management
         {
             new ReportsForm().ShowDialog();
         }
+
+        private void buttonSaveSchedule_Click(object sender, EventArgs e)
+        {
+            GenerateScheduleFile();
+        }
+
+        public void GenerateScheduleFile()
+        {
+            try
+            {
+                List<Schedule> scheduleList = InternalData.ScheduleList;
+                List<Teacher> teachers = InternalData.Teachers;
+                List<Lesson> lessons = InternalData.Lessons;
+                saveFileDialog1.FileName = $"Расписание {DateTime.Now.ToString("dd-MM-yyyy HH-mm")}.xlsx";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = saveFileDialog1.FileName;
+                    ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                    using (var package = new ExcelPackage())
+                    {
+                        var worksheet = package.Workbook.Worksheets.Add("Расписание");
+
+                        // Заголовки классов
+                        for (int i = 1; i <= 11; i++)
+                        {
+                            worksheet.Cells[1, i + 1].Value = $"{i} класс";
+                            worksheet.Cells[1, i + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                            worksheet.Cells[1, i + 1].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                            worksheet.Cells[1, i + 1].Style.Border.BorderAround(ExcelBorderStyle.Thick);
+                        }
+
+                        // Заголовки дней недели
+                        string[] daysOfWeek = { "Понедельник", "Вторник", "Среда", "Четверг", "Пятница" };
+                        for (int i = 0; i < daysOfWeek.Length; i++)
+                        {
+                            worksheet.Cells[i * 9 + 2, 1].Value = daysOfWeek[i];
+                            worksheet.Cells[i * 9 + 2, 1, i * 9 + 9, 1].Merge = true;
+                            worksheet.Cells[i * 9 + 2, 1, i * 9 + 9, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                            worksheet.Cells[i * 9 + 2, 1, i * 9 + 9, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                            worksheet.Cells[i * 9 + 2, 1, i * 9 + 9, 1].Style.Border.BorderAround(ExcelBorderStyle.Thick);
+                        }
+
+                        // Заполнение расписания
+                        foreach (var schedule in scheduleList)
+                        {
+                            var lesson = lessons.Find(l => l.Id == schedule.Id_Lesson);
+                            int row = (schedule.Number_Of_Day - 1) * 9 + schedule.Number_Of_Lesson + 1;
+                            int col = schedule.Number_Of_Class + 1;
+
+                            worksheet.Cells[row, col].Value = lesson.Name.Trim();
+                            worksheet.Cells[row, col].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                        }
+
+                        // Форматирование ячеек
+                        for (int i = 2; i <= 46; i++)
+                        {
+                            for (int j = 2; j <= 12; j++)
+                            {
+                                worksheet.Cells[i, j].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                            }
+                        }
+
+                        // Установка ширины столбцов
+                        worksheet.Column(1).Width = 20; // Увеличение ширины столбца с названиями дней
+                        for (int i = 2; i <= 12; i++)
+                        {
+                            worksheet.Column(i).Width = 25; // Увеличение ширины столбцов с уроками
+                        }
+
+                        // Рамка вокруг пересечений дней и классов
+                        for (int i = 0; i < daysOfWeek.Length; i++)
+                        {
+                            for (int j = 1; j <= 11; j++)
+                            {
+                                worksheet.Cells[i * 9 + 2, j + 1, i * 9 + 9, j + 1].Style.Border.BorderAround(ExcelBorderStyle.Thick);
+                            }
+                        }
+
+                        // Рамка вокруг всего расписания
+                        worksheet.Cells[1, 1, 46, 12].Style.Border.BorderAround(ExcelBorderStyle.Medium);
+
+                        // Сохранение файла
+                        FileInfo file = new FileInfo(filePath);
+                        package.SaveAs(file);
+                        MessageBox.Show($"Файл сохранен\nПуть: {filePath}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
+
 }

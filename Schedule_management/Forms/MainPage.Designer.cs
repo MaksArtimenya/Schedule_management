@@ -106,13 +106,15 @@
             buttonClearSchedule = new Button();
             labelWelcome = new Label();
             groupBox1 = new GroupBox();
+            buttonReports = new Button();
             buttonToEditTeachers = new Button();
             label1 = new Label();
             comboBoxTeachers = new ComboBox();
             labelError = new Label();
             timerForErrorLabel = new System.Windows.Forms.Timer(components);
             progressBarReconnect = new ProgressBar();
-            buttonReports = new Button();
+            buttonSaveSchedule = new Button();
+            saveFileDialog1 = new SaveFileDialog();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -958,7 +960,7 @@
             // labelWelcome
             // 
             labelWelcome.AutoSize = true;
-            labelWelcome.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            labelWelcome.Font = new Font("Segoe UI", 14F);
             labelWelcome.Location = new Point(356, 25);
             labelWelcome.Name = "labelWelcome";
             labelWelcome.Size = new Size(180, 32);
@@ -967,18 +969,29 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(buttonSaveSchedule);
             groupBox1.Controls.Add(buttonReports);
             groupBox1.Controls.Add(buttonToEditTeachers);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(comboBoxTeachers);
             groupBox1.Controls.Add(buttonShowEditingLessonsForm);
             groupBox1.Controls.Add(buttonClearSchedule);
-            groupBox1.Location = new Point(1041, 259);
+            groupBox1.Location = new Point(1041, 237);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(279, 423);
+            groupBox1.Size = new Size(279, 464);
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
             groupBox1.Text = "Управление";
+            // 
+            // buttonReports
+            // 
+            buttonReports.Location = new Point(6, 247);
+            buttonReports.Name = "buttonReports";
+            buttonReports.Size = new Size(267, 70);
+            buttonReports.TabIndex = 14;
+            buttonReports.Text = "Отчеты";
+            buttonReports.UseVisualStyleBackColor = true;
+            buttonReports.Click += buttonReports_Click;
             // 
             // buttonToEditTeachers
             // 
@@ -993,7 +1006,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(6, 366);
+            label1.Location = new Point(6, 407);
             label1.Name = "label1";
             label1.Size = new Size(117, 20);
             label1.TabIndex = 12;
@@ -1003,7 +1016,7 @@
             // 
             comboBoxTeachers.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTeachers.FormattingEnabled = true;
-            comboBoxTeachers.Location = new Point(6, 389);
+            comboBoxTeachers.Location = new Point(6, 430);
             comboBoxTeachers.Name = "comboBoxTeachers";
             comboBoxTeachers.Size = new Size(267, 28);
             comboBoxTeachers.TabIndex = 11;
@@ -1012,7 +1025,7 @@
             // labelError
             // 
             labelError.AutoSize = true;
-            labelError.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelError.Font = new Font("Segoe UI", 12F);
             labelError.Location = new Point(1062, 134);
             labelError.Name = "labelError";
             labelError.Size = new Size(240, 56);
@@ -1035,15 +1048,19 @@
             progressBarReconnect.TabIndex = 12;
             progressBarReconnect.Visible = false;
             // 
-            // buttonReports
+            // buttonSaveSchedule
             // 
-            buttonReports.Location = new Point(6, 247);
-            buttonReports.Name = "buttonReports";
-            buttonReports.Size = new Size(267, 70);
-            buttonReports.TabIndex = 14;
-            buttonReports.Text = "Отчеты";
-            buttonReports.UseVisualStyleBackColor = true;
-            buttonReports.Click += buttonReports_Click;
+            buttonSaveSchedule.Location = new Point(6, 322);
+            buttonSaveSchedule.Name = "buttonSaveSchedule";
+            buttonSaveSchedule.Size = new Size(267, 70);
+            buttonSaveSchedule.TabIndex = 13;
+            buttonSaveSchedule.Text = "Сохранить расписание";
+            buttonSaveSchedule.UseVisualStyleBackColor = true;
+            buttonSaveSchedule.Click += buttonSaveSchedule_Click;
+            // 
+            // saveFileDialog1
+            // 
+            saveFileDialog1.Filter = "Excel файлы|*.xlsx";
             // 
             // MainPage
             // 
@@ -1161,5 +1178,7 @@
         private ProgressBar progressBarReconnect;
         private Button buttonToEditTeachers;
         private Button buttonReports;
+        private Button buttonSaveSchedule;
+        private SaveFileDialog saveFileDialog1;
     }
 }
